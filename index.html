@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آزمون پایتون مقدماتی</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #172033;
+}
+
+.container {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 10px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 12px 35px rgba(15,23,42,.08);
+    margin-bottom: 18px;
+}
+
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    color: #4f46e5;
+    font-size: 30px;
+}
+
+.header p {
+    color: #64748b;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.info input {
+    padding: 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+}
+
+.info input:focus {
+    border-color: #6366f1;
+}
+
+.timer {
+    position: sticky;
+    top: 10px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #172033;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+}
+
+.timer strong {
+    font-size: 23px;
+    direction: ltr;
+}
+
+.progress {
+    height: 9px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #6366f1;
+    transition: .3s;
+}
+
+.question {
+    display: none;
+}
+
+.question.active {
+    display: block;
+}
+
+.q-number {
+    color: #6366f1;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.question h2 {
+    font-size: 20px;
+    line-height: 2;
+    margin-top: 0;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 2px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 13px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.option:hover {
+    background: #f8faff;
+    border-color: #a5b4fc;
+}
+
+.option.selected {
+    background: #eef2ff;
+    border-color: #6366f1;
+}
+
+.option input {
+    display: none;
+}
+
+.radio {
+    width: 21px;
+    height: 21px;
+    border: 2px solid #94a3b8;
+    border-radius: 50%;
+    flex: none;
+}
+
+.selected .radio {
+    border-color: #6366f1;
+    box-shadow: inset 0 0 0 5px white;
+    background: #6366f1;
+}
+
+.letter {
+    font-weight: bold;
+    direction: ltr;
+    min-width: 25px;
+}
+
+.code {
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+    background: #f1f5f9;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-family: Consolas, monospace;
+}
+
+.codebox {
+    direction: ltr;
+    text-align: left;
+    background: #111827;
+    color: #f8fafc;
+    padding: 18px;
+    border-radius: 13px;
+    font-family: Consolas, monospace;
+    line-height: 1.8;
+    overflow: auto;
+    margin: 15px 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    border: 0;
+    border-radius: 12px;
+    padding: 14px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.prev {
+    background: #e2e8f0;
+}
+
+.next {
+    background: #4f46e5;
+    color: white;
+    margin-right: auto;
+}
+
+.finish {
+    background: #16a34a;
+    color: white;
+    margin-right: auto;
+}
+
+.result {
+    display: none;
+    text-align: center;
+}
+
+.score {
+    font-size: 52px;
+    color: #4f46e5;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+.stat {
+    padding: 18px 8px;
+    background: #f8fafc;
+    border-radius: 14px;
+}
+
+.stat b {
+    display: block;
+    font-size: 25px;
+    margin-top: 7px;
+}
+
+.green {
+    color: #16a34a;
+}
+
+.red {
+    color: #dc2626;
+}
+
+.orange {
+    color: #d97706;
+}
+
+.review {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.review-item {
+    background: #fff7ed;
+    border-right: 5px solid #f97316;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    line-height: 2;
+}
+
+.restart {
+    background: #172033;
+    color: white;
+    margin-top: 20px;
+}
+
+@media(max-width:650px) {
+    .info {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .question h2 {
+        font-size: 18px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .timer {
+        top: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card header">
+    <h1>🐍 آزمون پایتون مقدماتی</h1>
+    <p>آزمون مفهومی Python — زمان: ۲۵ دقیقه</p>
+
+    <div class="info">
+        <input id="studentName" placeholder="نام و نام خانوادگی">
+        <input id="studentClass" placeholder="کلاس">
+    </div>
+</div>
+
+<div class="timer">
+    <span>⏱️ زمان باقی‌مانده</span>
+    <strong id="timer">25:00</strong>
+</div>
+
+<div class="card" id="examCard">
+
+<div id="questions">
+
+<!-- سوال 1 -->
+<div class="question active">
+<div class="q-number">سؤال ۱ از ۲۵</div>
+<h2>کدام توضیح درباره متغیر در Python دقیق‌تر است؟</h2>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+دستور مخصوص چاپ کردن اطلاعات
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+نامی برای اشاره به یک مقدار که می‌تواند تغییر کند
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+نوعی حلقه برای تکرار
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+دستوری برای پایان برنامه
+</label>
+</div>
+
+<!-- سوال 2 -->
+<div class="question">
+<div class="q-number">سؤال ۲ از ۲۵</div>
+<h2>
+اگر بنویسیم
+<span class="code">age = 15</span>
+علامت
+<span class="code">=</span>
+چه مفهومی دارد؟
+</h2>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+مقایسه
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+مقداردهی
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+بررسی بزرگ‌تر بودن
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+شرط
+</label>
+</div>
+
+<!-- سوال 3 -->
+<div class="question">
+<div class="q-number">سؤال ۳ از ۲۵</div>
+<h2>کدام عبارت یک مقایسه انجام می‌دهد؟</h2>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+<span class="code">x = 10</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+<span class="code">x == 10</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+<span class="code">x + 10</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+<span class="code">print(x)</span>
+</label>
+</div>
+
+<!-- سوال 4 -->
+<div class="question">
+<div class="q-number">سؤال ۴ از ۲۵</div>
+<h2>
+چرا مقدار دریافت‌شده توسط
+<span class="code">input()</span>
+برای محاسبات عددی معمولاً باید تبدیل نوع شود؟
+</h2>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+چون input مقدار را به صورت رشته دریافت می‌کند
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+چون input فقط عدد می‌گیرد
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+چون print عدد را حذف می‌کند
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+چون Python عدد ندارد
+</label>
+</div>
+
+<!-- سوال 5 -->
+<div class="question">
+<div class="q-number">سؤال ۵ از ۲۵</div>
+<h2>شرط زیر چه زمانی درست است؟</h2>
+
+<div class="codebox">if score >= 10:</div>
+
+<label class="option">
+<input type="radio" name="q5" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+فقط وقتی score برابر ۱۰ باشد
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+وقتی score حداقل ۱۰ باشد
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+وقتی score کمتر از ۱۰ باشد
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+فقط وقتی score برابر ۱۱ باشد
+</label>
+</div>
+
+<!-- سوال 6 -->
+<div class="question">
+<div class="q-number">سؤال ۶ از ۲۵</div>
+<h2>
+اگر شرط <span class="code">if</span> درست باشد،
+در ساختار <span class="code">if / elif / else</span>
+چه اتفاقی می‌افتد؟
+</h2>
+
+<label class="option">
+<input type="radio" name="q6" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+همه elifها اجرا می‌شوند
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+شرط‌های بعدی همان زنجیره بررسی نمی‌شوند
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+else حتماً اجرا می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+برنامه متوقف می‌شود
+</label>
+</div>
+
+<!-- سوال 7 -->
+<div class="question">
+<div class="q-number">سؤال ۷ از ۲۵</div>
+<h2>نتیجه عبارت زیر چیست؟</h2>
+
+<div class="codebox">10 % 3</div>
+
+<label class="option">
+<input type="radio" name="q7" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+۱
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+۳
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+۰
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+۱۰
+</label>
+</div>
+
+<!-- سوال 8 -->
+<div class="question">
+<div class="q-number">سؤال ۸ از ۲۵</div>
+<h2>اگر x برابر ۵ باشد، نتیجه عبارت زیر چیست؟</h2>
+
+<div class="codebox">x > 3 and x < 10</div>
+
+<label class="option">
+<input type="radio" name="q8" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+True
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+False
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+۵
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+None
+</label>
+</div>
+
+<!-- سوال 9 -->
+<div class="question">
+<div class="q-number">سؤال ۹ از ۲۵</div>
+<h2>عبارت <span class="code">or</span> چه زمانی True می‌شود؟</h2>
+
+<label class="option">
+<input type="radio" name="q9" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+وقتی حداقل یکی از شرط‌ها True باشد
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+فقط وقتی هر دو False باشند
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+فقط وقتی هر دو True باشند
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+هیچ‌وقت
+</label>
+</div>
+
+<!-- سوال 10 -->
+<div class="question">
+<div class="q-number">سؤال ۱۰ از ۲۵</div>
+<h2>تفاوت اصلی <span class="code">and</span> و <span class="code">or</span> چیست؟</h2>
+
+<label class="option">
+<input type="radio" name="q10" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+and معمولاً نیاز دارد همه شرط‌ها درست باشند، اما or با درست بودن حداقل یکی درست می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+هر دو دقیقاً یک کاربرد دارند
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+and فقط برای عدد و or فقط برای متن است
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+هر دو حلقه هستند
+</label>
+</div>
+
+<!-- سوال 11 -->
+<div class="question">
+<div class="q-number">سؤال ۱۱ از ۲۵</div>
+<h2>اگر شرط if برابر False باشد و else وجود داشته باشد، چه اتفاقی می‌افتد؟</h2>
+
+<label class="option">
+<input type="radio" name="q11" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+بخش else اجرا می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+کل برنامه حذف می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+if دوباره اجرا می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q11" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+برنامه حتماً خطای نحوی می‌دهد
+</label>
+</div>
+
+<!-- سوال 12 -->
+<div class="question">
+<div class="q-number">سؤال ۱۲ از ۲۵</div>
+<h2>کدام توضیح درباره while درست است؟</h2>
+
+<label class="option">
+<input type="radio" name="q12" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+تا زمانی که شرط برقرار باشد، بدنه حلقه می‌تواند تکرار شود
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+فقط یک بار اجرا می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+فقط برای چاپ متن است
+</label>
+
+<label class="option">
+<input type="radio" name="q12" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+همیشه بدون شرط اجرا می‌شود
+</label>
+</div>
+
+<!-- سوال 13 -->
+<div class="question">
+<div class="q-number">سؤال ۱۳ از ۲۵</div>
+<h2>مشکل اصلی کد زیر چیست؟</h2>
+
+<div class="codebox">x = 1
+
+while x <= 5:
+    print(x)</div>
+
+<label class="option">
+<input type="radio" name="q13" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+print نمی‌تواند داخل while باشد
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+مقدار x تغییر نمی‌کند و شرط همیشه برقرار می‌ماند
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+while فقط با متن کار می‌کند
+</label>
+
+<label class="option">
+<input type="radio" name="q13" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+عدد ۱ قابل استفاده نیست
+</label>
+</div>
+
+<!-- سوال 14 -->
+<div class="question">
+<div class="q-number">سؤال ۱۴ از ۲۵</div>
+<h2>وظیفه break داخل حلقه چیست؟</h2>
+
+<label class="option">
+<input type="radio" name="q14" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+حلقه را متوقف می‌کند
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+حلقه را از اول شروع می‌کند
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+یک متغیر می‌سازد
+</label>
+
+<label class="option">
+<input type="radio" name="q14" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+برنامه را نصب می‌کند
+</label>
+</div>
+
+<!-- سوال 15 -->
+<div class="question">
+<div class="q-number">سؤال ۱۵ از ۲۵</div>
+<h2>کدام گزینه درباره int() درست است؟</h2>
+
+<label class="option">
+<input type="radio" name="q15" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+برای تبدیل مقدار مناسب به عدد صحیح استفاده می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+برای چاپ عدد استفاده می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+یک حلقه ایجاد می‌کند
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+همیشه مقدار را به رشته تبدیل می‌کند
+</label>
+</div>
+
+<!-- سوال 16 -->
+<div class="question">
+<div class="q-number">سؤال ۱۶ از ۲۵</div>
+<h2>اگر x = 10 باشد، نتیجه x != 5 چیست؟</h2>
+
+<label class="option">
+<input type="radio" name="q16" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+True
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+False
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+10
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+5
+</label>
+</div>
+
+<!-- سوال 17 -->
+<div class="question">
+<div class="q-number">سؤال ۱۷ از ۲۵</div>
+<h2>کدام گزینه یک مقدار float است؟</h2>
+
+<label class="option">
+<input type="radio" name="q17" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+<span class="code">15</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+<span class="code">15.5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+<span class="code">"15.5"</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+<span class="code">True</span>
+</label>
+</div>
+
+<!-- سوال 18 -->
+<div class="question">
+<div class="q-number">سؤال ۱۸ از ۲۵</div>
+<h2>اگر بخواهیم بررسی کنیم x بین ۱۰ و ۲۰ است، کدام شرط مناسب‌تر است؟</h2>
+
+<label class="option">
+<input type="radio" name="q18" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+<span class="code">x > 10 or x < 20</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+<span class="code">x > 10 and x < 20</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+<span class="code">x == 10 and x == 20</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+<span class="code">x < 10 and x > 20</span>
+</label>
+</div>
+
+<!-- سوال 19 -->
+<div class="question">
+<div class="q-number">سؤال ۱۹ از ۲۵</div>
+<h2>چرا Indentation در Python اهمیت دارد؟</h2>
+
+<label class="option">
+<input type="radio" name="q19" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+برای مشخص کردن بدنه آن بخش از کد
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+فقط برای زیبایی کد
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+برای افزایش سرعت CPU
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+برای تغییر نوع متغیر
+</label>
+</div>
+
+<!-- سوال 20 -->
+<div class="question">
+<div class="q-number">سؤال ۲۰ از ۲۵</div>
+<h2>برای تبدیل یک رشته عددی به عدد صحیح از چه چیزی استفاده می‌کنیم؟</h2>
+
+<label class="option">
+<input type="radio" name="q20" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+str()
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+int()
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+print()
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+bool()
+</label>
+</div>
+
+<!-- سوال 21 -->
+<div class="question">
+<div class="q-number">سؤال ۲۱ از ۲۵ — تحلیل کد</div>
+<h2>خروجی کد زیر چیست؟</h2>
+
+<div class="codebox">x = 2
+
+while x < 5:
+    print(x)
+    x = x + 1</div>
+
+<label class="option">
+<input type="radio" name="q21" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+<span class="code">2 3 4</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q21" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+<span class="code">2 3 4 5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q21" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+<span class="code">3 4 5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q21" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+<span class="code">2 2 2 2 ...</span>
+</label>
+</div>
+
+<!-- سوال 22 -->
+<div class="question">
+<div class="q-number">سؤال ۲۲ از ۲۵ — تحلیل کد</div>
+<h2>خروجی کد زیر چیست؟</h2>
+
+<div class="codebox">score = 16
+
+if score >= 18:
+    print("A")
+elif score >= 15:
+    print("B")
+else:
+    print("C")</div>
+
+<label class="option">
+<input type="radio" name="q22" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+A
+</label>
+
+<label class="option">
+<input type="radio" name="q22" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+B
+</label>
+
+<label class="option">
+<input type="radio" name="q22" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+C
+</label>
+
+<label class="option">
+<input type="radio" name="q22" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+هیچ خروجی ندارد
+</label>
+</div>
+
+<!-- سوال 23 -->
+<div class="question">
+<div class="q-number">سؤال ۲۳ از ۲۵</div>
+<h2>برای جلوگیری از اجرای بی‌نهایت while چه چیزی اهمیت دارد؟</h2>
+
+<label class="option">
+<input type="radio" name="q23" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+شرط حلقه یا مقدار مرتبط با آن بتواند در طول اجرا تغییر کند
+</label>
+
+<label class="option">
+<input type="radio" name="q23" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+استفاده از print در حلقه
+</label>
+
+<label class="option">
+<input type="radio" name="q23" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+استفاده از متغیر با نام کوتاه
+</label>
+
+<label class="option">
+<input type="radio" name="q23" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+حذف شرط while
+</label>
+</div>
+
+<!-- سوال 24 -->
+<div class="question">
+<div class="q-number">سؤال ۲۴ از ۲۵</div>
+<h2>اگر داخل یک while به break برسیم چه اتفاقی می‌افتد؟</h2>
+
+<label class="option">
+<input type="radio" name="q24" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+اجرای همان حلقه متوقف می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q24" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+حلقه از ابتدا شروع می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q24" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+شرط while به True تبدیل می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q24" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+برنامه دوباره نصب می‌شود
+</label>
+</div>
+
+<!-- سوال 25 -->
+<div class="question">
+<div class="q-number">سؤال ۲۵ از ۲۵</div>
+<h2>ترتیب اجرای این برنامه کدام است؟</h2>
+
+<div class="codebox">age = int(input("Age: "))
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Child")</div>
+
+<label class="option">
+<input type="radio" name="q25" value="A">
+<span class="radio"></span>
+<span class="letter">A)</span>
+ابتدا سن دریافت و به عدد تبدیل می‌شود، سپس شرط بررسی و یکی از خروجی‌ها اجرا می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q25" value="B">
+<span class="radio"></span>
+<span class="letter">B)</span>
+ابتدا هر دو print اجرا می‌شوند
+</label>
+
+<label class="option">
+<input type="radio" name="q25" value="C">
+<span class="radio"></span>
+<span class="letter">C)</span>
+else همیشه قبل از if اجرا می‌شود
+</label>
+
+<label class="option">
+<input type="radio" name="q25" value="D">
+<span class="radio"></span>
+<span class="letter">D)</span>
+input بعد از print اجرا می‌شود
+</label>
+</div>
+
+</div>
+
+<div class="buttons">
+    <button class="prev" id="prev" onclick="prevQuestion()" type="button">
+        قبلی
+    </button>
+
+    <button class="next" id="next" onclick="nextQuestion()" type="button">
+        بعدی
+    </button>
+
+    <button class="finish" id="finish" onclick="finishExam()" type="button">
+        ثبت آزمون
+    </button>
+</div>
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+</div>
+
+<div class="card result" id="result">
+
+<h1>🎉 نتیجه آزمون</h1>
+
+<p id="studentResult"></p>
+
+<div class="score" id="score">۰ از ۲۵</div>
+
+<div class="stats">
+
+<div class="stat">
+<span class="green">درست</span>
+<b id="correct">۰</b>
+</div>
+
+<div class="stat">
+<span class="red">غلط</span>
+<b id="wrong">۰</b>
+</div>
+
+<div class="stat">
+<span class="orange">نزده</span>
+<b id="empty">۰</b>
+</div>
+
+<div class="stat">
+<span>درصد</span>
+<b id="percent">۰٪</b>
+</div>
+
+</div>
+
+<div class="review">
+<h2>بررسی پاسخ‌های اشتباه</h2>
+<div id="review"></div>
+</div>
+
+<button class="restart" onclick="location.reload()">
+🔄 آزمون مجدد
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const correctAnswers = [
+    "B","B","B","A","B",
+    "B","A","A","A","A",
+    "A","A","B","A","A",
+    "A","B","B","A","B",
+    "A","B","A","A","A"
+];
+
+const questionNames = [
+    "مفهوم متغیر",
+    "مقداردهی متغیر",
+    "مقایسه",
+    "input و تبدیل نوع",
+    "عملگر >=",
+    "ساختار if / elif / else",
+    "باقی‌مانده تقسیم",
+    "عملگر and",
+    "عملگر or",
+    "تفاوت and و or",
+    "else",
+    "حلقه while",
+    "حلقه بی‌نهایت",
+    "break",
+    "int()",
+    "عملگر !=",
+    "float",
+    "شرط ترکیبی",
+    "Indentation",
+    "تبدیل رشته به عدد",
+    "تحلیل while",
+    "تحلیل if / elif / else",
+    "جلوگیری از حلقه بی‌نهایت",
+    "break در while",
+    "ترتیب اجرای برنامه"
+];
+
+let current = 0;
+let timeLeft = 25 * 60;
+let finished = false;
+
+const questions = document.querySelectorAll(".question");
+
+function showQuestion() {
+
+    questions.forEach((question, index) => {
+        question.classList.toggle("active", index === current);
+    });
+
+    document.getElementById("prev").style.display =
+        current === 0 ? "none" : "block";
+
+    document.getElementById("next").style.display =
+        current === questions.length - 1 ? "none" : "block";
+
+    document.getElementById("finish").style.display =
+        current === questions.length - 1 ? "block" : "none";
+
+    document.getElementById("progressBar").style.width =
+        ((current + 1) / questions.length) * 100 + "%";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function nextQuestion() {
+
+    if (current < questions.length - 1) {
+        current++;
+        showQuestion();
+    }
+}
+
+function prevQuestion() {
+
+    if (current > 0) {
+        current--;
+        showQuestion();
+    }
+}
+
+document.querySelectorAll(".option").forEach(option => {
+
+    option.addEventListener("click", function() {
+
+        const parent = this.parentElement;
+
+        parent.querySelectorAll(".option").forEach(o => {
+            o.classList.remove("selected");
+        });
+
+        this.classList.add("selected");
+
+        this.querySelector("input").checked = true;
+    });
+
+});
+
+function updateTimer() {
+
+    if (finished) return;
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    document.getElementById("timer").textContent =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+
+    if (timeLeft <= 60) {
+        document.getElementById("timer").style.color = "#f87171";
+    }
+
+    if (timeLeft <= 0) {
+        finishExam(true);
+        return;
+    }
+
+    timeLeft--;
+}
+
+const timerInterval = setInterval(updateTimer, 1000);
+
+function toFa(number) {
+
+    return number
+        .toString()
+        .replace(/[0-9]/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit]);
+}
+
+function finishExam(auto = false) {
+
+    if (finished) return;
+
+    finished = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+    let wrong = 0;
+    let empty = 0;
+
+    let reviewHTML = "";
+
+    for (let i = 0; i < 25; i++) {
+
+        const selected = document.querySelector(
+            `input[name="q${i + 1}"]:checked`
+        );
+
+        if (!selected) {
+
+            empty++;
+
+            reviewHTML += `
+            <div class="review-item">
+                <b>سؤال ${toFa(i + 1)} — ${questionNames[i]}</b>
+                <br>
+                <span class="orange">بدون پاسخ</span>
+                <br>
+                پاسخ صحیح:
+                <b>${correctAnswers[i]}</b>
+            </div>
+            `;
+
+        } else if (selected.value === correctAnswers[i]) {
+
+            correct++;
+
+        } else {
+
+            wrong++;
+
+            reviewHTML += `
+            <div class="review-item">
+                <b>سؤال ${toFa(i + 1)} — ${questionNames[i]}</b>
+                <br>
+                پاسخ شما:
+                <span class="red">${selected.value}</span>
+                <br>
+                پاسخ صحیح:
+                <span class="green">${correctAnswers[i]}</span>
+            </div>
+            `;
+        }
+    }
+
+    const percent = Math.round((correct / 25) * 100);
+
+    document.querySelector(".header").style.display = "none";
+    document.querySelector(".timer").style.display = "none";
+    document.getElementById("examCard").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    const name =
+        document.getElementById("studentName").value.trim();
+
+    const className =
+        document.getElementById("studentClass").value.trim();
+
+    document.getElementById("studentResult").textContent =
+        (name ? "👤 " + name : "") +
+        (className ? " — کلاس " + className : "") +
+        (auto ? " — ⏰ زمان تمام شد" : "");
+
+    document.getElementById("score").textContent =
+        toFa(correct) + " از ۲۵";
+
+    document.getElementById("correct").textContent =
+        toFa(correct);
+
+    document.getElementById("wrong").textContent =
+        toFa(wrong);
+
+    document.getElementById("empty").textContent =
+        toFa(empty);
+
+    document.getElementById("percent").textContent =
+        toFa(percent) + "٪";
+
+    document.getElementById("review").innerHTML =
+        reviewHTML ||
+        "<p class='green'>🎉 همه پاسخ‌ها درست بودند!</p>";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+showQuestion();
+updateTimer();
+
+</script>
+
+</body>
+  </html>
