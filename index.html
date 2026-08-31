@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>آزمون پایتون مقدماتی</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -280,7 +284,186 @@ button {
     margin-top: 20px;
 }
 
+.pdf-button {
+    background: #7c3aed;
+    color: white;
+    margin: 20px 0 25px 0;
+    width: 100%;
+    font-size: 17px;
+    padding: 16px;
+}
+
+.pdf-button:hover {
+    background: #6d28d9;
+}
+
+/* =========================
+   PDF REPORT
+========================= */
+
+.pdf-page {
+    font-family: Tahoma, Arial, sans-serif;
+    direction: rtl;
+    background: #f8fafc;
+    padding: 30px;
+    color: #172033;
+}
+
+.pdf-header {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 2px solid #e2e8f0;
+}
+
+.pdf-header h1 {
+    color: #4f46e5;
+}
+
+.pdf-score {
+    font-size: 45px;
+    color: #4f46e5;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.pdf-stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pdf-stat {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.pdf-stat b {
+    display: block;
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+.pdf-question {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    margin: 18px 0;
+    border: 2px solid #e2e8f0;
+    page-break-inside: avoid;
+}
+
+.pdf-question.correct {
+    border-color: #22c55e;
+}
+
+.pdf-question.wrong {
+    border-color: #ef4444;
+}
+
+.pdf-question.empty {
+    border-color: #f59e0b;
+}
+
+.pdf-question-title {
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+.pdf-status {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.pdf-status.correct {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.pdf-status.wrong {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.pdf-status.empty {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.pdf-option {
+    padding: 13px;
+    border-radius: 11px;
+    margin: 8px 0;
+    border: 2px solid #e2e8f0;
+    line-height: 1.8;
+}
+
+.pdf-option.selected-correct {
+    background: #dcfce7;
+    border-color: #22c55e;
+}
+
+.pdf-option.selected-wrong {
+    background: #fee2e2;
+    border-color: #ef4444;
+}
+
+.pdf-option.correct-answer {
+    background: #ecfdf5;
+    border-color: #22c55e;
+}
+
+.explanation {
+    background: #f8fafc;
+    border-right: 5px solid #6366f1;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    line-height: 2;
+}
+
+.answer-info {
+    margin-top: 15px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 10px;
+    line-height: 2;
+}
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .pdf-page {
+        padding: 0;
+        background: white;
+    }
+
+    .pdf-question {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+}
+
 @media(max-width:650px) {
+
     .info {
         grid-template-columns: 1fr;
     }
@@ -301,40 +484,77 @@ button {
         grid-template-columns: 1fr 1fr;
     }
 
+    .pdf-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .timer {
         top: 5px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="card header">
-    <h1>🐍 آزمون پایتون مقدماتی</h1>
-    <p>آزمون مفهومی Python — زمان: ۲۵ دقیقه</p>
+<!-- ================= HEADER ================= -->
 
-    <div class="info">
-        <input id="studentName" placeholder="نام و نام خانوادگی">
-        <input id="studentClass" placeholder="کلاس">
-    </div>
+<div class="card header">
+
+<h1>🐍 آزمون پایتون مقدماتی</h1>
+
+<p>
+آزمون مفهومی Python — زمان: ۲۵ دقیقه
+</p>
+
+<div class="info">
+
+<input
+id="studentName"
+placeholder="نام و نام خانوادگی">
+
+<input
+id="studentClass"
+placeholder="کلاس">
+
 </div>
+
+</div>
+
+<!-- ================= TIMER ================= -->
 
 <div class="timer">
-    <span>⏱️ زمان باقی‌مانده</span>
-    <strong id="timer">25:00</strong>
+
+<span>⏱️ زمان باقی‌مانده</span>
+
+<strong id="timer">
+25:00
+</strong>
+
 </div>
+
+<!-- ================= EXAM ================= -->
 
 <div class="card" id="examCard">
 
 <div id="questions">
 
 <!-- سوال 1 -->
+
 <div class="question active">
-<div class="q-number">سؤال ۱ از ۲۵</div>
-<h2>کدام توضیح درباره متغیر در Python دقیق‌تر است؟</h2>
+
+<div class="q-number">
+سؤال ۱ از ۲۵
+</div>
+
+<h2>
+کدام توضیح درباره متغیر در Python دقیق‌تر است؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q1" value="A">
@@ -363,11 +583,17 @@ button {
 <span class="letter">D)</span>
 دستوری برای پایان برنامه
 </label>
+
 </div>
 
 <!-- سوال 2 -->
+
 <div class="question">
-<div class="q-number">سؤال ۲ از ۲۵</div>
+
+<div class="q-number">
+سؤال ۲ از ۲۵
+</div>
+
 <h2>
 اگر بنویسیم
 <span class="code">age = 15</span>
@@ -403,12 +629,20 @@ button {
 <span class="letter">D)</span>
 شرط
 </label>
+
 </div>
 
 <!-- سوال 3 -->
+
 <div class="question">
-<div class="q-number">سؤال ۳ از ۲۵</div>
-<h2>کدام عبارت یک مقایسه انجام می‌دهد؟</h2>
+
+<div class="q-number">
+سؤال ۳ از ۲۵
+</div>
+
+<h2>
+کدام عبارت یک مقایسه انجام می‌دهد؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q3" value="A">
@@ -437,11 +671,17 @@ button {
 <span class="letter">D)</span>
 <span class="code">print(x)</span>
 </label>
+
 </div>
 
 <!-- سوال 4 -->
+
 <div class="question">
-<div class="q-number">سؤال ۴ از ۲۵</div>
+
+<div class="q-number">
+سؤال ۴ از ۲۵
+</div>
+
 <h2>
 چرا مقدار دریافت‌شده توسط
 <span class="code">input()</span>
@@ -475,14 +715,24 @@ button {
 <span class="letter">D)</span>
 چون Python عدد ندارد
 </label>
+
 </div>
 
 <!-- سوال 5 -->
-<div class="question">
-<div class="q-number">سؤال ۵ از ۲۵</div>
-<h2>شرط زیر چه زمانی درست است؟</h2>
 
-<div class="codebox">if score >= 10:</div>
+<div class="question">
+
+<div class="q-number">
+سؤال ۵ از ۲۵
+</div>
+
+<h2>
+شرط زیر چه زمانی درست است؟
+</h2>
+
+<div class="codebox">
+if score >= 10:
+</div>
 
 <label class="option">
 <input type="radio" name="q5" value="A">
@@ -511,14 +761,20 @@ button {
 <span class="letter">D)</span>
 فقط وقتی score برابر ۱۱ باشد
 </label>
+
 </div>
 
 <!-- سوال 6 -->
+
 <div class="question">
-<div class="q-number">سؤال ۶ از ۲۵</div>
+
+<div class="q-number">
+سؤال ۶ از ۲۵
+</div>
+
 <h2>
-اگر شرط <span class="code">if</span> درست باشد،
-در ساختار <span class="code">if / elif / else</span>
+اگر شرط if درست باشد، در ساختار
+<span class="code">if / elif / else</span>
 چه اتفاقی می‌افتد؟
 </h2>
 
@@ -549,14 +805,24 @@ else حتماً اجرا می‌شود
 <span class="letter">D)</span>
 برنامه متوقف می‌شود
 </label>
+
 </div>
 
 <!-- سوال 7 -->
-<div class="question">
-<div class="q-number">سؤال ۷ از ۲۵</div>
-<h2>نتیجه عبارت زیر چیست؟</h2>
 
-<div class="codebox">10 % 3</div>
+<div class="question">
+
+<div class="q-number">
+سؤال ۷ از ۲۵
+</div>
+
+<h2>
+نتیجه عبارت زیر چیست؟
+</h2>
+
+<div class="codebox">
+10 % 3
+</div>
 
 <label class="option">
 <input type="radio" name="q7" value="A">
@@ -585,14 +851,24 @@ else حتماً اجرا می‌شود
 <span class="letter">D)</span>
 ۱۰
 </label>
+
 </div>
 
 <!-- سوال 8 -->
-<div class="question">
-<div class="q-number">سؤال ۸ از ۲۵</div>
-<h2>اگر x برابر ۵ باشد، نتیجه عبارت زیر چیست؟</h2>
 
-<div class="codebox">x > 3 and x < 10</div>
+<div class="question">
+
+<div class="q-number">
+سؤال ۸ از ۲۵
+</div>
+
+<h2>
+اگر x برابر ۵ باشد، نتیجه عبارت زیر چیست؟
+</h2>
+
+<div class="codebox">
+x > 3 and x < 10
+</div>
 
 <label class="option">
 <input type="radio" name="q8" value="A">
@@ -621,12 +897,20 @@ False
 <span class="letter">D)</span>
 None
 </label>
+
 </div>
 
 <!-- سوال 9 -->
+
 <div class="question">
-<div class="q-number">سؤال ۹ از ۲۵</div>
-<h2>عبارت <span class="code">or</span> چه زمانی True می‌شود؟</h2>
+
+<div class="q-number">
+سؤال ۹ از ۲۵
+</div>
+
+<h2>
+عبارت <span class="code">or</span> چه زمانی True می‌شود؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q9" value="A">
@@ -655,12 +939,21 @@ None
 <span class="letter">D)</span>
 هیچ‌وقت
 </label>
+
 </div>
 
 <!-- سوال 10 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۰ از ۲۵</div>
-<h2>تفاوت اصلی <span class="code">and</span> و <span class="code">or</span> چیست؟</h2>
+
+<div class="q-number">
+سؤال ۱۰ از ۲۵
+</div>
+
+<h2>
+تفاوت اصلی <span class="code">and</span> و
+<span class="code">or</span> چیست؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q10" value="A">
@@ -689,12 +982,20 @@ and فقط برای عدد و or فقط برای متن است
 <span class="letter">D)</span>
 هر دو حلقه هستند
 </label>
+
 </div>
 
 <!-- سوال 11 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۱ از ۲۵</div>
-<h2>اگر شرط if برابر False باشد و else وجود داشته باشد، چه اتفاقی می‌افتد؟</h2>
+
+<div class="q-number">
+سؤال ۱۱ از ۲۵
+</div>
+
+<h2>
+اگر شرط if برابر False باشد و else وجود داشته باشد، چه اتفاقی می‌افتد؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q11" value="A">
@@ -723,12 +1024,20 @@ if دوباره اجرا می‌شود
 <span class="letter">D)</span>
 برنامه حتماً خطای نحوی می‌دهد
 </label>
+
 </div>
 
 <!-- سوال 12 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۲ از ۲۵</div>
-<h2>کدام توضیح درباره while درست است؟</h2>
+
+<div class="q-number">
+سؤال ۱۲ از ۲۵
+</div>
+
+<h2>
+کدام توضیح درباره while درست است؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q12" value="A">
@@ -757,17 +1066,27 @@ if دوباره اجرا می‌شود
 <span class="letter">D)</span>
 همیشه بدون شرط اجرا می‌شود
 </label>
+
 </div>
 
 <!-- سوال 13 -->
-<div class="question">
-<div class="q-number">سؤال ۱۳ از ۲۵</div>
-<h2>مشکل اصلی کد زیر چیست؟</h2>
 
-<div class="codebox">x = 1
+<div class="question">
+
+<div class="q-number">
+سؤال ۱۳ از ۲۵
+</div>
+
+<h2>
+مشکل اصلی کد زیر چیست؟
+</h2>
+
+<div class="codebox">
+x = 1
 
 while x <= 5:
-    print(x)</div>
+    print(x)
+</div>
 
 <label class="option">
 <input type="radio" name="q13" value="A">
@@ -796,12 +1115,20 @@ while فقط با متن کار می‌کند
 <span class="letter">D)</span>
 عدد ۱ قابل استفاده نیست
 </label>
+
 </div>
 
 <!-- سوال 14 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۴ از ۲۵</div>
-<h2>وظیفه break داخل حلقه چیست؟</h2>
+
+<div class="q-number">
+سؤال ۱۴ از ۲۵
+</div>
+
+<h2>
+وظیفه break داخل حلقه چیست؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q14" value="A">
@@ -830,12 +1157,20 @@ while فقط با متن کار می‌کند
 <span class="letter">D)</span>
 برنامه را نصب می‌کند
 </label>
+
 </div>
 
 <!-- سوال 15 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۵ از ۲۵</div>
-<h2>کدام گزینه درباره int() درست است؟</h2>
+
+<div class="q-number">
+سؤال ۱۵ از ۲۵
+</div>
+
+<h2>
+کدام گزینه درباره int() درست است؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q15" value="A">
@@ -864,12 +1199,20 @@ while فقط با متن کار می‌کند
 <span class="letter">D)</span>
 همیشه مقدار را به رشته تبدیل می‌کند
 </label>
+
 </div>
 
 <!-- سوال 16 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۶ از ۲۵</div>
-<h2>اگر x = 10 باشد، نتیجه x != 5 چیست؟</h2>
+
+<div class="q-number">
+سؤال ۱۶ از ۲۵
+</div>
+
+<h2>
+اگر x = 10 باشد، نتیجه x != 5 چیست؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q16" value="A">
@@ -898,12 +1241,20 @@ False
 <span class="letter">D)</span>
 5
 </label>
+
 </div>
 
 <!-- سوال 17 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۷ از ۲۵</div>
-<h2>کدام گزینه یک مقدار float است؟</h2>
+
+<div class="q-number">
+سؤال ۱۷ از ۲۵
+</div>
+
+<h2>
+کدام گزینه یک مقدار float است؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q17" value="A">
@@ -932,12 +1283,20 @@ False
 <span class="letter">D)</span>
 <span class="code">True</span>
 </label>
+
 </div>
 
 <!-- سوال 18 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۸ از ۲۵</div>
-<h2>اگر بخواهیم بررسی کنیم x بین ۱۰ و ۲۰ است، کدام شرط مناسب‌تر است؟</h2>
+
+<div class="q-number">
+سؤال ۱۸ از ۲۵
+</div>
+
+<h2>
+اگر بخواهیم بررسی کنیم x بین ۱۰ و ۲۰ است، کدام شرط مناسب‌تر است؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q18" value="A">
@@ -966,12 +1325,20 @@ False
 <span class="letter">D)</span>
 <span class="code">x < 10 and x > 20</span>
 </label>
+
 </div>
 
 <!-- سوال 19 -->
+
 <div class="question">
-<div class="q-number">سؤال ۱۹ از ۲۵</div>
-<h2>چرا Indentation در Python اهمیت دارد؟</h2>
+
+<div class="q-number">
+سؤال ۱۹ از ۲۵
+</div>
+
+<h2>
+چرا Indentation در Python اهمیت دارد؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q19" value="A">
@@ -1000,12 +1367,20 @@ False
 <span class="letter">D)</span>
 برای تغییر نوع متغیر
 </label>
+
 </div>
 
 <!-- سوال 20 -->
+
 <div class="question">
-<div class="q-number">سؤال ۲۰ از ۲۵</div>
-<h2>برای تبدیل یک رشته عددی به عدد صحیح از چه چیزی استفاده می‌کنیم؟</h2>
+
+<div class="q-number">
+سؤال ۲۰ از ۲۵
+</div>
+
+<h2>
+برای تبدیل یک رشته عددی به عدد صحیح از چه چیزی استفاده می‌کنیم؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q20" value="A">
@@ -1034,18 +1409,28 @@ print()
 <span class="letter">D)</span>
 bool()
 </label>
+
 </div>
 
 <!-- سوال 21 -->
-<div class="question">
-<div class="q-number">سؤال ۲۱ از ۲۵ — تحلیل کد</div>
-<h2>خروجی کد زیر چیست؟</h2>
 
-<div class="codebox">x = 2
+<div class="question">
+
+<div class="q-number">
+سؤال ۲۱ از ۲۵ — تحلیل کد
+</div>
+
+<h2>
+خروجی کد زیر چیست؟
+</h2>
+
+<div class="codebox">
+x = 2
 
 while x < 5:
     print(x)
-    x = x + 1</div>
+    x = x + 1
+</div>
 
 <label class="option">
 <input type="radio" name="q21" value="A">
@@ -1074,21 +1459,31 @@ while x < 5:
 <span class="letter">D)</span>
 <span class="code">2 2 2 2 ...</span>
 </label>
+
 </div>
 
 <!-- سوال 22 -->
-<div class="question">
-<div class="q-number">سؤال ۲۲ از ۲۵ — تحلیل کد</div>
-<h2>خروجی کد زیر چیست؟</h2>
 
-<div class="codebox">score = 16
+<div class="question">
+
+<div class="q-number">
+سؤال ۲۲ از ۲۵ — تحلیل کد
+</div>
+
+<h2>
+خروجی کد زیر چیست؟
+</h2>
+
+<div class="codebox">
+score = 16
 
 if score >= 18:
     print("A")
 elif score >= 15:
     print("B")
 else:
-    print("C")</div>
+    print("C")
+</div>
 
 <label class="option">
 <input type="radio" name="q22" value="A">
@@ -1117,12 +1512,20 @@ C
 <span class="letter">D)</span>
 هیچ خروجی ندارد
 </label>
+
 </div>
 
 <!-- سوال 23 -->
+
 <div class="question">
-<div class="q-number">سؤال ۲۳ از ۲۵</div>
-<h2>برای جلوگیری از اجرای بی‌نهایت while چه چیزی اهمیت دارد؟</h2>
+
+<div class="q-number">
+سؤال ۲۳ از ۲۵
+</div>
+
+<h2>
+برای جلوگیری از اجرای بی‌نهایت while چه چیزی اهمیت دارد؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q23" value="A">
@@ -1151,12 +1554,20 @@ C
 <span class="letter">D)</span>
 حذف شرط while
 </label>
+
 </div>
 
 <!-- سوال 24 -->
+
 <div class="question">
-<div class="q-number">سؤال ۲۴ از ۲۵</div>
-<h2>اگر داخل یک while به break برسیم چه اتفاقی می‌افتد؟</h2>
+
+<div class="q-number">
+سؤال ۲۴ از ۲۵
+</div>
+
+<h2>
+اگر داخل یک while به break برسیم چه اتفاقی می‌افتد؟
+</h2>
 
 <label class="option">
 <input type="radio" name="q24" value="A">
@@ -1185,19 +1596,29 @@ C
 <span class="letter">D)</span>
 برنامه دوباره نصب می‌شود
 </label>
+
 </div>
 
 <!-- سوال 25 -->
-<div class="question">
-<div class="q-number">سؤال ۲۵ از ۲۵</div>
-<h2>ترتیب اجرای این برنامه کدام است؟</h2>
 
-<div class="codebox">age = int(input("Age: "))
+<div class="question">
+
+<div class="q-number">
+سؤال ۲۵ از ۲۵
+</div>
+
+<h2>
+ترتیب اجرای این برنامه کدام است؟
+</h2>
+
+<div class="codebox">
+age = int(input("Age: "))
 
 if age >= 18:
     print("Adult")
 else:
-    print("Child")</div>
+    print("Child")
+</div>
 
 <label class="option">
 <input type="radio" name="q25" value="A">
@@ -1226,37 +1647,75 @@ else همیشه قبل از if اجرا می‌شود
 <span class="letter">D)</span>
 input بعد از print اجرا می‌شود
 </label>
+
 </div>
 
 </div>
 
 <div class="buttons">
-    <button class="prev" id="prev" onclick="prevQuestion()" type="button">
-        قبلی
-    </button>
 
-    <button class="next" id="next" onclick="nextQuestion()" type="button">
-        بعدی
-    </button>
+<button
+class="prev"
+id="prev"
+onclick="prevQuestion()"
+type="button">
+قبلی
+</button>
 
-    <button class="finish" id="finish" onclick="finishExam()" type="button">
-        ثبت آزمون
-    </button>
+<button
+class="next"
+id="next"
+onclick="nextQuestion()"
+type="button">
+بعدی
+</button>
+
+<button
+class="finish"
+id="finish"
+onclick="finishExam()"
+type="button">
+ثبت آزمون
+</button>
+
 </div>
 
 <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
+
+<div
+class="progress-bar"
+id="progressBar">
 </div>
 
 </div>
+
+</div>
+
+<!-- ================= RESULT ================= -->
 
 <div class="card result" id="result">
 
-<h1>🎉 نتیجه آزمون</h1>
+<h1>
+🎉 نتیجه آزمون
+</h1>
 
 <p id="studentResult"></p>
 
-<div class="score" id="score">۰ از ۲۵</div>
+<!-- =================================
+     PDF BUTTON - منتقل شده به اول
+================================= -->
+
+<button
+class="pdf-button"
+onclick="generatePDF()">
+📄 دانلود کارنامه کامل PDF
+</button>
+
+<div
+class="score"
+id="score">
+۰ از ۲۵
+</div>
 
 <div class="stats">
 
@@ -1283,11 +1742,18 @@ input بعد از print اجرا می‌شود
 </div>
 
 <div class="review">
-<h2>بررسی پاسخ‌های اشتباه</h2>
+
+<h2>
+بررسی پاسخ‌های اشتباه
+</h2>
+
 <div id="review"></div>
+
 </div>
 
-<button class="restart" onclick="location.reload()">
+<button
+class="restart"
+onclick="location.reload()">
 🔄 آزمون مجدد
 </button>
 
@@ -1297,242 +1763,957 @@ input بعد از print اجرا می‌شود
 
 <script>
 
+/* =========================================
+   پاسخ‌های صحیح
+========================================= */
+
 const correctAnswers = [
-    "B","B","B","A","B",
-    "B","A","A","A","A",
-    "A","A","B","A","A",
-    "A","B","B","A","B",
-    "A","B","A","A","A"
+"B","B","B","A","B",
+"B","A","A","A","A",
+"A","A","B","A","A",
+"A","B","B","A","B",
+"A","B","A","A","A"
 ];
+
+/* =========================================
+   نام سؤال‌ها
+========================================= */
 
 const questionNames = [
-    "مفهوم متغیر",
-    "مقداردهی متغیر",
-    "مقایسه",
-    "input و تبدیل نوع",
-    "عملگر >=",
-    "ساختار if / elif / else",
-    "باقی‌مانده تقسیم",
-    "عملگر and",
-    "عملگر or",
-    "تفاوت and و or",
-    "else",
-    "حلقه while",
-    "حلقه بی‌نهایت",
-    "break",
-    "int()",
-    "عملگر !=",
-    "float",
-    "شرط ترکیبی",
-    "Indentation",
-    "تبدیل رشته به عدد",
-    "تحلیل while",
-    "تحلیل if / elif / else",
-    "جلوگیری از حلقه بی‌نهایت",
-    "break در while",
-    "ترتیب اجرای برنامه"
+
+"مفهوم متغیر",
+"مقداردهی متغیر",
+"مقایسه",
+"input و تبدیل نوع",
+"عملگر >=",
+"ساختار if / elif / else",
+"باقی‌مانده تقسیم",
+"عملگر and",
+"عملگر or",
+"تفاوت and و or",
+"else",
+"حلقه while",
+"حلقه بی‌نهایت",
+"break",
+"int()",
+"عملگر !=",
+"float",
+"شرط ترکیبی",
+"Indentation",
+"تبدیل رشته به عدد",
+"تحلیل while",
+"تحلیل if / elif / else",
+"جلوگیری از حلقه بی‌نهایت",
+"break در while",
+"ترتیب اجرای برنامه"
+
 ];
 
+/* =========================================
+   توضیح تشریحی
+========================================= */
+
+const explanations = [
+
+"متغیر در Python یک نام برای اشاره به یک مقدار است. این مقدار می‌تواند در طول اجرای برنامه تغییر کند.",
+
+"علامت = برای مقداردهی استفاده می‌شود؛ یعنی مقدار سمت راست را در متغیر سمت چپ قرار می‌دهد.",
+
+"علامت == برای مقایسه استفاده می‌شود و بررسی می‌کند که آیا مقدار x برابر 10 است یا خیر.",
+
+"تابع input() ورودی را به صورت رشته (str) دریافت می‌کند. برای انجام محاسبات عددی معمولاً باید آن را با int() یا float() تبدیل کنیم.",
+
+"عملگر >= یعنی بزرگ‌تر یا مساوی. بنابراین score >= 10 برای مقادیر 10 و بیشتر درست است.",
+
+"در ساختار if / elif / else، وقتی یک شرط درست پیدا شود، بدنه همان بخش اجرا شده و شرط‌های بعدی همان زنجیره بررسی نمی‌شوند.",
+
+"عملگر % باقی‌مانده تقسیم را برمی‌گرداند. در تقسیم 10 بر 3، خارج قسمت 3 و باقی‌مانده 1 است.",
+
+"در عبارت and هر دو شرط باید درست باشند. چون 5 بزرگ‌تر از 3 و کوچک‌تر از 10 است، نتیجه True می‌شود.",
+
+"عملگر or زمانی True می‌شود که حداقل یکی از شرط‌ها True باشد.",
+
+"and معمولاً زمانی True است که همه شرط‌ها درست باشند، اما or با درست بودن حداقل یکی از شرط‌ها True می‌شود.",
+
+"اگر شرط if برابر False باشد و else وجود داشته باشد، کد داخل else اجرا می‌شود.",
+
+"حلقه while تا زمانی که شرط آن True باشد می‌تواند اجرا شود و تکرار شود.",
+
+"در این کد مقدار x هیچ‌وقت تغییر نمی‌کند. بنابراین x همچنان برابر 1 است و شرط x <= 5 همیشه True می‌ماند؛ در نتیجه حلقه بی‌نهایت می‌شود.",
+
+"دستور break باعث خروج فوری از حلقه‌ای می‌شود که break داخل آن قرار دارد.",
+
+"تابع int() برای تبدیل یک مقدار مناسب، مانند یک رشته عددی، به عدد صحیح استفاده می‌شود.",
+
+"عملگر != به معنی «مساوی نبودن» است. چون 10 با 5 برابر نیست، نتیجه True است.",
+
+"عدد 15.5 دارای بخش اعشاری است و در Python یک مقدار float محسوب می‌شود.",
+
+"برای بررسی اینکه x بین 10 و 20 قرار دارد، باید هر دو شرط برقرار باشند؛ بنابراین از and استفاده می‌کنیم.",
+
+"در Python فاصله‌گذاری ابتدای خط یا Indentation برای مشخص کردن بدنه ساختارهایی مانند if، while و for استفاده می‌شود.",
+
+"برای تبدیل یک رشته عددی مانند '15' به عدد صحیح از int() استفاده می‌کنیم.",
+
+"ابتدا x برابر 2 است. حلقه تا زمانی که x < 5 باشد اجرا می‌شود؛ بنابراین 2، سپس 3 و سپس 4 چاپ می‌شوند و بعد حلقه متوقف می‌شود.",
+
+"score برابر 16 است. شرط score >= 18 نادرست است، اما score >= 15 درست است؛ بنابراین B چاپ می‌شود.",
+
+"برای جلوگیری از حلقه بی‌نهایت باید شرایطی وجود داشته باشد که باعث شود شرط while در نهایت False شود؛ معمولاً با تغییر متغیر مرتبط با شرط.",
+
+"وقتی برنامه داخل while به break برسد، اجرای همان حلقه متوقف می‌شود.",
+
+"ابتدا input اجرا می‌شود و سن دریافت می‌شود. سپس int() آن را به عدد صحیح تبدیل می‌کند. بعد شرط age >= 18 بررسی شده و فقط یکی از دو print اجرا می‌شود."
+
+];
+
+/* =========================================
+   متغیرهای آزمون
+========================================= */
+
 let current = 0;
-let timeLeft = 25 * 60;
+
+let timeLeft = 40 * 60;
+
 let finished = false;
 
-const questions = document.querySelectorAll(".question");
+const questions =
+document.querySelectorAll(".question");
+
+/* =========================================
+   نمایش سؤال
+========================================= */
 
 function showQuestion() {
 
-    questions.forEach((question, index) => {
-        question.classList.toggle("active", index === current);
-    });
+questions.forEach((question,index)=>{
 
-    document.getElementById("prev").style.display =
-        current === 0 ? "none" : "block";
-
-    document.getElementById("next").style.display =
-        current === questions.length - 1 ? "none" : "block";
-
-    document.getElementById("finish").style.display =
-        current === questions.length - 1 ? "block" : "none";
-
-    document.getElementById("progressBar").style.width =
-        ((current + 1) / questions.length) * 100 + "%";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-function nextQuestion() {
-
-    if (current < questions.length - 1) {
-        current++;
-        showQuestion();
-    }
-}
-
-function prevQuestion() {
-
-    if (current > 0) {
-        current--;
-        showQuestion();
-    }
-}
-
-document.querySelectorAll(".option").forEach(option => {
-
-    option.addEventListener("click", function() {
-
-        const parent = this.parentElement;
-
-        parent.querySelectorAll(".option").forEach(o => {
-            o.classList.remove("selected");
-        });
-
-        this.classList.add("selected");
-
-        this.querySelector("input").checked = true;
-    });
+question.classList.toggle(
+"active",
+index === current
+);
 
 });
 
-function updateTimer() {
+document.getElementById("prev").style.display =
+current === 0 ? "none" : "block";
 
-    if (finished) return;
+document.getElementById("next").style.display =
+current === questions.length - 1
+? "none"
+: "block";
 
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
+document.getElementById("finish").style.display =
+current === questions.length - 1
+? "block"
+: "none";
 
-    document.getElementById("timer").textContent =
-        String(minutes).padStart(2, "0") + ":" +
-        String(seconds).padStart(2, "0");
+document.getElementById("progressBar").style.width =
+((current + 1) / questions.length) * 100 + "%";
 
-    if (timeLeft <= 60) {
-        document.getElementById("timer").style.color = "#f87171";
-    }
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
-    if (timeLeft <= 0) {
-        finishExam(true);
-        return;
-    }
-
-    timeLeft--;
 }
 
-const timerInterval = setInterval(updateTimer, 1000);
+/* =========================================
+   بعدی
+========================================= */
 
-function toFa(number) {
+function nextQuestion(){
 
-    return number
-        .toString()
-        .replace(/[0-9]/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit]);
-}
+if(current < questions.length - 1){
 
-function finishExam(auto = false) {
-
-    if (finished) return;
-
-    finished = true;
-
-    clearInterval(timerInterval);
-
-    let correct = 0;
-    let wrong = 0;
-    let empty = 0;
-
-    let reviewHTML = "";
-
-    for (let i = 0; i < 25; i++) {
-
-        const selected = document.querySelector(
-            `input[name="q${i + 1}"]:checked`
-        );
-
-        if (!selected) {
-
-            empty++;
-
-            reviewHTML += `
-            <div class="review-item">
-                <b>سؤال ${toFa(i + 1)} — ${questionNames[i]}</b>
-                <br>
-                <span class="orange">بدون پاسخ</span>
-                <br>
-                پاسخ صحیح:
-                <b>${correctAnswers[i]}</b>
-            </div>
-            `;
-
-        } else if (selected.value === correctAnswers[i]) {
-
-            correct++;
-
-        } else {
-
-            wrong++;
-
-            reviewHTML += `
-            <div class="review-item">
-                <b>سؤال ${toFa(i + 1)} — ${questionNames[i]}</b>
-                <br>
-                پاسخ شما:
-                <span class="red">${selected.value}</span>
-                <br>
-                پاسخ صحیح:
-                <span class="green">${correctAnswers[i]}</span>
-            </div>
-            `;
-        }
-    }
-
-    const percent = Math.round((correct / 25) * 100);
-
-    document.querySelector(".header").style.display = "none";
-    document.querySelector(".timer").style.display = "none";
-    document.getElementById("examCard").style.display = "none";
-
-    document.getElementById("result").style.display = "block";
-
-    const name =
-        document.getElementById("studentName").value.trim();
-
-    const className =
-        document.getElementById("studentClass").value.trim();
-
-    document.getElementById("studentResult").textContent =
-        (name ? "👤 " + name : "") +
-        (className ? " — کلاس " + className : "") +
-        (auto ? " — ⏰ زمان تمام شد" : "");
-
-    document.getElementById("score").textContent =
-        toFa(correct) + " از ۲۵";
-
-    document.getElementById("correct").textContent =
-        toFa(correct);
-
-    document.getElementById("wrong").textContent =
-        toFa(wrong);
-
-    document.getElementById("empty").textContent =
-        toFa(empty);
-
-    document.getElementById("percent").textContent =
-        toFa(percent) + "٪";
-
-    document.getElementById("review").innerHTML =
-        reviewHTML ||
-        "<p class='green'>🎉 همه پاسخ‌ها درست بودند!</p>";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
+current++;
 
 showQuestion();
+
+}
+
+}
+
+/* =========================================
+   قبلی
+========================================= */
+
+function prevQuestion(){
+
+if(current > 0){
+
+current--;
+
+showQuestion();
+
+}
+
+}
+
+/* =========================================
+   انتخاب گزینه
+========================================= */
+
+document.querySelectorAll(".option").forEach(option=>{
+
+option.addEventListener("click",function(){
+
+const parent = this.parentElement;
+
+parent.querySelectorAll(".option").forEach(o=>{
+o.classList.remove("selected");
+});
+
+this.classList.add("selected");
+
+this.querySelector("input").checked = true;
+
+});
+
+});
+
+/* =========================================
+   تایمر
+========================================= */
+
+function updateTimer(){
+
+if(finished) return;
+
+let minutes = Math.floor(timeLeft / 60);
+
+let seconds = timeLeft % 60;
+
+document.getElementById("timer").textContent =
+String(minutes).padStart(2,"0") +
+":" +
+String(seconds).padStart(2,"0");
+
+if(timeLeft <= 60){
+
+document.getElementById("timer").style.color =
+"#f87171";
+
+}
+
+if(timeLeft <= 0){
+
+finishExam(true);
+
+return;
+
+}
+
+timeLeft--;
+
+}
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+/* =========================================
+   فارسی
+========================================= */
+
+function toFa(number){
+
+return number.toString().replace(
+/[0-9]/g,
+digit=>"۰۱۲۳۴۵۶۷۸۹"[digit]
+);
+
+}
+
+/* =========================================
+   متن گزینه
+========================================= */
+
+function getOptionText(questionIndex,letter){
+
+if(!letter){
+
+return "بدون پاسخ";
+
+}
+
+const question =
+questions[questionIndex];
+
+const input =
+question.querySelector(
+`input[value="${letter}"]`
+);
+
+if(!input){
+
+return letter;
+
+}
+
+const option =
+input.closest(".option");
+
+if(!option){
+
+return letter;
+
+}
+
+const clone =
+option.cloneNode(true);
+
+const radio =
+clone.querySelector(".radio");
+
+if(radio){
+
+radio.remove();
+
+}
+
+const hiddenInput =
+clone.querySelector("input");
+
+if(hiddenInput){
+
+hiddenInput.remove();
+
+}
+
+return clone.innerText
+.replace(/\s+/g," ")
+.trim();
+
+}
+
+/* =========================================
+   ثبت آزمون
+========================================= */
+
+function finishExam(auto=false){
+
+if(finished) return;
+
+finished=true;
+
+clearInterval(timerInterval);
+
+let correct=0;
+let wrong=0;
+let empty=0;
+
+let reviewHTML="";
+
+for(let i=0;i<25;i++){
+
+const selected =
+document.querySelector(
+`input[name="q${i+1}"]:checked`
+);
+
+if(!selected){
+
+empty++;
+
+reviewHTML += `
+
+<div class="review-item">
+
+<b>
+سؤال ${toFa(i+1)}
+— ${questionNames[i]}
+</b>
+
+<br>
+
+<span class="orange">
+⚠️ بدون پاسخ
+</span>
+
+<br>
+
+پاسخ صحیح:
+
+<b class="green">
+${correctAnswers[i]}
+</b>
+
+</div>
+
+`;
+
+}
+
+else if(
+selected.value === correctAnswers[i]
+){
+
+correct++;
+
+}
+
+else{
+
+wrong++;
+
+reviewHTML += `
+
+<div class="review-item">
+
+<b>
+سؤال ${toFa(i+1)}
+— ${questionNames[i]}
+</b>
+
+<br>
+
+پاسخ شما:
+
+<span class="red">
+${selected.value}
+</span>
+
+<br>
+
+پاسخ صحیح:
+
+<span class="green">
+${correctAnswers[i]}
+</span>
+
+</div>
+
+`;
+
+}
+
+}
+
+const percent =
+Math.round((correct/25)*100);
+
+document.querySelector(".header").style.display="none";
+
+document.querySelector(".timer").style.display="none";
+
+document.getElementById("examCard").style.display="none";
+
+document.getElementById("result").style.display="block";
+
+const name =
+document.getElementById("studentName").value.trim();
+
+const className =
+document.getElementById("studentClass").value.trim();
+
+document.getElementById("studentResult").textContent =
+
+(name ? "👤 "+name : "") +
+
+(className ? " — کلاس "+className : "") +
+
+(auto ? " — ⏰ زمان تمام شد" : "");
+
+document.getElementById("score").textContent =
+toFa(correct)+" از ۲۵";
+
+document.getElementById("correct").textContent =
+toFa(correct);
+
+document.getElementById("wrong").textContent =
+toFa(wrong);
+
+document.getElementById("empty").textContent =
+toFa(empty);
+
+document.getElementById("percent").textContent =
+toFa(percent)+"٪";
+
+document.getElementById("review").innerHTML =
+
+reviewHTML ||
+
+"<p class='green'>🎉 همه پاسخ‌ها درست بودند!</p>";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+/* =========================================
+   ساخت PDF
+========================================= */
+
+function generatePDF(){
+
+let correct=0;
+let wrong=0;
+let empty=0;
+
+const studentName =
+document.getElementById("studentName").value.trim();
+
+const className =
+document.getElementById("studentClass").value.trim();
+
+let questionsHTML="";
+
+for(let i=0;i<25;i++){
+
+const selected =
+document.querySelector(
+`input[name="q${i+1}"]:checked`
+);
+
+const selectedAnswer =
+selected ? selected.value : null;
+
+const correctAnswer =
+correctAnswers[i];
+
+let status;
+let statusClass;
+
+if(!selectedAnswer){
+
+empty++;
+
+status="⚠️ بدون پاسخ";
+
+statusClass="empty";
+
+}
+
+else if(selectedAnswer===correctAnswer){
+
+correct++;
+
+status="✅ پاسخ صحیح";
+
+statusClass="correct";
+
+}
+
+else{
+
+wrong++;
+
+status="❌ پاسخ اشتباه";
+
+statusClass="wrong";
+
+}
+
+/* گزینه‌ها */
+
+const optionElements =
+questions[i].querySelectorAll(".option");
+
+let optionsHTML="";
+
+optionElements.forEach(option=>{
+
+const input =
+option.querySelector("input");
+
+const letter =
+input.value;
+
+let text =
+getOptionText(i,letter);
+
+let classes="pdf-option";
+
+if(
+selectedAnswer===letter &&
+selectedAnswer===correctAnswer
+){
+
+classes += " selected-correct";
+
+}
+
+else if(
+selectedAnswer===letter &&
+selectedAnswer!==correctAnswer
+){
+
+classes += " selected-wrong";
+
+}
+
+else if(letter===correctAnswer){
+
+classes += " correct-answer";
+
+}
+
+let icon="";
+
+if(
+selectedAnswer===letter &&
+selectedAnswer===correctAnswer
+){
+
+icon=" ✅";
+
+}
+
+else if(
+selectedAnswer===letter &&
+selectedAnswer!==correctAnswer
+){
+
+icon=" ❌";
+
+}
+
+else if(letter===correctAnswer){
+
+icon=" ✔️";
+
+}
+
+optionsHTML += `
+
+<div class="${classes}">
+
+<b>${letter})</b>
+
+${text}
+
+${icon}
+
+</div>
+
+`;
+
+});
+
+questionsHTML += `
+
+<div class="pdf-question ${statusClass}">
+
+<div class="pdf-status ${statusClass}">
+${status}
+</div>
+
+<div class="pdf-question-title">
+
+سؤال ${toFa(i+1)}
+— ${questionNames[i]}
+
+</div>
+
+<div>
+
+${questions[i]
+.querySelector("h2")
+.innerHTML}
+
+</div>
+
+${
+questions[i].querySelector(".codebox")
+?
+
+`<div class="codebox">
+
+${
+questions[i]
+.querySelector(".codebox")
+.innerHTML
+}
+
+</div>`
+
+:
+
+""
+}
+
+<div>
+
+${optionsHTML}
+
+</div>
+
+<div class="answer-info">
+
+<b>پاسخ انتخاب‌شده:</b>
+
+${
+selectedAnswer
+
+?
+
+`<span class="${
+selectedAnswer===correctAnswer
+?"green"
+:"red"
+}">
+
+${selectedAnswer}
+
+</span>
+
+—
+
+${getOptionText(
+i,
+selectedAnswer
+)}`
+
+:
+
+`<span class="orange">
+بدون پاسخ
+</span>`
+
+}
+
+<br>
+
+<b>
+پاسخ صحیح:
+</b>
+
+<span class="green">
+
+${correctAnswer}
+
+</span>
+
+—
+
+${getOptionText(
+i,
+correctAnswer
+)}
+
+</div>
+
+<div class="explanation">
+
+<b>
+📚 توضیح تشریحی:
+</b>
+
+<br>
+
+${explanations[i]}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+const percent =
+Math.round((correct/25)*100);
+
+const reportWindow =
+window.open("","_blank");
+
+if(!reportWindow){
+
+alert(
+"لطفاً اجازه باز شدن پنجره جدید را در مرورگر فعال کنید."
+);
+
+return;
+
+}
+
+reportWindow.document.write(`
+
+<!DOCTYPE html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+کارنامه آزمون پایتون
+</title>
+
+<style>
+
+${document.querySelector("style").innerHTML}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="pdf-page">
+
+<div class="pdf-header">
+
+<h1>
+🐍 کارنامه آزمون پایتون مقدماتی
+</h1>
+
+<p>
+آزمون مفهومی Python
+</p>
+
+<hr>
+
+<p>
+
+👤 نام:
+
+<b>
+${studentName || "ثبت نشده"}
+</b>
+
+</p>
+
+<p>
+
+🏫 کلاس:
+
+<b>
+${className || "ثبت نشده"}
+</b>
+
+</p>
+
+<p>
+
+📅 تاریخ:
+
+<b>
+${new Date().toLocaleDateString("fa-IR")}
+</b>
+
+</p>
+
+<div class="pdf-score">
+
+${toFa(correct)} از ۲۵
+
+</div>
+
+<div class="pdf-stats">
+
+<div class="pdf-stat">
+
+<span class="green">
+درست
+</span>
+
+<b>
+${toFa(correct)}
+</b>
+
+</div>
+
+<div class="pdf-stat">
+
+<span class="red">
+غلط
+</span>
+
+<b>
+${toFa(wrong)}
+</b>
+
+</div>
+
+<div class="pdf-stat">
+
+<span class="orange">
+نزده
+</span>
+
+<b>
+${toFa(empty)}
+</b>
+
+</div>
+
+<div class="pdf-stat">
+
+<span>
+درصد
+</span>
+
+<b>
+${toFa(percent)}٪
+</b>
+
+</div>
+
+</div>
+
+</div>
+
+<h2>
+📋 بررسی کامل ۲۵ سؤال
+</h2>
+
+${questionsHTML}
+
+<div class="pdf-header">
+
+<h2>
+پایان کارنامه
+</h2>
+
+<p>
+
+این کارنامه شامل پاسخ انتخاب‌شده،
+پاسخ صحیح و توضیح تشریحی تمام ۲۵ سؤال است.
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+window.onload=function(){
+
+setTimeout(function(){
+
+window.print();
+
+},700);
+
+};
+
+<\/script>
+
+</body>
+
+</html>
+
+`);
+
+reportWindow.document.close();
+
+}
+
+/* =========================================
+   شروع
+========================================= */
+
+showQuestion();
+
 updateTimer();
 
 </script>
 
 </body>
-  </html>
+
+</html>
