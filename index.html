@@ -2,1396 +2,1490 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="آراز فیدای اسپادانا | تأمین و پیگیری قطعات خودرو">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>آراز فیدای اسپادانا | تأمین قطعات خودرو</title>
+
+<meta name="description"
+content="آراز فیدای اسپادانا؛ تأمین و هماهنگی خرید قطعات یدکی خودرو، به‌ویژه قطعات تخصصی و کمیاب.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-font-family:Vazirmatn,sans-serif;
-background:#06101d;
-color:#fff;
-line-height:1.9;
-overflow-x:hidden
-}
-a{text-decoration:none;color:inherit}
-button,input,textarea{font-family:inherit}
+
 :root{
---bg:#06101d;
---bg2:#091827;
---gold:#d8ad58;
---gold2:#f0d08a;
---muted:#a9b5c5;
---border:rgba(255,255,255,.1);
---green:#39d98a;
---max:1200px
-}
-body:before{
-content:"";
-position:fixed;
-width:600px;
-height:600px;
-border-radius:50%;
-background:rgba(216,173,88,.08);
-filter:blur(100px);
-top:-300px;
-right:-200px;
-pointer-events:none;
-z-index:-1
-}
-body:after{
-content:"";
-position:fixed;
-width:500px;
-height:500px;
-border-radius:50%;
-background:rgba(38,110,180,.08);
-filter:blur(110px);
-bottom:-250px;
-left:-200px;
-pointer-events:none;
-z-index:-1
-}
-.container{
-width:min(92%,var(--max));
-margin:auto
-}
-header{
-position:fixed;
-top:0;
-right:0;
-width:100%;
-z-index:1000;
-transition:.35s
-}
-header.scrolled{
-background:rgba(6,16,29,.85);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,.08)
-}
-.navbar{
-height:88px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px
-}
-.brand{
-display:flex;
-align-items:center;
-gap:13px
-}
-.brand-logo{
-width:58px;
-height:58px;
-object-fit:contain;
-border-radius:15px;
-padding:5px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1)
-}
-.brand-text strong{
-display:block;
-font-size:15px;
-font-weight:800
-}
-.brand-text span{
-display:block;
-font-size:10px;
-color:var(--gold2)
-}
-.nav-links{
-display:flex;
-gap:5px;
-align-items:center
-}
-.nav-links a{
-padding:10px 13px;
-border-radius:10px;
-font-size:12px;
-color:#d8e0ea;
-transition:.25s
-}
-.nav-links a:hover{
-background:rgba(255,255,255,.06);
-color:var(--gold2)
-}
-.header-call{
-background:linear-gradient(135deg,#efd18a,#b88732);
-color:#07111e;
-padding:11px 18px;
-border-radius:12px;
-font-size:11px;
-font-weight:800;
-transition:.3s
-}
-.header-call:hover{
-transform:translateY(-3px);
-box-shadow:0 15px 35px rgba(216,173,88,.2)
-}
-.menu-btn{
-display:none;
-width:44px;
-height:44px;
-border:1px solid var(--border);
-background:rgba(255,255,255,.04);
-color:white;
-border-radius:12px;
-font-size:20px;
-cursor:pointer
+    --bg:#07111f;
+    --bg2:#0b1728;
+    --card:#101f33;
+    --card2:#13263d;
+    --gold:#d8ad58;
+    --gold2:#f0d38a;
+    --text:#f5f7fa;
+    --muted:#aab6c5;
+    --line:rgba(255,255,255,.09);
+    --white:#ffffff;
+    --shadow:0 25px 70px rgba(0,0,0,.35);
 }
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Vazirmatn",Tahoma,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(216,173,88,.09),transparent 28%),
+        radial-gradient(circle at 90% 30%,rgba(40,100,180,.10),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    line-height:1.9;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:82px;
+    z-index:1000;
+    background:rgba(7,17,31,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+}
+
+.navbar{
+    height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    min-width:230px;
+}
+
+.brand-logo{
+    width:52px;
+    height:52px;
+    object-fit:contain;
+    border-radius:12px;
+}
+
+.brand-text strong{
+    display:block;
+    font-size:16px;
+    font-weight:800;
+}
+
+.brand-text span{
+    color:var(--gold2);
+    font-size:11px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-links a{
+    color:#dbe2ea;
+    font-size:14px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--gold2);
+}
+
+.nav-button{
+    background:linear-gradient(135deg,var(--gold2),var(--gold));
+    color:#10151c !important;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:800;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
 .hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding-top:100px;
-position:relative;
-overflow:hidden
+    min-height:100vh;
+    padding-top:130px;
+    display:flex;
+    align-items:center;
+    position:relative;
 }
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(216,173,88,.08);
+    filter:blur(90px);
+    border-radius:50%;
+    top:5%;
+    right:-180px;
+    pointer-events:none;
+}
+
 .hero-grid{
-position:absolute;
-inset:0;
-background-image:
-linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-background-size:70px 70px;
-mask-image:linear-gradient(to bottom,black,transparent 85%)
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:70px;
 }
-.hero-content{
-display:grid;
-grid-template-columns:1.15fr .85fr;
-gap:70px;
-align-items:center
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:7px 13px;
+    border:1px solid rgba(216,173,88,.25);
+    border-radius:50px;
+    color:var(--gold2);
+    background:rgba(216,173,88,.07);
+    font-size:12px;
+    margin-bottom:22px;
 }
-.hero-copy{
-animation:fadeUp .9s ease both
+
+.badge-dot{
+    width:7px;
+    height:7px;
+    background:var(--gold);
+    border-radius:50%;
+    box-shadow:0 0 14px var(--gold);
 }
-.eyebrow{
-display:inline-flex;
-align-items:center;
-gap:9px;
-padding:8px 13px;
-border:1px solid rgba(216,173,88,.25);
-background:rgba(216,173,88,.07);
-border-radius:100px;
-color:var(--gold2);
-font-size:11px;
-margin-bottom:22px
-}
-.eyebrow i{
-width:7px;
-height:7px;
-border-radius:50%;
-background:var(--green);
-box-shadow:0 0 12px var(--green)
-}
+
 .hero h1{
-font-size:clamp(38px,5vw,68px);
-line-height:1.3;
-font-weight:900;
-letter-spacing:-2px
+    font-size:clamp(35px,5vw,65px);
+    line-height:1.35;
+    margin-bottom:20px;
+    font-weight:900;
 }
-.hero h1 span{color:var(--gold2)}
-.hero-description{
-margin-top:22px;
-max-width:650px;
-color:var(--muted);
-font-size:15px;
-line-height:2.2
+
+.hero h1 span{
+    color:var(--gold2);
 }
+
+.hero-text{
+    max-width:650px;
+    color:var(--muted);
+    font-size:17px;
+    margin-bottom:32px;
+}
+
 .hero-buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:32px
+    display:flex;
+    gap:13px;
+    flex-wrap:wrap;
 }
+
 .btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:9px;
-padding:14px 22px;
-border-radius:13px;
-font-size:12px;
-font-weight:700;
-border:0;
-cursor:pointer;
-transition:.3s
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:13px 22px;
+    border-radius:11px;
+    font-size:14px;
+    font-weight:800;
+    transition:.25s;
 }
+
 .btn-primary{
-background:linear-gradient(135deg,#efd18a,#b88732);
-color:#07111e;
-box-shadow:0 15px 35px rgba(216,173,88,.13)
+    background:linear-gradient(135deg,var(--gold2),var(--gold));
+    color:#111820;
+    box-shadow:0 12px 35px rgba(216,173,88,.16);
 }
+
 .btn-primary:hover{
-transform:translateY(-3px);
-box-shadow:0 20px 45px rgba(216,173,88,.22)
+    transform:translateY(-3px);
 }
-.btn-outline{
-border:1px solid rgba(255,255,255,.14);
-background:rgba(255,255,255,.04);
-color:white
+
+.btn-secondary{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.035);
+    color:white;
 }
-.btn-outline:hover{
-background:rgba(255,255,255,.08);
-transform:translateY(-3px)
+
+.btn-secondary:hover{
+    border-color:rgba(216,173,88,.45);
+    color:var(--gold2);
 }
 
 .hero-visual{
-min-height:500px;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center
+    position:relative;
 }
-.visual-ring{
-position:absolute;
-width:420px;
-height:420px;
-border-radius:50%;
-border:1px solid rgba(216,173,88,.15);
-box-shadow:0 0 100px rgba(216,173,88,.06)
-}
-.visual-ring:before{
-content:"";
-position:absolute;
-inset:35px;
-border-radius:50%;
-border:1px dashed rgba(216,173,88,.17);
-animation:rotate 30s linear infinite
-}
+
 .logo-card{
-width:270px;
-height:270px;
-border-radius:40px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.025));
-border:1px solid rgba(255,255,255,.12);
-box-shadow:0 35px 100px rgba(0,0,0,.35);
-backdrop-filter:blur(15px);
-animation:float 5s ease-in-out infinite;
-position:relative
+    width:min(430px,100%);
+    aspect-ratio:1/1;
+    margin:auto;
+    border:1px solid rgba(216,173,88,.22);
+    background:
+        radial-gradient(circle at center,rgba(216,173,88,.11),transparent 52%),
+        rgba(255,255,255,.025);
+    border-radius:35px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:var(--shadow);
+    position:relative;
 }
+
+.logo-card::before{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border:1px solid rgba(216,173,88,.13);
+    border-radius:27px;
+}
+
 .logo-card img{
-width:190px;
-height:190px;
-object-fit:contain
+    width:62%;
+    max-height:62%;
+    object-fit:contain;
+    position:relative;
+    z-index:2;
 }
-.floating-card{
-position:absolute;
-background:rgba(10,23,39,.8);
-border:1px solid rgba(255,255,255,.1);
-backdrop-filter:blur(15px);
-border-radius:15px;
-padding:12px 15px;
-display:flex;
-align-items:center;
-gap:10px;
-font-size:10px;
-box-shadow:0 20px 45px rgba(0,0,0,.25)
+
+.float-card{
+    position:absolute;
+    background:rgba(16,31,51,.92);
+    border:1px solid var(--line);
+    backdrop-filter:blur(15px);
+    padding:13px 16px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
 }
-.floating-card .icon{
-width:35px;
-height:35px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:rgba(216,173,88,.12);
-color:var(--gold2)
+
+.float-card strong{
+    display:block;
+    font-size:14px;
+    color:var(--gold2);
 }
-.floating-1{top:55px;right:5px}
-.floating-2{bottom:65px;left:0}
-.floating-3{bottom:20px;right:55px}
+
+.float-card span{
+    color:#bdc7d2;
+    font-size:11px;
+}
+
+.float-one{
+    top:12%;
+    right:-25px;
+}
+
+.float-two{
+    bottom:13%;
+    left:-25px;
+}
+
+/* ================= STATS ================= */
 
 .stats{
-margin-top:-40px;
-position:relative;
-z-index:3
+    padding:25px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.018);
 }
-.stats-box{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-background:rgba(255,255,255,.035);
-border:1px solid var(--border);
-border-radius:22px;
-overflow:hidden;
-backdrop-filter:blur(12px)
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
 }
+
 .stat{
-padding:25px;
-text-align:center;
-position:relative
+    text-align:center;
+    padding:10px 20px;
+    border-left:1px solid var(--line);
 }
-.stat:not(:last-child):after{
-content:"";
-position:absolute;
-top:20%;
-bottom:20%;
-left:0;
-width:1px;
-background:var(--border)
+
+.stat:last-child{
+    border-left:0;
 }
+
 .stat strong{
-display:block;
-color:var(--gold2);
-font-size:27px;
-font-weight:900
+    display:block;
+    color:var(--gold2);
+    font-size:25px;
+    margin-bottom:2px;
 }
+
 .stat span{
-color:var(--muted);
-font-size:10px
+    color:var(--muted);
+    font-size:12px;
 }
+
+/* ================= GENERAL SECTION ================= */
 
 section{
-padding:120px 0;
-position:relative
-}
-.section-head{
-max-width:720px;
-margin-bottom:50px
-}
-.section-label{
-color:var(--gold2);
-font-size:11px;
-font-weight:700;
-display:block;
-margin-bottom:10px
-}
-.section-title{
-font-size:clamp(28px,4vw,44px);
-line-height:1.45;
-font-weight:900
-}
-.section-description{
-color:var(--muted);
-margin-top:13px;
-font-size:13px
+    padding:110px 0;
 }
 
+.section-head{
+    max-width:720px;
+    margin-bottom:50px;
+}
+
+.section-label{
+    color:var(--gold2);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:10px;
+}
+
+.section-head h2{
+    font-size:clamp(28px,4vw,43px);
+    line-height:1.45;
+    margin-bottom:13px;
+}
+
+.section-head p{
+    color:var(--muted);
+    font-size:15px;
+}
+
+/* ================= ABOUT ================= */
+
 .about-grid{
-display:grid;
-grid-template-columns:.85fr 1.15fr;
-gap:70px;
-align-items:center
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:65px;
+    align-items:center;
 }
-.about-image{
-min-height:430px;
-border-radius:30px;
-position:relative;
-overflow:hidden;
-background:
-radial-gradient(circle at 30% 30%,rgba(216,173,88,.18),transparent 35%),
-linear-gradient(145deg,#10263d,#07111f);
-border:1px solid var(--border)
+
+.about-box{
+    background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+    border:1px solid var(--line);
+    border-radius:25px;
+    padding:35px;
 }
-.about-image:before{
-content:"";
-position:absolute;
-inset:25px;
-border:1px solid rgba(216,173,88,.14);
-border-radius:22px
+
+.about-box h3{
+    font-size:25px;
+    margin-bottom:15px;
 }
-.about-logo{
-position:absolute;
-inset:0;
-display:flex;
-align-items:center;
-justify-content:center
+
+.about-box p{
+    color:var(--muted);
+    font-size:14px;
 }
-.about-logo img{
-width:190px;
-height:190px;
-object-fit:contain
+
+.about-list{
+    display:grid;
+    gap:14px;
+    margin-top:24px;
 }
-.about-content p{
-color:var(--muted);
-font-size:13px;
-line-height:2.25;
-margin-bottom:18px
+
+.about-list div{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
 }
-.check-list{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:13px;
-margin-top:28px
-}
+
 .check{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:11px
+    flex:none;
+    width:25px;
+    height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(216,173,88,.12);
+    color:var(--gold2);
+    font-size:12px;
+    margin-top:2px;
 }
-.check-icon{
-width:25px;
-height:25px;
-border-radius:8px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:rgba(57,217,138,.09);
-color:var(--green)
+
+.about-list span{
+    color:#d4dbe3;
+    font-size:14px;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+    background:rgba(255,255,255,.015);
 }
 
 .services-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px
-}
-.service-card{
-min-height:245px;
-padding:28px;
-border-radius:22px;
-background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
-border:1px solid var(--border);
-position:relative;
-overflow:hidden;
-transition:.35s
-}
-.service-card:hover{
-transform:translateY(-8px);
-border-color:rgba(216,173,88,.28);
-box-shadow:0 25px 60px rgba(0,0,0,.22)
-}
-.service-icon{
-width:54px;
-height:54px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:15px;
-background:rgba(216,173,88,.09);
-border:1px solid rgba(216,173,88,.15);
-color:var(--gold2);
-font-size:22px;
-margin-bottom:20px
-}
-.service-card h3{
-font-size:15px;
-margin-bottom:9px
-}
-.service-card p{
-color:var(--muted);
-font-size:11px;
-line-height:2
-}
-.service-number{
-position:absolute;
-bottom:12px;
-left:20px;
-font-size:42px;
-font-weight:900;
-color:rgba(255,255,255,.035)
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-.why{
-background:rgba(255,255,255,.018);
-border-top:1px solid rgba(255,255,255,.04);
-border-bottom:1px solid rgba(255,255,255,.04)
+.service{
+    padding:30px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:22px;
+    transition:.3s;
 }
+
+.service:hover{
+    transform:translateY(-6px);
+    border-color:rgba(216,173,88,.3);
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.icon{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:15px;
+    background:rgba(216,173,88,.10);
+    color:var(--gold2);
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.service h3{
+    font-size:18px;
+    margin-bottom:9px;
+}
+
+.service p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* ================= WHY ================= */
+
 .why-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px
-}
-.why-card{
-padding:28px 20px;
-border:1px solid var(--border);
-border-radius:20px;
-background:rgba(255,255,255,.025);
-transition:.3s
-}
-.why-card:hover{
-background:rgba(255,255,255,.05);
-transform:translateY(-5px)
-}
-.why-icon{
-font-size:24px;
-color:var(--gold2)
-}
-.why-card strong{
-display:block;
-font-size:14px;
-margin:15px 0 8px
-}
-.why-card p{
-color:var(--muted);
-font-size:10px;
-line-height:2
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
-.process-line{
-position:absolute;
-top:265px;
-right:10%;
-left:10%;
-height:1px;
-background:linear-gradient(90deg,transparent,rgba(216,173,88,.35),transparent)
+.why-card{
+    padding:28px;
+    background:linear-gradient(145deg,#101f33,#0c1828);
+    border:1px solid var(--line);
+    border-radius:20px;
 }
+
+.why-number{
+    color:var(--gold);
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:15px;
+}
+
+.why-card h3{
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.why-card p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* ================= PROCESS ================= */
+
+.process{
+    background:rgba(255,255,255,.015);
+}
+
 .process-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-position:relative
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
-.process-step{text-align:center}
+
+.step{
+    position:relative;
+    padding:27px 22px;
+    border:1px solid var(--line);
+    background:var(--card);
+    border-radius:20px;
+}
+
 .step-number{
-width:62px;
-height:62px;
-margin:auto;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#091827;
-border:1px solid rgba(216,173,88,.35);
-color:var(--gold2);
-font-weight:900;
-position:relative;
-z-index:2;
-box-shadow:0 0 0 8px #06101d
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(216,173,88,.13);
+    color:var(--gold2);
+    font-weight:900;
+    margin-bottom:18px;
 }
-.process-step h3{
-margin-top:25px;
-font-size:14px
+
+.step h3{
+    font-size:16px;
+    margin-bottom:8px;
 }
-.process-step p{
-margin-top:8px;
-color:var(--muted);
-font-size:10px
+
+.step p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+    padding:80px 0;
 }
 
 .cta-box{
-padding:60px;
-border-radius:30px;
-background:
-radial-gradient(circle at 85% 50%,rgba(216,173,88,.15),transparent 30%),
-linear-gradient(135deg,#0d2238,#091522);
-border:1px solid rgba(216,173,88,.16);
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:40px
-}
-.cta-box h2{
-font-size:clamp(25px,3vw,38px);
-font-weight:900
-}
-.cta-box p{
-color:var(--muted);
-font-size:12px;
-margin-top:10px
-}
-.cta-buttons{
-display:flex;
-gap:10px;
-flex-shrink:0
+    border:1px solid rgba(216,173,88,.23);
+    border-radius:30px;
+    padding:55px;
+    text-align:center;
+    background:
+        radial-gradient(circle at center,rgba(216,173,88,.10),transparent 55%),
+        rgba(255,255,255,.025);
 }
 
-.request-grid{
-display:grid;
-grid-template-columns:.75fr 1.25fr;
-gap:30px
+.cta-box h2{
+    font-size:clamp(27px,4vw,42px);
+    margin-bottom:13px;
 }
-.request-info,.request-form{
-border:1px solid var(--border);
-border-radius:25px;
-background:rgba(255,255,255,.035);
-padding:35px
+
+.cta-box p{
+    color:var(--muted);
+    max-width:650px;
+    margin:0 auto 25px;
 }
-.request-info h3,.request-form h3{
-font-size:20px;
-margin-bottom:15px
-}
-.request-info>p{
-color:var(--muted);
-font-size:11px;
-line-height:2
-}
-.request-contact{
-margin-top:30px;
-display:grid;
-gap:12px
-}
-.contact-mini{
-display:flex;
-align-items:center;
-gap:12px;
-padding:13px;
-border-radius:14px;
-background:rgba(255,255,255,.035)
-}
-.contact-mini-icon{
-width:40px;
-height:40px;
-border-radius:11px;
-background:rgba(216,173,88,.09);
-color:var(--gold2);
-display:flex;
-align-items:center;
-justify-content:center
-}
-.contact-mini div span{
-display:block;
-color:var(--muted);
-font-size:9px
-}
-.contact-mini div strong{
-font-size:11px;
-direction:ltr;
-display:block;
-text-align:right
-}
-.form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px
-}
-.field{
-display:flex;
-flex-direction:column;
-gap:7px
-}
-.field.full{grid-column:1/-1}
-.field label{
-color:#cbd5e1;
-font-size:10px
-}
-.field input,.field textarea{
-width:100%;
-background:rgba(255,255,255,.035);
-border:1px solid rgba(255,255,255,.1);
-outline:none;
-color:white;
-border-radius:12px;
-padding:12px 14px;
-font-size:11px;
-transition:.25s
-}
-.field input:focus,.field textarea:focus{
-border-color:rgba(216,173,88,.55);
-background:rgba(255,255,255,.05)
-}
-.field textarea{
-resize:vertical;
-min-height:130px
-}
-.form-submit{margin-top:20px}
+
+/* ================= CONTACT ================= */
 
 .contact-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:25px;
 }
+
+.contact-info{
+    display:grid;
+    gap:13px;
+}
+
 .contact-card{
-padding:28px;
-border-radius:20px;
-border:1px solid var(--border);
-background:rgba(255,255,255,.03);
-transition:.3s
+    padding:22px;
+    border:1px solid var(--line);
+    background:var(--card);
+    border-radius:18px;
 }
-.contact-card:hover{
-transform:translateY(-5px);
-border-color:rgba(216,173,88,.25)
+
+.contact-card small{
+    display:block;
+    color:var(--gold2);
+    margin-bottom:5px;
+    font-size:11px;
 }
-.contact-card-icon{
-width:48px;
-height:48px;
-border-radius:14px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:rgba(216,173,88,.08);
-color:var(--gold2);
-margin-bottom:18px
+
+.contact-card a,
+.contact-card div{
+    color:#e6ebf0;
+    font-size:14px;
+    direction:ltr;
+    text-align:right;
 }
-.contact-card span{
-color:var(--muted);
-display:block;
-font-size:9px
+
+.contact-form{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:30px;
 }
-.contact-card strong{
-font-size:13px;
-direction:ltr;
-display:block;
-text-align:right
+
+.contact-form h3{
+    margin-bottom:20px;
+    font-size:21px;
 }
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.input-group.full{
+    grid-column:1/-1;
+}
+
+.input-group label{
+    color:#c8d0da;
+    font-size:12px;
+}
+
+.input-group input,
+.input-group textarea{
+    width:100%;
+    border:1px solid var(--line);
+    background:#091524;
+    color:white;
+    border-radius:10px;
+    padding:12px;
+    outline:none;
+    font-family:inherit;
+    font-size:13px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+    border-color:rgba(216,173,88,.5);
+}
+
+.input-group textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.form-button{
+    margin-top:16px;
+    width:100%;
+    border:0;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
 
 footer{
-border-top:1px solid rgba(255,255,255,.07);
-padding:35px 0;
-background:rgba(0,0,0,.12)
+    border-top:1px solid var(--line);
+    padding:35px 0;
+    background:#050d17;
 }
-.footer-inner{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px
+
+.footer-grid{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
+
 .footer-brand{
-display:flex;
-align-items:center;
-gap:12px
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
+
 .footer-brand img{
-width:43px;
-height:43px;
-object-fit:contain
+    width:45px;
+    height:45px;
+    object-fit:contain;
 }
+
 .footer-brand strong{
-font-size:11px
+    font-size:14px;
 }
+
 .footer-brand span{
-display:block;
-color:var(--muted);
-font-size:8px
+    display:block;
+    color:var(--muted);
+    font-size:10px;
 }
-.copyright{
-color:#718096;
-font-size:9px
+
+.footer-copy{
+    color:#788594;
+    font-size:11px;
+    text-align:left;
 }
-.top-btn{
-position:fixed;
-left:22px;
-bottom:22px;
-width:45px;
-height:45px;
-border-radius:13px;
-border:1px solid var(--border);
-background:rgba(8,20,34,.8);
-backdrop-filter:blur(10px);
-color:var(--gold2);
-cursor:pointer;
-opacity:0;
-visibility:hidden;
-transform:translateY(10px);
-transition:.3s;
-z-index:900
+
+/* ================= TOP BUTTON ================= */
+
+#topBtn{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    width:43px;
+    height:43px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    background:#102139;
+    color:var(--gold2);
+    cursor:pointer;
+    display:none;
+    z-index:999;
 }
-.top-btn.show{
-opacity:1;
-visibility:visible;
-transform:translateY(0)
-}
+
+/* ================= ANIMATION ================= */
 
 .reveal{
-opacity:0;
-transform:translateY(35px);
-transition:.8s ease
-}
-.reveal.active{
-opacity:1;
-transform:translateY(0)
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s ease;
 }
 
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(30px)}
-to{opacity:1;transform:translateY(0)}
-}
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-14px)}
-}
-@keyframes rotate{
-from{transform:rotate(0)}
-to{transform:rotate(360deg)}
+.reveal.show{
+    opacity:1;
+    transform:none;
 }
 
-@media(max-width:1000px){
-.nav-links a{padding:8px 8px;font-size:10px}
-.header-call{padding:10px 12px;font-size:9px}
-.hero-content{gap:30px}
-.services-grid{grid-template-columns:repeat(2,1fr)}
-.why-grid{grid-template-columns:repeat(2,1fr)}
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        position:absolute;
+        top:82px;
+        right:4%;
+        left:4%;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        padding:15px;
+        background:#0c1a2c;
+        border:1px solid var(--line);
+        border-radius:15px;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:10px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-button{
+        text-align:center;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero-visual{
+        order:-1;
+    }
+
+    .logo-card{
+        max-width:350px;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .float-one{
+        right:0;
+    }
+
+    .float-two{
+        left:0;
+    }
 }
 
-@media(max-width:760px){
-header{
-background:rgba(6,16,29,.7);
-backdrop-filter:blur(15px)
-}
-.navbar{height:75px}
-.brand-logo{width:48px;height:48px}
-.brand-text strong{font-size:12px}
-.brand-text span{font-size:8px}
-.header-call{display:none}
-.menu-btn{display:block}
-.nav-links{
-position:absolute;
-top:75px;
-right:4%;
-left:4%;
-padding:10px;
-display:none;
-flex-direction:column;
-align-items:stretch;
-background:rgba(7,17,30,.97);
-border:1px solid var(--border);
-border-radius:18px;
-backdrop-filter:blur(20px)
-}
-.nav-links.active{display:flex}
-.nav-links a{
-padding:13px;
-font-size:11px
-}
-.hero{padding-top:100px}
-.hero-content{
-grid-template-columns:1fr;
-text-align:center
-}
-.hero-description{
-margin:auto;
-font-size:12px
-}
-.hero-buttons{justify-content:center}
-.hero-visual{min-height:380px}
-.visual-ring{
-width:320px;
-height:320px
-}
-.logo-card{
-width:210px;
-height:210px;
-border-radius:30px
-}
-.logo-card img{
-width:145px;
-height:145px
-}
-.floating-card{
-font-size:8px;
-padding:9px
-}
-.floating-1{right:0;top:25px}
-.floating-2{left:0;bottom:30px}
-.floating-3{display:none}
-.stats{margin-top:0;padding-top:20px}
-.stats-box{grid-template-columns:1fr}
-.stat:not(:last-child):after{
-top:auto;
-bottom:0;
-right:15%;
-left:15%;
-width:auto;
-height:1px
-}
-section{padding:80px 0}
-.about-grid,.request-grid{
-grid-template-columns:1fr
-}
-.about-image{
-min-height:300px;
-order:2
-}
-.check-list{grid-template-columns:1fr}
-.services-grid{grid-template-columns:1fr}
-.why-grid{grid-template-columns:1fr 1fr}
-.process-line{display:none}
-.process-grid{
-grid-template-columns:1fr;
-gap:35px
-}
-.cta-box{
-padding:35px 25px;
-flex-direction:column;
-text-align:center
-}
-.cta-buttons{
-width:100%;
-flex-direction:column
-}
-.cta-buttons .btn{width:100%}
-.form-grid{grid-template-columns:1fr}
-.field.full{grid-column:auto}
-.contact-grid{grid-template-columns:1fr}
-.footer-inner{
-flex-direction:column;
-text-align:center
-}
-.footer-brand{justify-content:center}
+@media(max-width:600px){
+
+    header,
+    .navbar{
+        height:72px;
+    }
+
+    .nav-links{
+        top:72px;
+    }
+
+    .brand{
+        min-width:auto;
+    }
+
+    .brand-logo{
+        width:43px;
+        height:43px;
+    }
+
+    .brand-text strong{
+        font-size:13px;
+    }
+
+    .brand-text span{
+        font-size:9px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero-text{
+        font-size:14px;
+    }
+
+    section{
+        padding:75px 0;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stat{
+        border-left:0;
+        border-bottom:1px solid var(--line);
+        padding:14px;
+    }
+
+    .stat:last-child{
+        border-bottom:0;
+    }
+
+    .services-grid,
+    .why-grid,
+    .process-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .input-group.full{
+        grid-column:auto;
+    }
+
+    .cta-box{
+        padding:35px 20px;
+    }
+
+    .footer-grid{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .footer-copy{
+        text-align:center;
+    }
+
+    .float-card{
+        display:none;
+    }
 }
 
-@media(max-width:430px){
-.hero h1{font-size:34px}
-.why-grid{grid-template-columns:1fr}
-.request-info,.request-form{padding:23px}
-.btn{width:100%}
-}
 </style>
 </head>
 
 <body>
 
-<header id="header">
-<div class="container">
-<nav class="navbar">
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="container navbar">
 
 <a href="#home" class="brand">
-<img class="brand-logo" src="assets/logo.png" alt="آراز فیدای اسپادانا">
+
+<img src="logo.png"
+     alt="لوگوی آراز فیدای اسپادانا"
+     class="brand-logo">
+
 <div class="brand-text">
 <strong>آراز فیدای اسپادانا</strong>
-<span>تأمین و بازرگانی قطعات خودرو</span>
+<span>تأمین قطعات خودرو</span>
 </div>
+
 </a>
 
-<div class="nav-links" id="navLinks">
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+<nav class="nav-links" id="navLinks">
+
 <a href="#home">خانه</a>
 <a href="#about">درباره ما</a>
 <a href="#services">خدمات</a>
-<a href="#process">روند همکاری</a>
-<a href="#request">درخواست تأمین</a>
+<a href="#process">فرآیند همکاری</a>
 <a href="#contact">تماس با ما</a>
-</div>
 
-<a class="header-call" href="tel:09139801125">
-☎ تماس با ما
+<a class="nav-button"
+   href="tel:09139801125">
+تماس مستقیم
 </a>
 
-<button class="menu-btn" id="menuBtn">☰</button>
-
 </nav>
+
 </div>
+
 </header>
 
-<main>
 
-<section class="hero" id="home">
+<!-- ================= HERO ================= -->
 
-<div class="hero-grid"></div>
+<main id="home">
 
-<div class="container">
-<div class="hero-content">
+<section class="hero">
 
-<div class="hero-copy">
+<div class="container hero-grid">
 
-<div class="eyebrow">
-<i></i>
-تأمین هدفمند قطعات خودرو
+<div class="hero-content reveal">
+
+<div class="badge">
+<span class="badge-dot"></span>
+همراه شما در تأمین قطعات خودرو
 </div>
 
 <h1>
-راهکاری مطمئن برای
+راهکار مطمئن برای
 <span>تأمین قطعات خودرو</span>
 </h1>
 
-<p class="hero-description">
-آراز فیدای اسپادانا در زمینه تأمین و پیگیری قطعات یدکی و برقی خودرو فعالیت می‌کند و تلاش دارد مسیر دسترسی به قطعات موردنیاز را برای مشتریان و مجموعه‌های مختلف ساده‌تر کند.
+<p class="hero-text">
+آراز فیدای اسپادانا در زمینه تأمین و هماهنگی تهیه قطعات یدکی خودرو فعالیت می‌کند و در تأمین قطعات تخصصی و کمیاب، مسیر ارتباط با تأمین‌کنندگان را برای مشتریان ساده‌تر می‌کند.
 </p>
 
 <div class="hero-buttons">
-<a href="#request" class="btn btn-primary">
-ثبت درخواست تأمین ←
+
+<a href="#contact"
+   class="btn btn-primary">
+درخواست تأمین قطعه
 </a>
 
-<a href="#services" class="btn btn-outline">
-مشاهده خدمات
+<a href="tel:09139801125"
+   class="btn btn-secondary">
+تماس با ما
 </a>
+
 </div>
 
 </div>
 
-<div class="hero-visual">
 
-<div class="visual-ring"></div>
+<div class="hero-visual reveal">
 
 <div class="logo-card">
-<img src="assets/logo.png" alt="لوگوی آراز فیدای اسپادانا">
+
+<img src="logo.png"
+     alt="آراز فیدای اسپادانا">
+
 </div>
 
-<div class="floating-card floating-1">
-<div class="icon">⚙</div>
-<div>
-تأمین قطعات<br>
-<strong>هدفمند</strong>
-</div>
+<div class="float-card float-one">
+<strong>تأمین تخصصی</strong>
+<span>قطعات موردنیاز خودرو</span>
 </div>
 
-<div class="floating-card floating-2">
-<div class="icon">✓</div>
-<div>
-پیگیری<br>
-درخواست‌ها
-</div>
-</div>
-
-<div class="floating-card floating-3">
-<div class="icon">◈</div>
-همکاری با تأمین‌کنندگان
+<div class="float-card float-two">
+<strong>ارتباط مستقیم</strong>
+<span>برای ثبت درخواست</span>
 </div>
 
 </div>
 
 </div>
-</div>
+
 </section>
 
+
+<!-- ================= STATS ================= -->
+
 <div class="stats">
-<div class="container">
-<div class="stats-box">
+
+<div class="container stats-grid">
 
 <div class="stat">
-<strong>01</strong>
-<span>تأمین هدفمند</span>
-</div>
-
-<div class="stat">
-<strong>02</strong>
-<span>پیگیری درخواست</span>
+<strong>تخصصی</strong>
+<span>در حوزه قطعات خودرو</span>
 </div>
 
 <div class="stat">
-<strong>03</strong>
-<span>هماهنگی با تأمین‌کنندگان</span>
+<strong>سریع</strong>
+<span>در دریافت و بررسی درخواست</span>
+</div>
+
+<div class="stat">
+<strong>مستقیم</strong>
+<span>راه ارتباطی با مجموعه</span>
 </div>
 
 </div>
+
 </div>
-</div>
+
+
+<!-- ================= ABOUT ================= -->
 
 <section id="about">
 
-<div class="container">
+<div class="container about-grid">
 
-<div class="about-grid reveal">
+<div class="about-box reveal">
 
-<div class="about-image">
-<div class="about-logo">
-<img src="assets/logo.png" alt="لوگوی آراز فیدای اسپادانا">
+<h3>
+آراز فیدای اسپادانا
+</h3>
+
+<p>
+هدف ما ایجاد یک مسیر ساده و حرفه‌ای برای مشتریانی است که به دنبال قطعات خودرو هستند؛ به‌خصوص زمانی که قطعه موردنظر به‌راحتی در بازار پیدا نمی‌شود.
+</p>
+
+<div class="about-list">
+
+<div>
+<div class="check">✓</div>
+<span>دریافت مشخصات و درخواست قطعه</span>
 </div>
+
+<div>
+<div class="check">✓</div>
+<span>بررسی نیاز و مشخصات فنی</span>
 </div>
 
-<div class="about-content">
+<div>
+<div class="check">✓</div>
+<span>هماهنگی با تأمین‌کنندگان</span>
+</div>
 
-<div class="section-head">
-<span class="section-label">درباره مجموعه</span>
+<div>
+<div class="check">✓</div>
+<span>پیگیری فرآیند تأمین</span>
+</div>
 
-<h2 class="section-title">
-تمرکز ما؛
-<br>
-ساده‌تر کردن مسیر تأمین
+</div>
+
+</div>
+
+
+<div class="section-head reveal">
+
+<div class="section-label">
+درباره مجموعه
+</div>
+
+<h2>
+یک مسیر ساده‌تر برای پیدا کردن قطعه موردنیاز
 </h2>
-</div>
 
 <p>
-آراز فیدای اسپادانا با تمرکز بر حوزه قطعات خودرو، در زمینه دریافت درخواست، بررسی نیاز، پیگیری تأمین و هماهنگی برای تهیه قطعات فعالیت می‌کند.
+گاهی پیدا کردن یک قطعه خاص خودرو، مخصوصاً قطعات تخصصی یا کمیاب، می‌تواند زمان‌بر باشد. آراز فیدای اسپادانا تلاش می‌کند با دریافت درخواست مشتری و هماهنگی با منابع تأمین، این فرآیند را ساده‌تر و منظم‌تر کند.
 </p>
 
-<p>
-هدف ما ایجاد یک مسیر منظم و شفاف میان نیاز مشتری و شبکه تأمین‌کنندگان است؛ به‌خصوص در مواردی که پیدا کردن قطعه مناسب نیازمند پیگیری و جست‌وجوی بیشتر است.
-</p>
-
-<div class="check-list">
-
-<div class="check">
-<span class="check-icon">✓</span>
-بررسی دقیق درخواست
-</div>
-
-<div class="check">
-<span class="check-icon">✓</span>
-پیگیری تأمین
-</div>
-
-<div class="check">
-<span class="check-icon">✓</span>
-تمرکز بر قطعات خاص
-</div>
-
-<div class="check">
-<span class="check-icon">✓</span>
-هماهنگی با تأمین‌کنندگان
 </div>
 
 </div>
 
-</div>
-</div>
-</div>
 </section>
 
-<section id="services">
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services" class="services">
 
 <div class="container">
 
 <div class="section-head reveal">
 
-<span class="section-label">خدمات ما</span>
+<div class="section-label">
+خدمات ما
+</div>
 
-<h2 class="section-title">
-خدماتی برای پاسخ به نیازهای تأمین قطعات
+<h2>
+خدماتی برای ساده‌تر شدن فرآیند تأمین
 </h2>
 
-<p class="section-description">
-خدمات مجموعه با هدف تسهیل فرایند شناسایی، پیگیری و تأمین قطعات موردنیاز ارائه می‌شوند.
+<p>
+تمرکز مجموعه بر دریافت نیاز مشتری، بررسی قطعه و هماهنگی فرآیند تهیه آن است.
 </p>
 
 </div>
+
 
 <div class="services-grid">
 
-<div class="service-card reveal">
-<div class="service-icon">⚙</div>
-<h3>تأمین قطعات یدکی</h3>
-<p>پیگیری و هماهنگی برای تأمین انواع قطعات یدکی موردنیاز خودرو.</p>
-<span class="service-number">01</span>
+
+<div class="service reveal">
+
+<div class="icon">
+⚙
 </div>
 
-<div class="service-card reveal">
-<div class="service-icon">⚡</div>
-<h3>قطعات برقی خودرو</h3>
-<p>تمرکز بر شناسایی و پیگیری قطعات و تجهیزات برقی موردنیاز.</p>
-<span class="service-number">02</span>
-</div>
+<h3>
+تأمین قطعات یدکی
+</h3>
 
-<div class="service-card reveal">
-<div class="service-icon">◈</div>
-<h3>قطعات خاص و کمیاب</h3>
-<p>پیگیری هدفمند برای قطعاتی که دسترسی به آن‌ها دشوارتر است.</p>
-<span class="service-number">03</span>
-</div>
-
-<div class="service-card reveal">
-<div class="service-icon">◆</div>
-<h3>قطعات نو و استوک</h3>
-<p>بررسی گزینه‌های موجود مطابق درخواست و شرایط موردنیاز مشتری.</p>
-<span class="service-number">04</span>
-</div>
-
-<div class="service-card reveal">
-<div class="service-icon">◎</div>
-<h3>همکاری با مجموعه‌ها</h3>
-<p>امکان دریافت و پیگیری درخواست‌های تأمین از سوی مجموعه‌ها و کسب‌وکارها.</p>
-<span class="service-number">05</span>
-</div>
-
-<div class="service-card reveal">
-<div class="service-icon">⌁</div>
-<h3>تأمین هدفمند</h3>
-<p>تمرکز بر نیاز واقعی و پیگیری مسیر مناسب برای دستیابی به قطعه موردنظر.</p>
-<span class="service-number">06</span>
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="why">
-
-<div class="container">
-
-<div class="section-head reveal">
-
-<span class="section-label">
-چرا آراز فیدای اسپادانا؟
-</span>
-
-<h2 class="section-title">
-یک مسیر منظم برای رسیدن به قطعه موردنیاز
-</h2>
-
-</div>
-
-<div class="why-grid">
-
-<div class="why-card reveal">
-<div class="why-icon">◉</div>
-<strong>نیازمحور</strong>
-<p>فرایند از نیاز واقعی مشتری شروع می‌شود و بر اساس همان درخواست پیگیری می‌شود.</p>
-</div>
-
-<div class="why-card reveal">
-<div class="why-icon">⌕</div>
-<strong>جست‌وجوی هدفمند</strong>
-<p>تمرکز بر پیدا کردن مسیر مناسب برای تأمین قطعه موردنظر.</p>
-</div>
-
-<div class="why-card reveal">
-<div class="why-icon">↻</div>
-<strong>پیگیری</strong>
-<p>درخواست‌ها در مسیر تأمین پیگیری و هماهنگ می‌شوند.</p>
-</div>
-
-<div class="why-card reveal">
-<div class="why-icon">◇</div>
-<strong>ارتباط با تأمین‌کنندگان</strong>
-<p>هماهنگی برای بررسی گزینه‌های موجود در مسیر تأمین.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<section id="process">
-
-<div class="container">
-
-<div class="section-head reveal">
-
-<span class="section-label">روند همکاری</span>
-
-<h2 class="section-title">
-از درخواست تا پیگیری تأمین
-</h2>
-
-<p class="section-description">
-فرایند همکاری در چهار مرحله ساده انجام می‌شود.
+<p>
+دریافت درخواست و پیگیری تهیه قطعات موردنیاز خودرو از منابع تأمین.
 </p>
 
 </div>
 
-<div class="process-grid">
 
-<div class="process-line"></div>
+<div class="service reveal">
 
-<div class="process-step reveal">
-<div class="step-number">01</div>
-<h3>ثبت درخواست</h3>
-<p>مشخصات قطعه و نیاز خود را ارسال کنید.</p>
+<div class="icon">
+🔎
 </div>
 
-<div class="process-step reveal">
-<div class="step-number">02</div>
-<h3>بررسی درخواست</h3>
-<p>اطلاعات درخواست بررسی و مسیر تأمین مشخص می‌شود.</p>
-</div>
+<h3>
+قطعات کمیاب و تخصصی
+</h3>
 
-<div class="process-step reveal">
-<div class="step-number">03</div>
-<h3>پیگیری تأمین</h3>
-<p>گزینه‌های موجود از مسیر تأمین‌کنندگان پیگیری می‌شوند.</p>
-</div>
-
-<div class="process-step reveal">
-<div class="step-number">04</div>
-<h3>هماهنگی نهایی</h3>
-<p>نتیجه و جزئیات تأمین با مشتری هماهنگ می‌شود.</p>
-</div>
+<p>
+کمک به پیدا کردن قطعاتی که تهیه آن‌ها در بازار معمول دشوارتر است.
+</p>
 
 </div>
+
+
+<div class="service reveal">
+
+<div class="icon">
+📋
 </div>
+
+<h3>
+بررسی درخواست
+</h3>
+
+<p>
+بررسی اطلاعات و مشخصات قطعه پیش از هماهنگی برای تأمین.
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="icon">
+🔌
+</div>
+
+<h3>
+قطعات برقی خودرو
+</h3>
+
+<p>
+پیگیری تأمین قطعات و تجهیزات الکتریکی موردنیاز خودرو.
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="icon">
+🤝
+</div>
+
+<h3>
+هماهنگی با تأمین‌کنندگان
+</h3>
+
+<p>
+ایجاد ارتباط و هماهنگی برای پیدا کردن گزینه مناسب تأمین.
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="icon">
+📦
+</div>
+
+<h3>
+پیگیری فرآیند تأمین
+</h3>
+
+<p>
+پیگیری مراحل درخواست از زمان ثبت نیاز تا هماهنگی تهیه قطعه.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- ================= WHY US ================= -->
 
 <section>
 
 <div class="container">
 
-<div class="cta-box reveal">
+<div class="section-head reveal">
 
-<div>
-<h2>قطعه موردنیازتان را پیدا نمی‌کنید؟</h2>
-<p>درخواست خود را ارسال کنید تا مسیر تأمین آن بررسی و پیگیری شود.</p>
-</div>
-
-<div class="cta-buttons">
-<a href="#request" class="btn btn-primary">ثبت درخواست</a>
-<a href="tel:09139801125" class="btn btn-outline">تماس مستقیم</a>
+<div class="section-label">
+چرا آراز فیدای؟
 </div>
 
+<h2>
+تمرکز روی نیاز واقعی مشتری
+</h2>
+
+<p>
+در فرآیند تأمین قطعه، شناخت دقیق نیاز و ارتباط مناسب با منابع تأمین اهمیت زیادی دارد.
+</p>
+
 </div>
+
+
+<div class="why-grid">
+
+<div class="why-card reveal">
+
+<div class="why-number">
+01 / بررسی
 </div>
+
+<h3>
+توجه به مشخصات قطعه
+</h3>
+
+<p>
+برای رسیدن به گزینه مناسب، اطلاعات قطعه و نیاز مشتری در ابتدای فرآیند بررسی می‌شود.
+</p>
+
+</div>
+
+
+<div class="why-card reveal">
+
+<div class="why-number">
+02 / هماهنگی
+</div>
+
+<h3>
+ارتباط با منابع تأمین
+</h3>
+
+<p>
+پس از مشخص شدن نیاز، فرآیند هماهنگی برای پیدا کردن گزینه‌های تأمین انجام می‌شود.
+</p>
+
+</div>
+
+
+<div class="why-card reveal">
+
+<div class="why-number">
+03 / پیگیری
+</div>
+
+<h3>
+پیگیری درخواست
+</h3>
+
+<p>
+درخواست مشتری در مسیر تأمین پیگیری می‌شود تا فرآیند منظم‌تر انجام شود.
+</p>
+
+</div>
+
+
+<div class="why-card reveal">
+
+<div class="why-number">
+04 / ارتباط
+</div>
+
+<h3>
+دسترسی آسان
+</h3>
+
+<p>
+برای ثبت درخواست یا دریافت اطلاعات بیشتر، راه‌های ارتباطی مستقیم در اختیار مشتری قرار دارد.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section id="request">
+
+<!-- ================= PROCESS ================= -->
+
+<section id="process" class="process">
 
 <div class="container">
 
-<div class="request-grid reveal">
+<div class="section-head reveal">
 
-<div class="request-info">
+<div class="section-label">
+فرآیند همکاری
+</div>
 
-<h3>درخواست تأمین قطعه</h3>
+<h2>
+از درخواست تا تأمین
+</h2>
 
 <p>
-مشخصات قطعه موردنیاز خود را وارد کنید. اطلاعات واردشده از طریق ایمیل برای مجموعه ارسال خواهد شد.
+ثبت درخواست اولیه ساده است و مراحل بعدی بر اساس مشخصات قطعه پیگیری می‌شود.
 </p>
 
-<div class="request-contact">
-
-<a href="tel:09139801125" class="contact-mini">
-<div class="contact-mini-icon">☎</div>
-<div>
-<span>تماس</span>
-<strong>09139801125</strong>
-</div>
-</a>
-
-<a href="tel:09138810016" class="contact-mini">
-<div class="contact-mini-icon">☎</div>
-<div>
-<span>تماس</span>
-<strong>09138810016</strong>
-</div>
-</a>
-
-<a href="mailto:info.arazfidar@gmail.com" class="contact-mini">
-<div class="contact-mini-icon">@</div>
-<div>
-<span>ایمیل</span>
-<strong>info.arazfidar@gmail.com</strong>
-</div>
-</a>
-
-</div>
 </div>
 
-<div class="request-form">
 
-<h3>اطلاعات درخواست</h3>
+<div class="process-grid">
 
-<form id="requestForm"
-action="mailto:info.arazfidar@gmail.com"
-method="post"
-enctype="text/plain">
+<div class="step reveal">
 
-<div class="form-grid">
-
-<div class="field">
-<label>نام و نام خانوادگی</label>
-<input type="text" name="نام" placeholder="نام خود را وارد کنید" required>
+<div class="step-number">
+۱
 </div>
 
-<div class="field">
-<label>شماره تماس</label>
-<input type="tel" name="شماره تماس" placeholder="09xxxxxxxxx" required>
-</div>
+<h3>
+ثبت درخواست
+</h3>
 
-<div class="field">
-<label>نام قطعه</label>
-<input type="text" name="نام قطعه" placeholder="مثلاً قطعه برقی خودرو" required>
-</div>
-
-<div class="field">
-<label>خودرو</label>
-<input type="text" name="خودرو" placeholder="برند و مدل خودرو">
-</div>
-
-<div class="field full">
-<label>توضیحات درخواست</label>
-<textarea name="توضیحات" placeholder="هر اطلاعاتی که درباره قطعه دارید وارد کنید..."></textarea>
-</div>
+<p>
+مشخصات قطعه موردنیاز خود را برای ما ارسال کنید.
+</p>
 
 </div>
 
-<button type="submit" class="btn btn-primary form-submit">
-ارسال درخواست ←
-</button>
 
-</form>
+<div class="step reveal">
+
+<div class="step-number">
+۲
+</div>
+
+<h3>
+بررسی مشخصات
+</h3>
+
+<p>
+اطلاعات قطعه و نیاز شما بررسی و مشخص می‌شود.
+</p>
+
+</div>
+
+
+<div class="step reveal">
+
+<div class="step-number">
+۳
+</div>
+
+<h3>
+هماهنگی تأمین
+</h3>
+
+<p>
+برای پیدا کردن گزینه مناسب با منابع تأمین هماهنگی می‌شود.
+</p>
+
+</div>
+
+
+<div class="step reveal">
+
+<div class="step-number">
+۴
+</div>
+
+<h3>
+پیگیری درخواست
+</h3>
+
+<p>
+نتیجه و وضعیت درخواست از طریق ارتباط با مشتری پیگیری می‌شود.
+</p>
+
 </div>
 
 </div>
+
 </div>
+
 </section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+<div class="container">
+
+<div class="cta-box reveal">
+
+<h2>
+قطعه موردنیازتان را پیدا نمی‌کنید؟
+</h2>
+
+<p>
+مشخصات قطعه را برای ما ارسال کنید تا درخواست شما بررسی و فرآیند تأمین پیگیری شود.
+</p>
+
+<a href="#contact"
+   class="btn btn-primary">
+ثبت درخواست
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
 
 <section id="contact">
 
@@ -1399,124 +1493,375 @@ enctype="text/plain">
 
 <div class="section-head reveal">
 
-<span class="section-label">ارتباط با ما</span>
+<div class="section-label">
+ارتباط با ما
+</div>
 
-<h2 class="section-title">
-با آراز فیدای اسپادانا در ارتباط باشید
+<h2>
+برای ثبت درخواست با ما در تماس باشید
 </h2>
 
+<p>
+برای استعلام، درخواست تأمین قطعه یا دریافت اطلاعات بیشتر می‌توانید با مجموعه آراز فیدای اسپادانا تماس بگیرید.
+</p>
+
 </div>
+
 
 <div class="contact-grid">
 
-<a href="tel:09139801125" class="contact-card reveal">
-<div class="contact-card-icon">☎</div>
-<span>شماره تماس اول</span>
-<strong>09139801125</strong>
-</a>
 
-<a href="tel:09138810016" class="contact-card reveal">
-<div class="contact-card-icon">☎</div>
-<span>شماره تماس دوم</span>
-<strong>09138810016</strong>
-</a>
+<div class="contact-info reveal">
 
-<a href="mailto:info.arazfidar@gmail.com" class="contact-card reveal">
-<div class="contact-card-icon">@</div>
-<span>ایمیل</span>
-<strong>info.arazfidar@gmail.com</strong>
+<div class="contact-card">
+
+<small>
+شماره تماس اول
+</small>
+
+<a href="tel:09139801125">
+09139801125
 </a>
 
 </div>
+
+
+<div class="contact-card">
+
+<small>
+شماره تماس دوم
+</small>
+
+<a href="tel:09138810016">
+09138810016
+</a>
+
 </div>
+
+
+<div class="contact-card">
+
+<small>
+ایمیل
+</small>
+
+<a href="mailto:info.arazfidar@gmail.com">
+info.arazfidar@gmail.com
+</a>
+
+</div>
+
+
+<div class="contact-card">
+
+<small>
+نام مجموعه
+</small>
+
+<div>
+آراز فیدای اسپادانا
+</div>
+
+</div>
+
+</div>
+
+
+<div class="contact-form reveal">
+
+<h3>
+ارسال درخواست
+</h3>
+
+<form id="requestForm">
+
+<div class="form-grid">
+
+<div class="input-group">
+
+<label>
+نام و نام خانوادگی
+</label>
+
+<input
+type="text"
+id="name"
+placeholder="نام شما"
+required>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+شماره تماس
+</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="شماره تماس"
+required>
+
+</div>
+
+
+<div class="input-group full">
+
+<label>
+نام یا مشخصات قطعه
+</label>
+
+<input
+type="text"
+id="part"
+placeholder="مثلاً نام قطعه، مدل خودرو، شماره فنی و..."
+required>
+
+</div>
+
+
+<div class="input-group full">
+
+<label>
+توضیحات
+</label>
+
+<textarea
+id="message"
+placeholder="توضیحات تکمیلی درخواست خود را بنویسید..."></textarea>
+
+</div>
+
+</div>
+
+
+<button
+type="submit"
+class="btn btn-primary form-button">
+
+ارسال درخواست
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 </main>
 
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
-<div class="container">
-
-<div class="footer-inner">
+<div class="container footer-grid">
 
 <div class="footer-brand">
 
-<img src="assets/logo.png" alt="آراز فیدای اسپادانا">
+<img src="logo.png"
+     alt="لوگوی آراز فیدای اسپادانا">
 
 <div>
-<strong>آراز فیدای اسپادانا</strong>
-<span>تأمین و پیگیری قطعات خودرو</span>
-</div>
+
+<strong>
+آراز فیدای اسپادانا
+</strong>
+
+<span>
+تأمین قطعات خودرو
+</span>
 
 </div>
 
-<div class="copyright">
-© <span id="year"></span> آراز فیدای اسپادانا — تمامی حقوق محفوظ است.
+</div>
+
+
+<div class="footer-copy">
+
+© <span id="year"></span>
+آراز فیدای اسپادانا — تمامی حقوق محفوظ است.
+
 </div>
 
 </div>
-</div>
+
 </footer>
 
-<button class="top-btn" id="topBtn">↑</button>
+
+<button id="topBtn">
+↑
+</button>
+
 
 <script>
-const header=document.getElementById("header");
-const topBtn=document.getElementById("topBtn");
-const menuBtn=document.getElementById("menuBtn");
-const navLinks=document.getElementById("navLinks");
 
-window.addEventListener("scroll",()=>{
-if(window.scrollY>50) header.classList.add("scrolled");
-else header.classList.remove("scrolled");
+/* ================= MOBILE MENU ================= */
 
-if(window.scrollY>500) topBtn.classList.add("show");
-else topBtn.classList.remove("show");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
 });
 
-topBtn.addEventListener("click",()=>{
-window.scrollTo({top:0,behavior:"smooth"});
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+    });
+
 });
 
-menuBtn.addEventListener("click",()=>{
-navLinks.classList.toggle("active");
-menuBtn.textContent=navLinks.classList.contains("active")?"×":"☰";
+
+/* ================= REVEAL ================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+const observer =
+new IntersectionObserver(
+(entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            observer.unobserve(entry.target);
+
+        }
+
+    });
+
+},
+{
+    threshold:.12
+}
+);
+
+revealElements.forEach(element => {
+    observer.observe(element);
 });
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
-link.addEventListener("click",()=>{
-navLinks.classList.remove("active");
-menuBtn.textContent="☰";
-});
+
+/* ================= TOP BUTTON ================= */
+
+const topBtn =
+document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 500){
+
+        topBtn.style.display = "flex";
+        topBtn.style.alignItems = "center";
+        topBtn.style.justifyContent = "center";
+
+    }else{
+
+        topBtn.style.display = "none";
+
+    }
+
 });
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting) entry.target.classList.add("active");
-});
-},{threshold:.12});
+topBtn.addEventListener("click", () => {
 
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
-document.getElementById("requestForm").addEventListener("submit",()=>{
-setTimeout(()=>{
-alert("درخواست شما آماده ارسال است.");
-},200);
 });
 
-document.getElementById("year").textContent=new Date().getFullYear();
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener("click",function(e){
-const target=document.querySelector(this.getAttribute("href"));
-if(!target)return;
-e.preventDefault();
-target.scrollIntoView({
-behavior:"smooth",
-block:"start"
+/* ================= YEAR ================= */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+/* ================= REQUEST FORM ================= */
+
+const form =
+document.getElementById("requestForm");
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const name =
+    document.getElementById("name").value.trim();
+
+    const phone =
+    document.getElementById("phone").value.trim();
+
+    const part =
+    document.getElementById("part").value.trim();
+
+    const message =
+    document.getElementById("message").value.trim();
+
+
+    const subject =
+    "درخواست تأمین قطعه خودرو - " + part;
+
+
+    const body =
+`سلام
+
+نام و نام خانوادگی:
+${name}
+
+شماره تماس:
+${phone}
+
+قطعه موردنیاز:
+${part}
+
+توضیحات:
+${message}
+
+با تشکر`;
+
+
+    const mailto =
+    "mailto:info.arazfidar@gmail.com" +
+    "?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
+
+
+    window.location.href = mailto;
+
 });
+
+
+/* ================= LOGO ERROR CHECK ================= */
+
+document.querySelectorAll("img[src='logo.png']")
+.forEach(img => {
+
+    img.addEventListener("error", () => {
+
+        console.warn(
+            "فایل logo.png در کنار index.html پیدا نشد."
+        );
+
+    });
+
 });
-});
+
 </script>
 
 </body>
