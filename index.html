@@ -4,30 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>آراز فیدای اسپادانا | تأمین قطعات خودرو</title>
+<title>آراز فیدای اسپادانا | تأمین قطعات یدکی خودرو</title>
 
 <meta name="description"
-content="آراز فیدای اسپادانا؛ تأمین و هماهنگی خرید قطعات یدکی خودرو، به‌ویژه قطعات تخصصی و کمیاب.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+      content="آراز فیدای اسپادانا - تأمین قطعات یدکی خودرو، قطعات دشواریاب و قطعات الکتریکی">
 
 <style>
 
-:root{
-    --bg:#07111f;
-    --bg2:#0b1728;
-    --card:#101f33;
-    --card2:#13263d;
-    --gold:#d8ad58;
-    --gold2:#f0d38a;
-    --text:#f5f7fa;
-    --muted:#aab6c5;
-    --line:rgba(255,255,255,.09);
-    --white:#ffffff;
-    --shadow:0 25px 70px rgba(0,0,0,.35);
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -40,19 +26,27 @@ html{
 }
 
 body{
-    font-family:"Vazirmatn",Tahoma,sans-serif;
-    background:
-        radial-gradient(circle at 10% 10%,rgba(216,173,88,.09),transparent 28%),
-        radial-gradient(circle at 90% 30%,rgba(40,100,180,.10),transparent 30%),
-        var(--bg);
-    color:var(--text);
-    line-height:1.9;
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:#05070a;
+    color:#f5f7fa;
+    line-height:1.8;
     overflow-x:hidden;
 }
 
 a{
-    color:inherit;
     text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
 }
 
 img{
@@ -60,749 +54,1977 @@ img{
     display:block;
 }
 
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+    --black:#05070a;
+    --black2:#090c11;
+    --black3:#0d1118;
+
+    --card:#0d1219;
+    --card2:#111720;
+
+    --gold:#f6a800;
+    --gold2:#ffc94d;
+    --gold3:#ffe09a;
+
+    --blue:#188cff;
+    --cyan:#49cfff;
+
+    --white:#ffffff;
+    --text:#edf2f7;
+    --muted:#8b98a8;
+
+    --border:rgba(255,255,255,.09);
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    --radius:24px;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:700px;
+    height:700px;
+
+    top:-350px;
+    right:-250px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(246,168,0,.13),
+            transparent 65%
+        );
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:650px;
+    height:650px;
+
+    bottom:-350px;
+    left:-300px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(24,140,255,.11),
+            transparent 65%
+        );
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
 .container{
-    width:min(1180px,92%);
+    width:min(1200px,calc(100% - 40px));
     margin:auto;
 }
 
-/* ================= HEADER ================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
+
     position:fixed;
+
     top:0;
-    left:0;
     right:0;
+    left:0;
+
     height:82px;
+
     z-index:1000;
-    background:rgba(7,17,31,.78);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--line);
+
+    background:
+        rgba(5,7,10,.70);
+
+    backdrop-filter:
+        blur(22px);
+
+    border-bottom:
+        1px solid transparent;
+
+    transition:.3s;
 }
 
-.navbar{
-    height:82px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
+header.scrolled{
+
+    background:
+        rgba(5,7,10,.94);
+
+    border-bottom:
+        1px solid var(--border);
 }
+
+.nav{
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+/* LOGO */
 
 .brand{
+
     display:flex;
+
     align-items:center;
-    gap:13px;
-    min-width:230px;
+
+    gap:12px;
+
+    min-width:220px;
 }
 
-.brand-logo{
-    width:52px;
-    height:52px;
+.brand img{
+
+    width:58px;
+    height:58px;
+
     object-fit:contain;
-    border-radius:12px;
+
+    /*
+       لوگوی واقعی شما.
+       هیچ متن یا لوگوی دیگری جایگزین نشده.
+    */
+
+    filter:
+        drop-shadow(
+            0 7px 15px rgba(0,0,0,.5)
+        );
 }
 
-.brand-text strong{
-    display:block;
-    font-size:16px;
-    font-weight:800;
+.brand-text{
+
+    font-size:14px;
+    font-weight:bold;
+
+    white-space:nowrap;
 }
 
 .brand-text span{
-    color:var(--gold2);
-    font-size:11px;
+
+    display:block;
+
+    color:#7e8b9b;
+
+    font-size:9px;
+
+    margin-top:-4px;
 }
 
+/* MENU */
+
 .nav-links{
+
     display:flex;
+
     align-items:center;
-    gap:28px;
+
+    gap:5px;
 }
 
 .nav-links a{
-    color:#dbe2ea;
-    font-size:14px;
+
+    color:#9da8b6;
+
+    font-size:12px;
+
+    padding:9px 12px;
+
+    border-radius:10px;
+
     transition:.25s;
 }
 
 .nav-links a:hover{
-    color:var(--gold2);
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.06);
 }
 
-.nav-button{
-    background:linear-gradient(135deg,var(--gold2),var(--gold));
-    color:#10151c !important;
-    padding:10px 18px;
-    border-radius:10px;
-    font-weight:800;
+.nav-call{
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold2),
+            var(--gold)
+        );
+
+    color:#15110a;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 10px 30px
+        rgba(246,168,0,.16);
 }
 
-.menu-btn{
+.mobile-menu{
+
     display:none;
-    border:0;
-    background:transparent;
+
+    background:#10151d;
+
     color:white;
-    font-size:27px;
+
+    border:1px solid var(--border);
+
+    padding:9px 13px;
+
+    border-radius:10px;
+
     cursor:pointer;
 }
 
-/* ================= HERO ================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
+
     min-height:100vh;
-    padding-top:130px;
-    display:flex;
+
+    padding-top:140px;
+    padding-bottom:80px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
     align-items:center;
+
+    gap:60px;
+}
+
+/* HERO TEXT */
+
+.hero-content{
+
     position:relative;
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:rgba(216,173,88,.08);
-    filter:blur(90px);
-    border-radius:50%;
-    top:5%;
-    right:-180px;
-    pointer-events:none;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.05fr .95fr;
-    align-items:center;
-    gap:70px;
-}
-
 .badge{
+
     display:inline-flex;
+
     align-items:center;
-    gap:9px;
+
+    gap:8px;
+
     padding:7px 13px;
-    border:1px solid rgba(216,173,88,.25);
-    border-radius:50px;
+
+    border-radius:100px;
+
+    border:
+        1px solid
+        rgba(246,168,0,.25);
+
+    background:
+        rgba(246,168,0,.06);
+
     color:var(--gold2);
-    background:rgba(216,173,88,.07);
-    font-size:12px;
-    margin-bottom:22px;
+
+    font-size:10px;
+
+    font-weight:bold;
 }
 
 .badge-dot{
+
     width:7px;
     height:7px;
-    background:var(--gold);
+
     border-radius:50%;
-    box-shadow:0 0 14px var(--gold);
+
+    background:#52e49a;
+
+    box-shadow:
+        0 0 15px #52e49a;
 }
 
 .hero h1{
-    font-size:clamp(35px,5vw,65px);
-    line-height:1.35;
-    margin-bottom:20px;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            78px
+        );
+
+    line-height:1.08;
+
+    letter-spacing:-3px;
+
+    margin:
+        25px
+        0
+        22px;
+
     font-weight:900;
 }
 
 .hero h1 span{
+
     color:var(--gold2);
 }
 
-.hero-text{
-    max-width:650px;
-    color:var(--muted);
-    font-size:17px;
-    margin-bottom:32px;
+.hero-description{
+
+    color:#9aa6b5;
+
+    font-size:14px;
+
+    max-width:640px;
+
+    line-height:2.2;
 }
 
 .hero-buttons{
+
     display:flex;
-    gap:13px;
+
     flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:30px;
 }
 
 .btn{
+
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
-    gap:9px;
-    padding:13px 22px;
-    border-radius:11px;
-    font-size:14px;
-    font-weight:800;
+
+    gap:8px;
+
+    min-height:47px;
+
+    padding:
+        0
+        20px;
+
+    border-radius:13px;
+
+    border:1px solid var(--border);
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
     transition:.25s;
 }
 
-.btn-primary{
-    background:linear-gradient(135deg,var(--gold2),var(--gold));
-    color:#111820;
-    box-shadow:0 12px 35px rgba(216,173,88,.16);
+.btn:hover{
+
+    transform:
+        translateY(-3px);
 }
 
-.btn-primary:hover{
-    transform:translateY(-3px);
-}
+.btn-gold{
 
-.btn-secondary{
-    border:1px solid var(--line);
-    background:rgba(255,255,255,.035);
-    color:white;
-}
+    color:#171108;
 
-.btn-secondary:hover{
-    border-color:rgba(216,173,88,.45);
-    color:var(--gold2);
-}
-
-.hero-visual{
-    position:relative;
-}
-
-.logo-card{
-    width:min(430px,100%);
-    aspect-ratio:1/1;
-    margin:auto;
-    border:1px solid rgba(216,173,88,.22);
     background:
-        radial-gradient(circle at center,rgba(216,173,88,.11),transparent 52%),
-        rgba(255,255,255,.025);
-    border-radius:35px;
+        linear-gradient(
+            135deg,
+            var(--gold3),
+            var(--gold)
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(246,168,0,.16);
+}
+
+.btn-dark{
+
+    background:
+        rgba(255,255,255,.035);
+
+    color:#e9eef4;
+}
+
+.hero-stats{
+
     display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:var(--shadow);
-    position:relative;
-}
 
-.logo-card::before{
-    content:"";
-    position:absolute;
-    inset:18px;
-    border:1px solid rgba(216,173,88,.13);
-    border-radius:27px;
-}
+    gap:22px;
 
-.logo-card img{
-    width:62%;
-    max-height:62%;
-    object-fit:contain;
-    position:relative;
-    z-index:2;
-}
+    margin-top:30px;
 
-.float-card{
-    position:absolute;
-    background:rgba(16,31,51,.92);
-    border:1px solid var(--line);
-    backdrop-filter:blur(15px);
-    padding:13px 16px;
-    border-radius:14px;
-    box-shadow:var(--shadow);
-}
-
-.float-card strong{
-    display:block;
-    font-size:14px;
-    color:var(--gold2);
-}
-
-.float-card span{
-    color:#bdc7d2;
-    font-size:11px;
-}
-
-.float-one{
-    top:12%;
-    right:-25px;
-}
-
-.float-two{
-    bottom:13%;
-    left:-25px;
-}
-
-/* ================= STATS ================= */
-
-.stats{
-    padding:25px 0;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    background:rgba(255,255,255,.018);
-}
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
+    flex-wrap:wrap;
 }
 
 .stat{
-    text-align:center;
-    padding:10px 20px;
-    border-left:1px solid var(--line);
-}
 
-.stat:last-child{
-    border-left:0;
+    font-size:10px;
+
+    color:#667486;
 }
 
 .stat strong{
+
     display:block;
-    color:var(--gold2);
-    font-size:25px;
-    margin-bottom:2px;
+
+    color:#dce3ea;
+
+    font-size:11px;
 }
 
-.stat span{
-    color:var(--muted);
-    font-size:12px;
+/* =========================================================
+   HERO LOGO
+========================================================= */
+
+.hero-visual{
+
+    min-height:580px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
 }
 
-/* ================= GENERAL SECTION ================= */
+.hero-glow{
+
+    position:absolute;
+
+    width:460px;
+    height:460px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(246,168,0,.18),
+            rgba(24,140,255,.06) 45%,
+            transparent 70%
+        );
+
+    filter:blur(8px);
+}
+
+.hero-ring{
+
+    position:absolute;
+
+    width:480px;
+    height:480px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    animation:
+        rotateRing 20s
+        linear infinite;
+}
+
+.hero-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    background:var(--gold2);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 20px var(--gold);
+
+    top:45px;
+    right:100px;
+}
+
+.hero-logo{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(480px,90%);
+
+    filter:
+        drop-shadow(
+            0 30px 35px
+            rgba(0,0,0,.75)
+        );
+
+    animation:
+        floating 5s
+        ease-in-out
+        infinite;
+}
+
+/*
+  اگر تصویر لوگوی شما سفید باشد،
+  ظاهر آن روی زمینه تاریک حفظ می‌شود.
+*/
+
+@keyframes floating{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+@keyframes rotateRing{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
 
 section{
     padding:110px 0;
 }
 
 .section-head{
+
+    text-align:center;
+
     max-width:720px;
-    margin-bottom:50px;
+
+    margin:
+        0 auto
+        45px;
 }
 
 .section-label{
+
     color:var(--gold2);
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.5px;
-    margin-bottom:10px;
+
+    font-size:10px;
+
+    font-weight:bold;
 }
 
 .section-head h2{
-    font-size:clamp(28px,4vw,43px);
-    line-height:1.45;
-    margin-bottom:13px;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            48px
+        );
+
+    line-height:1.3;
+
+    margin:
+        8px
+        0
+        13px;
+
+    letter-spacing:-1px;
 }
 
 .section-head p{
+
     color:var(--muted);
-    font-size:15px;
+
+    font-size:12px;
+
+    line-height:2;
 }
 
-/* ================= ABOUT ================= */
+/* =========================================================
+   PANELS
+========================================================= */
+
+.panel{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,23,31,.94),
+            rgba(7,10,14,.96)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about-grid{
+
     display:grid;
-    grid-template-columns:.9fr 1.1fr;
-    gap:65px;
-    align-items:center;
-}
 
-.about-box{
-    background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
-    border:1px solid var(--line);
-    border-radius:25px;
-    padding:35px;
-}
+    grid-template-columns:
+        1.2fr
+        .8fr;
 
-.about-box h3{
-    font-size:25px;
-    margin-bottom:15px;
-}
-
-.about-box p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-.about-list{
-    display:grid;
-    gap:14px;
-    margin-top:24px;
-}
-
-.about-list div{
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-}
-
-.check{
-    flex:none;
-    width:25px;
-    height:25px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:rgba(216,173,88,.12);
-    color:var(--gold2);
-    font-size:12px;
-    margin-top:2px;
-}
-
-.about-list span{
-    color:#d4dbe3;
-    font-size:14px;
-}
-
-/* ================= SERVICES ================= */
-
-.services{
-    background:rgba(255,255,255,.015);
-}
-
-.services-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
+.about-text{
+
+    padding:42px;
+}
+
+.about-text h3{
+
+    font-size:25px;
+
+    margin-bottom:15px;
+}
+
+.about-text p{
+
+    color:#9aa6b5;
+
+    font-size:13px;
+
+    line-height:2.3;
+}
+
+.about-logo{
+
+    min-height:310px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.about-logo::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:280px;
+    height:280px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(246,168,0,.13);
+
+    box-shadow:
+        0 0 80px
+        rgba(24,140,255,.07);
+}
+
+.about-logo img{
+
+    width:240px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
 .service{
+
     padding:30px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:22px;
+
     transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 .service:hover{
-    transform:translateY(-6px);
-    border-color:rgba(216,173,88,.3);
-    box-shadow:0 20px 50px rgba(0,0,0,.2);
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(246,168,0,.28);
 }
 
-.icon{
-    width:52px;
-    height:52px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.service-icon{
+
+    width:50px;
+    height:50px;
+
+    display:grid;
+
+    place-items:center;
+
     border-radius:15px;
-    background:rgba(216,173,88,.10);
+
+    background:
+        rgba(246,168,0,.08);
+
+    border:
+        1px solid
+        rgba(246,168,0,.16);
+
     color:var(--gold2);
-    font-size:22px;
+
+    font-size:20px;
+
     margin-bottom:20px;
 }
 
 .service h3{
-    font-size:18px;
-    margin-bottom:9px;
+
+    font-size:15px;
+
+    margin-bottom:8px;
 }
 
 .service p{
-    color:var(--muted);
-    font-size:13px;
+
+    color:#7f8c9c;
+
+    font-size:11px;
+
+    line-height:2;
 }
 
-/* ================= WHY ================= */
+/* =========================================================
+   WHY
+========================================================= */
 
 .why-grid{
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+        .8fr
+        1.2fr;
+
     gap:18px;
 }
 
-.why-card{
-    padding:28px;
-    background:linear-gradient(145deg,#101f33,#0c1828);
-    border:1px solid var(--line);
-    border-radius:20px;
+.why-image{
+
+    min-height:470px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
-.why-number{
-    color:var(--gold);
-    font-size:12px;
-    font-weight:900;
-    margin-bottom:15px;
+.why-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(246,168,0,.13),
+            transparent 65%
+        );
 }
 
-.why-card h3{
+.why-image img{
+
+    width:290px;
+
+    position:relative;
+
+    z-index:2;
+
+    filter:
+        drop-shadow(
+            0 25px 30px
+            rgba(0,0,0,.8)
+        );
+}
+
+.why-text{
+
+    padding:40px;
+}
+
+.why-text h3{
+
+    font-size:25px;
+
     margin-bottom:8px;
-    font-size:18px;
 }
 
-.why-card p{
-    color:var(--muted);
-    font-size:13px;
+.why-text>p{
+
+    color:#8592a2;
+
+    font-size:12px;
 }
 
-/* ================= PROCESS ================= */
+.benefits{
+
+    margin-top:25px;
+
+    display:grid;
+
+    gap:10px;
+}
+
+.benefit{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid var(--border);
+}
+
+.check{
+
+    flex:none;
+
+    width:27px;
+    height:27px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+        rgba(82,228,154,.1);
+
+    color:#59e29a;
+
+    font-size:11px;
+}
+
+.benefit strong{
+
+    display:block;
+
+    font-size:11px;
+}
+
+.benefit span{
+
+    display:block;
+
+    color:#728093;
+
+    font-size:9px;
+
+    margin-top:2px;
+}
+
+/* =========================================================
+   PROCESS
+========================================================= */
 
 .process{
-    background:rgba(255,255,255,.015);
-}
 
-.process-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:13px;
 }
 
-.step{
-    position:relative;
-    padding:27px 22px;
-    border:1px solid var(--line);
-    background:var(--card);
-    border-radius:20px;
+.process-card{
+
+    padding:25px;
 }
 
-.step-number{
-    width:38px;
-    height:38px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:rgba(216,173,88,.13);
-    color:var(--gold2);
+.process-number{
+
+    font-size:38px;
+
+    color:
+        rgba(246,168,0,.25);
+
     font-weight:900;
-    margin-bottom:18px;
+
+    line-height:1;
 }
 
-.step h3{
-    font-size:16px;
-    margin-bottom:8px;
+.process-card h3{
+
+    font-size:13px;
+
+    margin:
+        17px
+        0
+        5px;
 }
 
-.step p{
-    color:var(--muted);
-    font-size:12px;
+.process-card p{
+
+    color:#738094;
+
+    font-size:10px;
+
+    line-height:1.9;
 }
 
-/* ================= CTA ================= */
+/* =========================================================
+   AI SECTION
+========================================================= */
 
-.cta{
-    padding:80px 0;
+.ai-section{
+
+    position:relative;
 }
 
-.cta-box{
-    border:1px solid rgba(216,173,88,.23);
-    border-radius:30px;
-    padding:55px;
-    text-align:center;
+.ai-layout{
+
+    display:grid;
+
+    grid-template-columns:
+        .72fr
+        1.28fr;
+
+    gap:17px;
+}
+
+/* AI INFO */
+
+.ai-info{
+
+    padding:38px;
+
     background:
-        radial-gradient(circle at center,rgba(216,173,88,.10),transparent 55%),
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(24,140,255,.15),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #0c1723,
+            #070b10
+        );
+
+    border:
+        1px solid
+        rgba(24,140,255,.18);
+
+    border-radius:var(--radius);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.ai-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#65e3a4;
+
+    font-size:9px;
+
+    padding:7px 11px;
+
+    border-radius:100px;
+
+    border:
+        1px solid
+        rgba(101,227,164,.15);
+
+    background:
+        rgba(101,227,164,.05);
+}
+
+.ai-status i{
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#65e3a4;
+
+    box-shadow:
+        0 0 13px #65e3a4;
+}
+
+.ai-info h3{
+
+    font-size:31px;
+
+    line-height:1.45;
+
+    margin:
+        25px
+        0
+        13px;
+}
+
+.ai-info p{
+
+    color:#8593a4;
+
+    font-size:11px;
+
+    line-height:2.2;
+}
+
+.question-list{
+
+    margin-top:25px;
+
+    display:grid;
+
+    gap:8px;
+}
+
+.question{
+
+    text-align:right;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        var(--border);
+
+    color:#b6c1cd;
+
+    padding:12px;
+
+    border-radius:13px;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    transition:.2s;
+}
+
+.question:hover{
+
+    border-color:
+        rgba(73,207,255,.3);
+
+    color:#fff;
+
+    transform:
+        translateX(-4px);
+}
+
+/* CHAT */
+
+.chat{
+
+    min-height:630px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+}
+
+.chat-header{
+
+    padding:15px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    background:
         rgba(255,255,255,.025);
 }
 
-.cta-box h2{
-    font-size:clamp(27px,4vw,42px);
-    margin-bottom:13px;
+.ai-user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
 }
 
-.cta-box p{
-    color:var(--muted);
-    max-width:650px;
-    margin:0 auto 25px;
-}
+.ai-avatar{
 
-/* ================= CONTACT ================= */
+    width:42px;
+    height:42px;
 
-.contact-grid{
     display:grid;
-    grid-template-columns:.9fr 1.1fr;
-    gap:25px;
+
+    place-items:center;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    color:#00131e;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 8px 25px
+        rgba(24,140,255,.25);
 }
 
-.contact-info{
-    display:grid;
-    gap:13px;
-}
+.ai-user strong{
 
-.contact-card{
-    padding:22px;
-    border:1px solid var(--line);
-    background:var(--card);
-    border-radius:18px;
-}
-
-.contact-card small{
     display:block;
-    color:var(--gold2);
-    margin-bottom:5px;
+
     font-size:11px;
 }
 
-.contact-card a,
-.contact-card div{
-    color:#e6ebf0;
-    font-size:14px;
-    direction:ltr;
-    text-align:right;
+.ai-user small{
+
+    display:block;
+
+    color:#687688;
+
+    font-size:8px;
 }
 
-.contact-form{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:22px;
-    padding:30px;
+.chat-online{
+
+    color:#60dfa0;
+
+    font-size:9px;
 }
 
-.contact-form h3{
-    margin-bottom:20px;
-    font-size:21px;
-}
+.chat-messages{
 
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:13px;
-}
+    flex:1;
 
-.input-group{
+    padding:20px;
+
+    overflow-y:auto;
+
     display:flex;
+
     flex-direction:column;
-    gap:7px;
-}
 
-.input-group.full{
-    grid-column:1/-1;
-}
-
-.input-group label{
-    color:#c8d0da;
-    font-size:12px;
-}
-
-.input-group input,
-.input-group textarea{
-    width:100%;
-    border:1px solid var(--line);
-    background:#091524;
-    color:white;
-    border-radius:10px;
-    padding:12px;
-    outline:none;
-    font-family:inherit;
-    font-size:13px;
-}
-
-.input-group input:focus,
-.input-group textarea:focus{
-    border-color:rgba(216,173,88,.5);
-}
-
-.input-group textarea{
-    min-height:130px;
-    resize:vertical;
-}
-
-.form-button{
-    margin-top:16px;
-    width:100%;
-    border:0;
-    cursor:pointer;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid var(--line);
-    padding:35px 0;
-    background:#050d17;
-}
-
-.footer-grid{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.footer-brand{
-    display:flex;
-    align-items:center;
     gap:12px;
 }
 
-.footer-brand img{
-    width:45px;
-    height:45px;
-    object-fit:contain;
+.message{
+
+    max-width:82%;
+
+    padding:12px 14px;
+
+    border-radius:16px;
+
+    font-size:10px;
+
+    line-height:2;
+
+    word-break:break-word;
 }
 
-.footer-brand strong{
-    font-size:14px;
+.message.bot{
+
+    align-self:flex-start;
+
+    background:#111821;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-top-right-radius:5px;
+
+    color:#c7d1dc;
 }
 
-.footer-brand span{
-    display:block;
-    color:var(--muted);
+.message.user{
+
+    align-self:flex-end;
+
+    background:
+        linear-gradient(
+            135deg,
+            #126bc3,
+            #0c4b8b
+        );
+
+    color:#fff;
+
+    border-top-left-radius:5px;
+}
+
+.typing{
+
+    display:flex;
+
+    gap:4px;
+}
+
+.typing span{
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#758496;
+
+    animation:
+        typing 1s
+        infinite;
+}
+
+.typing span:nth-child(2){
+    animation-delay:.15s;
+}
+
+.typing span:nth-child(3){
+    animation-delay:.3s;
+}
+
+@keyframes typing{
+
+    50%{
+        opacity:.2;
+        transform:translateY(-3px);
+    }
+}
+
+.chat-input-area{
+
+    display:flex;
+
+    gap:8px;
+
+    padding:12px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+.chat-input{
+
+    flex:1;
+
+    min-height:52px;
+    max-height:130px;
+
+    resize:none;
+
+    outline:none;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:#080d13;
+
+    color:white;
+
+    border-radius:14px;
+
+    padding:12px;
+
     font-size:10px;
 }
 
-.footer-copy{
-    color:#788594;
-    font-size:11px;
-    text-align:left;
+.chat-input:focus{
+
+    border-color:
+        rgba(73,207,255,.4);
 }
 
-/* ================= TOP BUTTON ================= */
+.send-button{
 
-#topBtn{
+    width:52px;
+
+    border:0;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold2),
+            var(--gold)
+        );
+
+    color:#111;
+
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+.chat-footer{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:
+        0
+        13px
+        11px;
+}
+
+.chat-footer button{
+
+    background:none;
+
+    border:0;
+
+    color:#667588;
+
+    font-size:8px;
+
+    cursor:pointer;
+}
+
+.chat-footer button:hover{
+
+    color:#fff;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-box{
+
+    padding:45px;
+
+    border-radius:28px;
+
+    border:
+        1px solid
+        rgba(246,168,0,.17);
+
+    background:
+        linear-gradient(
+            120deg,
+            #171208,
+            #0c151e
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.cta-box h2{
+
+    font-size:25px;
+
+    margin-bottom:5px;
+}
+
+.cta-box p{
+
+    color:#8491a1;
+
+    font-size:11px;
+}
+
+.cta-actions{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   REQUEST
+========================================================= */
+
+.request-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1.15fr
+        .85fr;
+
+    gap:17px;
+}
+
+.form-box{
+
+    padding:35px;
+}
+
+.form-box h3,
+.contact-box h3{
+
+    font-size:18px;
+
+    margin-bottom:20px;
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:11px;
+}
+
+.field.full{
+
+    grid-column:1/-1;
+}
+
+.field label{
+
+    display:block;
+
+    color:#788698;
+
+    font-size:9px;
+
+    margin-bottom:5px;
+}
+
+.field input,
+.field textarea{
+
+    width:100%;
+
+    background:#080d13;
+
+    color:#fff;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:12px;
+
+    padding:12px;
+
+    outline:none;
+
+    font-size:10px;
+}
+
+.field textarea{
+
+    min-height:135px;
+
+    resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus{
+
+    border-color:
+        rgba(246,168,0,.4);
+}
+
+.contact-box{
+
+    padding:35px;
+}
+
+.contact-list{
+
+    display:grid;
+
+    gap:10px;
+}
+
+.contact-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.contact-icon{
+
+    width:40px;
+    height:40px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:12px;
+
+    background:
+        rgba(246,168,0,.08);
+
+    color:var(--gold2);
+}
+
+.contact-item small{
+
+    display:block;
+
+    color:#687688;
+
+    font-size:8px;
+}
+
+.contact-item strong{
+
+    display:block;
+
+    color:#dce4ec;
+
+    font-size:10px;
+
+    direction:ltr;
+
+    text-align:right;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    padding:
+        28px
+        0;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    color:#657386;
+
+    font-size:9px;
+}
+
+.footer-inner{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+}
+
+.footer-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#d1d9e1;
+
+    font-weight:bold;
+}
+
+.footer-brand img{
+
+    width:42px;
+    height:42px;
+
+    object-fit:contain;
+}
+
+.footer-links{
+
+    display:flex;
+
+    gap:15px;
+}
+
+.footer-links a:hover{
+
+    color:#fff;
+}
+
+/* =========================================================
+   TOP BUTTON
+========================================================= */
+
+.top-button{
+
     position:fixed;
-    left:20px;
-    bottom:20px;
+
+    bottom:22px;
+    left:22px;
+
     width:43px;
     height:43px;
-    border:1px solid var(--line);
-    border-radius:50%;
-    background:#102139;
-    color:var(--gold2);
+
+    border-radius:13px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(10,15,21,.9);
+
+    color:#fff;
+
     cursor:pointer;
-    display:none;
-    z-index:999;
-}
 
-/* ================= ANIMATION ================= */
-
-.reveal{
     opacity:0;
-    transform:translateY(25px);
-    transition:.7s ease;
+
+    pointer-events:none;
+
+    transition:.25s;
+
+    z-index:500;
 }
 
-.reveal.show{
+.top-button.show{
+
     opacity:1;
+
+    pointer-events:auto;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    padding:
+        12px
+        16px;
+
+    border-radius:13px;
+
+    background:#111923;
+
+    border:
+        1px solid
+        var(--border);
+
+    color:#dce5ed;
+
+    font-size:9px;
+
+    z-index:3000;
+
+    opacity:0;
+
+    transform:
+        translateY(15px);
+
+    transition:.25s;
+}
+
+.toast.show{
+
+    opacity:1;
+
     transform:none;
 }
 
-/* ================= MOBILE ================= */
+/* =========================================================
+   REVEAL
+========================================================= */
 
-@media(max-width:900px){
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.visible{
+
+    opacity:1;
+
+    transform:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
 
     .nav-links{
-        position:absolute;
-        top:82px;
-        right:4%;
-        left:4%;
         display:none;
-        flex-direction:column;
-        align-items:stretch;
-        padding:15px;
-        background:#0c1a2c;
-        border:1px solid var(--line);
-        border-radius:15px;
     }
 
-    .nav-links.active{
-        display:flex;
-    }
-
-    .nav-links a{
-        padding:10px;
-    }
-
-    .menu-btn{
+    .mobile-menu{
         display:block;
     }
 
-    .nav-button{
+    .nav-links.open{
+
+        display:flex;
+
+        position:absolute;
+
+        top:75px;
+
+        right:15px;
+        left:15px;
+
+        flex-direction:column;
+
+        background:#0b1016;
+
+        padding:10px;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius:16px;
+
+        box-shadow:
+            0 25px 70px #000;
+    }
+
+    .nav-links.open a{
+        width:100%;
+    }
+
+    .nav-call{
+        display:none;
+    }
+
+    .hero{
+
+        grid-template-columns:1fr;
+
         text-align:center;
     }
 
-    .hero-grid,
+    .hero-description{
+        margin:auto;
+    }
+
+    .hero-buttons,
+    .hero-stats{
+        justify-content:center;
+    }
+
+    .hero-visual{
+
+        order:-1;
+
+        min-height:420px;
+    }
+
+    .hero-logo{
+        width:390px;
+    }
+
+    .hero-ring{
+
+        width:390px;
+        height:390px;
+    }
+
     .about-grid,
-    .contact-grid{
+    .why-grid,
+    .ai-layout,
+    .request-grid{
+
         grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:760px){
+
+    .container{
+        width:calc(100% - 25px);
+    }
+
+    section{
+        padding:80px 0;
+    }
+
+    .brand-text{
+        display:none;
+    }
+
+    .brand{
+        min-width:auto;
+    }
+
+    .brand img{
+        width:52px;
+        height:52px;
     }
 
     .hero{
@@ -810,113 +2032,74 @@ footer{
     }
 
     .hero-visual{
-        order:-1;
+        min-height:330px;
     }
 
-    .logo-card{
-        max-width:350px;
+    .hero-logo{
+        width:290px;
     }
 
-    .services-grid{
-        grid-template-columns:1fr 1fr;
-    }
+    .hero-ring{
 
-    .process-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .float-one{
-        right:0;
-    }
-
-    .float-two{
-        left:0;
-    }
-}
-
-@media(max-width:600px){
-
-    header,
-    .navbar{
-        height:72px;
-    }
-
-    .nav-links{
-        top:72px;
-    }
-
-    .brand{
-        min-width:auto;
-    }
-
-    .brand-logo{
-        width:43px;
-        height:43px;
-    }
-
-    .brand-text strong{
-        font-size:13px;
-    }
-
-    .brand-text span{
-        font-size:9px;
+        width:290px;
+        height:290px;
     }
 
     .hero h1{
-        font-size:34px;
+        letter-spacing:-1.5px;
     }
 
-    .hero-text{
-        font-size:14px;
-    }
-
-    section{
-        padding:75px 0;
-    }
-
-    .stats-grid{
+    .services{
         grid-template-columns:1fr;
     }
 
-    .stat{
-        border-left:0;
-        border-bottom:1px solid var(--line);
-        padding:14px;
-    }
-
-    .stat:last-child{
-        border-bottom:0;
-    }
-
-    .services-grid,
-    .why-grid,
-    .process-grid{
-        grid-template-columns:1fr;
+    .process{
+        grid-template-columns:1fr 1fr;
     }
 
     .form-grid{
         grid-template-columns:1fr;
     }
 
-    .input-group.full{
+    .field.full{
         grid-column:auto;
     }
 
     .cta-box{
-        padding:35px 20px;
+        display:block;
+        padding:30px;
     }
 
-    .footer-grid{
+    .cta-actions{
+        margin-top:20px;
+    }
+
+    .footer-inner{
         flex-direction:column;
         text-align:center;
     }
 
-    .footer-copy{
-        text-align:center;
+    .chat{
+        min-height:570px;
+    }
+}
+
+@media(max-width:480px){
+
+    .process{
+        grid-template-columns:1fr;
     }
 
-    .float-card{
-        display:none;
+    .hero-buttons .btn{
+        width:100%;
+    }
+
+    .hero-stats{
+        gap:12px;
+    }
+
+    .message{
+        max-width:92%;
     }
 }
 
@@ -925,84 +2108,158 @@ footer{
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<header>
+<header id="header">
 
-<div class="container navbar">
+<div class="container nav">
 
 <a href="#home" class="brand">
 
-<img src="logo.png"
-     alt="لوگوی آراز فیدای اسپادانا"
-     class="brand-logo">
+<img
+    src="logo.png"
+    alt="آراز فیدای اسپادانا"
+>
 
 <div class="brand-text">
-<strong>آراز فیدای اسپادانا</strong>
-<span>تأمین قطعات خودرو</span>
+
+آراز فیدای اسپادانا
+
+<span>
+تأمین قطعات یدکی خودرو
+</span>
+
 </div>
 
 </a>
 
-<button class="menu-btn" id="menuBtn">
-☰
-</button>
-
 <nav class="nav-links" id="navLinks">
 
-<a href="#home">خانه</a>
-<a href="#about">درباره ما</a>
-<a href="#services">خدمات</a>
-<a href="#process">فرآیند همکاری</a>
-<a href="#contact">تماس با ما</a>
+<a href="#about">معرفی</a>
 
-<a class="nav-button"
-   href="tel:09139801125">
+<a href="#services">خدمات</a>
+
+<a href="#why">مزیت ما</a>
+
+<a href="#process">فرآیند همکاری</a>
+
+<a href="#ai">دستیار هوشمند</a>
+
+<a href="#request">درخواست قطعه</a>
+
+</nav>
+
+<a
+    class="nav-call"
+    href="tel:09139801125"
+>
 تماس مستقیم
 </a>
 
-</nav>
+<button
+    class="mobile-menu"
+    id="mobileMenu"
+>
+☰
+</button>
 
 </div>
 
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main id="home">
 
-<section class="hero">
 
-<div class="container hero-grid">
+<!-- HERO -->
+
+<section class="hero container">
 
 <div class="hero-content reveal">
 
 <div class="badge">
+
 <span class="badge-dot"></span>
-همراه شما در تأمین قطعات خودرو
+
+مرکز هوشمند تأمین قطعات خودرو
+
 </div>
 
 <h1>
-راهکار مطمئن برای
-<span>تأمین قطعات خودرو</span>
+
+قطعه را فقط پیدا نکن؛
+
+<br>
+
+<span>
+هوشمندانه بشناس.
+</span>
+
 </h1>
 
-<p class="hero-text">
-آراز فیدای اسپادانا در زمینه تأمین و هماهنگی تهیه قطعات یدکی خودرو فعالیت می‌کند و در تأمین قطعات تخصصی و کمیاب، مسیر ارتباط با تأمین‌کنندگان را برای مشتریان ساده‌تر می‌کند.
+<p class="hero-description">
+
+آراز فیدای اسپادانا در زمینه تأمین قطعات یدکی خودرو فعالیت می‌کند
+و با دریافت درخواست مشتری و هماهنگی با تأمین‌کنندگان،
+در تأمین قطعات به‌ویژه قطعات دشواریاب و الکتریکی کمک می‌کند.
+
 </p>
 
 <div class="hero-buttons">
 
-<a href="#contact"
-   class="btn btn-primary">
+<a
+    href="#ai"
+    class="btn btn-gold"
+>
+گفتگو با دستیار قطعات ✦
+</a>
+
+<a
+    href="#request"
+    class="btn btn-dark"
+>
 درخواست تأمین قطعه
 </a>
 
-<a href="tel:09139801125"
-   class="btn btn-secondary">
-تماس با ما
-</a>
+</div>
+
+<div class="hero-stats">
+
+<div class="stat">
+
+قطعات دشواریاب
+
+<strong>
+پیگیری تأمین
+</strong>
+
+</div>
+
+<div class="stat">
+
+قطعات الکتریکی
+
+<strong>
+راهنمایی اولیه
+</strong>
+
+</div>
+
+<div class="stat">
+
+ارتباط مستقیم
+
+<strong>
+با مجموعه
+</strong>
+
+</div>
 
 </div>
 
@@ -1011,150 +2268,109 @@ footer{
 
 <div class="hero-visual reveal">
 
-<div class="logo-card">
+<div class="hero-glow"></div>
 
-<img src="logo.png"
-     alt="آراز فیدای اسپادانا">
+<div class="hero-ring"></div>
 
-</div>
-
-<div class="float-card float-one">
-<strong>تأمین تخصصی</strong>
-<span>قطعات موردنیاز خودرو</span>
-</div>
-
-<div class="float-card float-two">
-<strong>ارتباط مستقیم</strong>
-<span>برای ثبت درخواست</span>
-</div>
-
-</div>
+<img
+    class="hero-logo"
+    src="logo.png"
+    alt="آراز فیدای اسپادانا"
+>
 
 </div>
 
 </section>
 
 
-<!-- ================= STATS ================= -->
-
-<div class="stats">
-
-<div class="container stats-grid">
-
-<div class="stat">
-<strong>تخصصی</strong>
-<span>در حوزه قطعات خودرو</span>
-</div>
-
-<div class="stat">
-<strong>سریع</strong>
-<span>در دریافت و بررسی درخواست</span>
-</div>
-
-<div class="stat">
-<strong>مستقیم</strong>
-<span>راه ارتباطی با مجموعه</span>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 
 <section id="about">
-
-<div class="container about-grid">
-
-<div class="about-box reveal">
-
-<h3>
-آراز فیدای اسپادانا
-</h3>
-
-<p>
-هدف ما ایجاد یک مسیر ساده و حرفه‌ای برای مشتریانی است که به دنبال قطعات خودرو هستند؛ به‌خصوص زمانی که قطعه موردنظر به‌راحتی در بازار پیدا نمی‌شود.
-</p>
-
-<div class="about-list">
-
-<div>
-<div class="check">✓</div>
-<span>دریافت مشخصات و درخواست قطعه</span>
-</div>
-
-<div>
-<div class="check">✓</div>
-<span>بررسی نیاز و مشخصات فنی</span>
-</div>
-
-<div>
-<div class="check">✓</div>
-<span>هماهنگی با تأمین‌کنندگان</span>
-</div>
-
-<div>
-<div class="check">✓</div>
-<span>پیگیری فرآیند تأمین</span>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="section-head reveal">
-
-<div class="section-label">
-درباره مجموعه
-</div>
-
-<h2>
-یک مسیر ساده‌تر برای پیدا کردن قطعه موردنیاز
-</h2>
-
-<p>
-گاهی پیدا کردن یک قطعه خاص خودرو، مخصوصاً قطعات تخصصی یا کمیاب، می‌تواند زمان‌بر باشد. آراز فیدای اسپادانا تلاش می‌کند با دریافت درخواست مشتری و هماهنگی با منابع تأمین، این فرآیند را ساده‌تر و منظم‌تر کند.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= SERVICES ================= -->
-
-<section id="services" class="services">
 
 <div class="container">
 
 <div class="section-head reveal">
 
 <div class="section-label">
-خدمات ما
+ABOUT
 </div>
 
 <h2>
-خدماتی برای ساده‌تر شدن فرآیند تأمین
+تأمین قطعه با یک تجربه دیجیتال متفاوت
 </h2>
 
 <p>
-تمرکز مجموعه بر دریافت نیاز مشتری، بررسی قطعه و هماهنگی فرآیند تهیه آن است.
+یک نقطه شروع ساده برای زمانی که دنبال قطعه‌ای هستید
+و می‌خواهید اطلاعات موردنیاز خود را سریع‌تر جمع‌آوری کنید.
 </p>
 
 </div>
 
 
-<div class="services-grid">
+<div class="about-grid">
+
+<div class="panel about-text reveal">
+
+<h3>
+آراز فیدای اسپادانا
+</h3>
+
+<p>
+
+آراز فیدای اسپادانا در زمینه تأمین قطعات یدکی خودرو فعالیت می‌کند
+و با دریافت درخواست مشتری و هماهنگی با تأمین‌کنندگان،
+در تأمین قطعات به‌ویژه قطعات دشواریاب و الکتریکی کمک می‌کند.
+
+</p>
+
+</div>
 
 
-<div class="service reveal">
+<div class="panel about-logo reveal">
 
-<div class="icon">
-⚙
+<img
+    src="logo.png"
+    alt="آراز فیدای اسپادانا"
+>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="section-label">
+SERVICES
+</div>
+
+<h2>
+خدمات و مسیرهای تأمین
+</h2>
+
+<p>
+برای شروع استعلام و بررسی قطعات موردنیاز خودرو.
+</p>
+
+</div>
+
+
+<div class="services">
+
+<div class="panel service reveal">
+
+<div class="service-icon">
+⌕
 </div>
 
 <h3>
@@ -1162,92 +2378,44 @@ footer{
 </h3>
 
 <p>
-دریافت درخواست و پیگیری تهیه قطعات موردنیاز خودرو از منابع تأمین.
+دریافت مشخصات قطعه و پیگیری تأمین موردنیاز
+از طریق هماهنگی با تأمین‌کنندگان.
 </p>
 
 </div>
 
 
-<div class="service reveal">
+<div class="panel service reveal">
 
-<div class="icon">
-🔎
+<div class="service-icon">
+⚡
 </div>
 
 <h3>
-قطعات کمیاب و تخصصی
+قطعات الکتریکی
 </h3>
 
 <p>
-کمک به پیدا کردن قطعاتی که تهیه آن‌ها در بازار معمول دشوارتر است.
+راهنمایی اولیه برای شناخت قطعات الکتریکی
+و جمع‌آوری اطلاعات لازم برای استعلام.
 </p>
 
 </div>
 
 
-<div class="service reveal">
+<div class="panel service reveal">
 
-<div class="icon">
-📋
+<div class="service-icon">
+◈
 </div>
 
 <h3>
-بررسی درخواست
+قطعات دشواریاب
 </h3>
 
 <p>
-بررسی اطلاعات و مشخصات قطعه پیش از هماهنگی برای تأمین.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="icon">
-🔌
-</div>
-
-<h3>
-قطعات برقی خودرو
-</h3>
-
-<p>
-پیگیری تأمین قطعات و تجهیزات الکتریکی موردنیاز خودرو.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="icon">
-🤝
-</div>
-
-<h3>
-هماهنگی با تأمین‌کنندگان
-</h3>
-
-<p>
-ایجاد ارتباط و هماهنگی برای پیدا کردن گزینه مناسب تأمین.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="icon">
-📦
-</div>
-
-<h3>
-پیگیری فرآیند تأمین
-</h3>
-
-<p>
-پیگیری مراحل درخواست از زمان ثبت نیاز تا هماهنگی تهیه قطعه.
+برای قطعاتی که پیدا کردن آن‌ها سخت‌تر است،
+اطلاعات دقیق‌تر و درخواست ساختاریافته‌تر ارسال کنید.
 </p>
 
 </div>
@@ -1259,24 +2427,25 @@ footer{
 </section>
 
 
-<!-- ================= WHY US ================= -->
+<!-- WHY -->
 
-<section>
+<section id="why">
 
 <div class="container">
 
 <div class="section-head reveal">
 
 <div class="section-label">
-چرا آراز فیدای؟
+WHY ARAZ
 </div>
 
 <h2>
-تمرکز روی نیاز واقعی مشتری
+ترکیب ارتباط انسانی و ابزار هوشمند
 </h2>
 
 <p>
-در فرآیند تأمین قطعه، شناخت دقیق نیاز و ارتباط مناسب با منابع تأمین اهمیت زیادی دارد.
+تجربه‌ای طراحی شده برای اینکه قبل از درخواست تأمین،
+اطلاعات قطعه را بهتر آماده کنید.
 </p>
 
 </div>
@@ -1284,70 +2453,93 @@ footer{
 
 <div class="why-grid">
 
-<div class="why-card reveal">
+<div class="panel why-image reveal">
 
-<div class="why-number">
-01 / بررسی
+<img
+    src="logo.png"
+    alt="آراز فیدای اسپادانا"
+>
+
 </div>
 
+
+<div class="panel why-text reveal">
+
 <h3>
-توجه به مشخصات قطعه
+کمتر جست‌وجو، اطلاعات بهتر
 </h3>
 
 <p>
-برای رسیدن به گزینه مناسب، اطلاعات قطعه و نیاز مشتری در ابتدای فرآیند بررسی می‌شود.
+سایت طوری طراحی شده که قبل از تماس یا ثبت درخواست،
+بتوانید سؤال‌های اولیه خود را مطرح و مشخصات قطعه را منظم کنید.
 </p>
 
+
+<div class="benefits">
+
+<div class="benefit">
+
+<div class="check">
+✓
 </div>
 
+<div>
 
-<div class="why-card reveal">
+<strong>
+ثبت اطلاعات دقیق‌تر
+</strong>
 
-<div class="why-number">
-02 / هماهنگی
-</div>
-
-<h3>
-ارتباط با منابع تأمین
-</h3>
-
-<p>
-پس از مشخص شدن نیاز، فرآیند هماهنگی برای پیدا کردن گزینه‌های تأمین انجام می‌شود.
-</p>
+<span>
+مدل خودرو، قطعه، شماره فنی و توضیحات را یکجا آماده کنید.
+</span>
 
 </div>
-
-
-<div class="why-card reveal">
-
-<div class="why-number">
-03 / پیگیری
-</div>
-
-<h3>
-پیگیری درخواست
-</h3>
-
-<p>
-درخواست مشتری در مسیر تأمین پیگیری می‌شود تا فرآیند منظم‌تر انجام شود.
-</p>
 
 </div>
 
 
-<div class="why-card reveal">
+<div class="benefit">
 
-<div class="why-number">
-04 / ارتباط
+<div class="check">
+✓
 </div>
 
-<h3>
-دسترسی آسان
-</h3>
+<div>
 
-<p>
-برای ثبت درخواست یا دریافت اطلاعات بیشتر، راه‌های ارتباطی مستقیم در اختیار مشتری قرار دارد.
-</p>
+<strong>
+دستیار گفت‌وگویی
+</strong>
+
+<span>
+به‌جای فرم‌های خشک، با یک رابط مکالمه‌ای درباره قطعه سؤال کنید.
+</span>
+
+</div>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div>
+
+<strong>
+مسیر روشن برای ارتباط
+</strong>
+
+<span>
+درخواست را ارسال کنید یا مستقیماً با مجموعه تماس بگیرید.
+</span>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1358,35 +2550,69 @@ footer{
 </section>
 
 
-<!-- ================= PROCESS ================= -->
+<!-- PROCESS -->
 
-<section id="process" class="process">
+<section id="process">
 
 <div class="container">
 
 <div class="section-head reveal">
 
 <div class="section-label">
-فرآیند همکاری
+PROCESS
 </div>
 
 <h2>
-از درخواست تا تأمین
+از سؤال تا درخواست تأمین
 </h2>
 
 <p>
-ثبت درخواست اولیه ساده است و مراحل بعدی بر اساس مشخصات قطعه پیگیری می‌شود.
+چهار مرحله ساده برای آماده‌کردن یک درخواست بهتر.
 </p>
 
 </div>
 
 
-<div class="process-grid">
+<div class="process">
 
-<div class="step reveal">
+<div class="panel process-card reveal">
 
-<div class="step-number">
-۱
+<div class="process-number">
+01
+</div>
+
+<h3>
+توضیح نیاز
+</h3>
+
+<p>
+نام قطعه یا سؤال خود را مطرح کنید.
+</p>
+
+</div>
+
+
+<div class="panel process-card reveal">
+
+<div class="process-number">
+02
+</div>
+
+<h3>
+تکمیل مشخصات
+</h3>
+
+<p>
+مدل خودرو، شماره فنی و اطلاعات تکمیلی را آماده کنید.
+</p>
+
+</div>
+
+
+<div class="panel process-card reveal">
+
+<div class="process-number">
+03
 </div>
 
 <h3>
@@ -1394,58 +2620,24 @@ footer{
 </h3>
 
 <p>
-مشخصات قطعه موردنیاز خود را برای ما ارسال کنید.
+درخواست تأمین قطعه را از طریق فرم ارسال کنید.
 </p>
 
 </div>
 
 
-<div class="step reveal">
+<div class="panel process-card reveal">
 
-<div class="step-number">
-۲
+<div class="process-number">
+04
 </div>
 
 <h3>
-بررسی مشخصات
+پیگیری تأمین
 </h3>
 
 <p>
-اطلاعات قطعه و نیاز شما بررسی و مشخص می‌شود.
-</p>
-
-</div>
-
-
-<div class="step reveal">
-
-<div class="step-number">
-۳
-</div>
-
-<h3>
-هماهنگی تأمین
-</h3>
-
-<p>
-برای پیدا کردن گزینه مناسب با منابع تأمین هماهنگی می‌شود.
-</p>
-
-</div>
-
-
-<div class="step reveal">
-
-<div class="step-number">
-۴
-</div>
-
-<h3>
-پیگیری درخواست
-</h3>
-
-<p>
-نتیجه و وضعیت درخواست از طریق ارتباط با مشتری پیگیری می‌شود.
+درخواست برای هماهنگی با تأمین‌کنندگان پیگیری می‌شود.
 </p>
 
 </div>
@@ -1457,26 +2649,234 @@ footer{
 </section>
 
 
-<!-- ================= CTA ================= -->
+<!-- =====================================================
+     AI
+===================================================== -->
 
-<section class="cta">
+<section id="ai">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="section-label">
+AI PARTS ASSISTANT
+</div>
+
+<h2>
+دستیار هوشمند قطعات
+</h2>
+
+<p>
+سؤال خود را طبیعی بنویسید؛ دستیار می‌تواند برای شناخت اولیه قطعه،
+اطلاعات لازم برای استعلام و پرسش‌های فنی اولیه راهنمایی کند.
+</p>
+
+</div>
+
+
+<div class="ai-layout">
+
+
+<!-- AI INFO -->
+
+<div class="ai-info reveal">
+
+<div class="ai-status">
+
+<i></i>
+
+دستیار آماده گفتگوست
+
+</div>
+
+
+<h3>
+
+یک سؤال بپرس.
+
+<br>
+
+از قطعه شروع کن.
+
+</h3>
+
+
+<p>
+
+نام قطعه، مدل خودرو، شماره فنی یا علائم خرابی را بنویس.
+اگر اطلاعات کافی نباشد، دستیار می‌تواند مشخصات موردنیاز را از شما بپرسد.
+
+</p>
+
+
+<div class="question-list">
+
+<button
+    class="question"
+    data-question="برای شناسایی دقیق یک قطعه چه اطلاعاتی لازم است؟"
+>
+برای شناسایی دقیق قطعه چه اطلاعاتی لازم است؟
+</button>
+
+<button
+    class="question"
+    data-question="اگر شماره فنی قطعه را داشته باشم چطور بررسی کنم؟"
+>
+اگر شماره فنی داشته باشم چطور بررسی کنم؟
+</button>
+
+<button
+    class="question"
+    data-question="برای استعلام یک قطعه خودرو چه اطلاعاتی بفرستم؟"
+>
+برای استعلام قطعه چه اطلاعاتی بفرستم؟
+</button>
+
+<button
+    class="question"
+    data-question="برای قطعات الکتریکی خودرو چه اطلاعاتی لازم است؟"
+>
+برای قطعات الکتریکی چه اطلاعاتی لازم است؟
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CHAT -->
+
+<div class="panel chat reveal">
+
+<div class="chat-header">
+
+<div class="ai-user">
+
+<div class="ai-avatar">
+AI
+</div>
+
+<div>
+
+<strong>
+دستیار آراز
+</strong>
+
+<small>
+راهنمای هوشمند قطعات خودرو
+</small>
+
+</div>
+
+</div>
+
+<div class="chat-online">
+● آنلاین
+</div>
+
+</div>
+
+
+<div
+    class="chat-messages"
+    id="chatMessages"
+>
+
+<div class="message bot">
+
+سلام 👋
+
+من دستیار هوشمند آراز هستم.
+
+می‌توانی نام قطعه، مدل خودرو،
+شماره فنی یا علائم خرابی را بگویی.
+
+اگر اطلاعات کافی نباشد،
+بهت می‌گویم چه مشخصاتی لازم است.
+
+</div>
+
+</div>
+
+
+<div class="chat-input-area">
+
+<textarea
+    id="chatInput"
+    class="chat-input"
+    placeholder="مثلاً: برای پژو 206 دنبال سنسور اکسیژن هستم..."
+></textarea>
+
+<button
+    id="sendButton"
+    class="send-button"
+>
+↑
+</button>
+
+</div>
+
+
+<div class="chat-footer">
+
+<button id="newChat">
+گفتگوی جدید
+</button>
+
+<button id="apiButton">
+تنظیم اتصال AI
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section>
 
 <div class="container">
 
 <div class="cta-box reveal">
 
+<div>
+
 <h2>
-قطعه موردنیازتان را پیدا نمی‌کنید؟
+قطعه دشواریاب دارید؟
 </h2>
 
 <p>
-مشخصات قطعه را برای ما ارسال کنید تا درخواست شما بررسی و فرآیند تأمین پیگیری شود.
+اطلاعات قطعه را آماده کنید و درخواست تأمین را ارسال کنید.
 </p>
 
-<a href="#contact"
-   class="btn btn-primary">
-ثبت درخواست
+</div>
+
+
+<div class="cta-actions">
+
+<a
+    href="#request"
+    class="btn btn-gold"
+>
+شروع درخواست
 </a>
+
+<a
+    href="tel:09139801125"
+    class="btn btn-dark"
+>
+تماس مستقیم
+</a>
+
+</div>
 
 </div>
 
@@ -1485,167 +2885,223 @@ footer{
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- REQUEST -->
 
-<section id="contact">
+<section id="request">
 
 <div class="container">
 
 <div class="section-head reveal">
 
 <div class="section-label">
-ارتباط با ما
+REQUEST PART
 </div>
 
 <h2>
-برای ثبت درخواست با ما در تماس باشید
+درخواست تأمین قطعه
 </h2>
 
 <p>
-برای استعلام، درخواست تأمین قطعه یا دریافت اطلاعات بیشتر می‌توانید با مجموعه آراز فیدای اسپادانا تماس بگیرید.
+هرچه اطلاعات دقیق‌تر باشد، بررسی درخواست ساده‌تر خواهد بود.
 </p>
 
 </div>
 
 
-<div class="contact-grid">
+<div class="request-grid">
 
 
-<div class="contact-info reveal">
+<!-- FORM -->
 
-<div class="contact-card">
-
-<small>
-شماره تماس اول
-</small>
-
-<a href="tel:09139801125">
-09139801125
-</a>
-
-</div>
-
-
-<div class="contact-card">
-
-<small>
-شماره تماس دوم
-</small>
-
-<a href="tel:09138810016">
-09138810016
-</a>
-
-</div>
-
-
-<div class="contact-card">
-
-<small>
-ایمیل
-</small>
-
-<a href="mailto:info.arazfidar@gmail.com">
-info.arazfidar@gmail.com
-</a>
-
-</div>
-
-
-<div class="contact-card">
-
-<small>
-نام مجموعه
-</small>
-
-<div>
-آراز فیدای اسپادانا
-</div>
-
-</div>
-
-</div>
-
-
-<div class="contact-form reveal">
+<form
+    class="panel form-box reveal"
+    id="requestForm"
+>
 
 <h3>
-ارسال درخواست
+مشخصات درخواست
 </h3>
 
-<form id="requestForm">
 
 <div class="form-grid">
 
-<div class="input-group">
+
+<div class="field">
 
 <label>
 نام و نام خانوادگی
 </label>
 
 <input
-type="text"
-id="name"
-placeholder="نام شما"
-required>
+    id="name"
+    required
+    placeholder="نام شما"
+>
 
 </div>
 
 
-<div class="input-group">
+<div class="field">
 
 <label>
 شماره تماس
 </label>
 
 <input
-type="tel"
-id="phone"
-placeholder="شماره تماس"
-required>
+    id="phone"
+    required
+    type="tel"
+    placeholder="0913..."
+>
 
 </div>
 
 
-<div class="input-group full">
+<div class="field">
 
 <label>
-نام یا مشخصات قطعه
+خودرو / مدل
 </label>
 
 <input
-type="text"
-id="part"
-placeholder="مثلاً نام قطعه، مدل خودرو، شماره فنی و..."
-required>
+    id="car"
+    placeholder="مثلاً پژو 206 تیپ 5"
+>
 
 </div>
 
 
-<div class="input-group full">
+<div class="field">
+
+<label>
+نام یا شماره فنی قطعه
+</label>
+
+<input
+    id="part"
+    required
+    placeholder="نام قطعه یا Part Number"
+>
+
+</div>
+
+
+<div class="field full">
 
 <label>
 توضیحات
 </label>
 
 <textarea
-id="message"
-placeholder="توضیحات تکمیلی درخواست خود را بنویسید..."></textarea>
+    id="details"
+    placeholder="هر اطلاعاتی که درباره قطعه دارید..."
+></textarea>
 
 </div>
 
-</div>
 
+<div class="field full">
 
 <button
-type="submit"
-class="btn btn-primary form-button">
-
-ارسال درخواست
-
+    class="btn btn-gold"
+    style="width:100%;border:0"
+    type="submit"
+>
+ارسال درخواست از طریق ایمیل
 </button>
 
+</div>
+
+</div>
+
 </form>
+
+
+<!-- CONTACT -->
+
+<div class="panel contact-box reveal">
+
+<h3>
+ارتباط با آراز
+</h3>
+
+
+<div class="contact-list">
+
+
+<a
+    class="contact-item"
+    href="tel:09139801125"
+>
+
+<div class="contact-icon">
+☎
+</div>
+
+<div>
+
+<small>
+شماره تماس
+</small>
+
+<strong>
+09139801125
+</strong>
+
+</div>
+
+</a>
+
+
+<a
+    class="contact-item"
+    href="tel:09138810016"
+>
+
+<div class="contact-icon">
+☎
+</div>
+
+<div>
+
+<small>
+شماره تماس
+</small>
+
+<strong>
+09138810016
+</strong>
+
+</div>
+
+</a>
+
+
+<a
+    class="contact-item"
+    href="mailto:info.arazfidar@gmail.com"
+>
+
+<div class="contact-icon">
+✉
+</div>
+
+<div>
+
+<small>
+ایمیل
+</small>
+
+<strong>
+info.arazfidar@gmail.com
+</strong>
+
+</div>
+
+</a>
+
+
+</div>
 
 </div>
 
@@ -1658,37 +3114,49 @@ class="btn btn-primary form-button">
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-<div class="container footer-grid">
+<div class="container footer-inner">
 
 <div class="footer-brand">
 
-<img src="logo.png"
-     alt="لوگوی آراز فیدای اسپادانا">
+<img
+    src="logo.png"
+    alt="آراز فیدای اسپادانا"
+>
+
+آراز فیدای اسپادانا
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="#about">
+معرفی
+</a>
+
+<a href="#services">
+خدمات
+</a>
+
+<a href="#ai">
+دستیار AI
+</a>
+
+<a href="#request">
+درخواست
+</a>
+
+</div>
+
 
 <div>
-
-<strong>
-آراز فیدای اسپادانا
-</strong>
-
-<span>
-تأمین قطعات خودرو
-</span>
-
-</div>
-
-</div>
-
-
-<div class="footer-copy">
-
-© <span id="year"></span>
-آراز فیدای اسپادانا — تمامی حقوق محفوظ است.
-
+© 2026 آراز فیدای اسپادانا
 </div>
 
 </div>
@@ -1696,128 +3164,840 @@ class="btn btn-primary form-button">
 </footer>
 
 
-<button id="topBtn">
+<button
+    class="top-button"
+    id="topButton"
+>
 ↑
 </button>
 
 
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
 <script>
 
-/* ================= MOBILE MENU ================= */
+/* =========================================================
+   CONFIGURATION
+========================================================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+/*
+============================================================
 
-menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-});
+اتصال واقعی هوش مصنوعی
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+برای سایت آنلاین بهتر است یک Backend داشته باشید.
 
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-    });
+مثلاً:
 
-});
+AI_CONFIG.endpoint = "https://your-domain.com/api/chat";
 
+سرور شما باید درخواست زیر را دریافت کند:
 
-/* ================= REVEAL ================= */
-
-const revealElements =
-document.querySelectorAll(".reveal");
-
-const observer =
-new IntersectionObserver(
-(entries) => {
-
-    entries.forEach(entry => {
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-
-            observer.unobserve(entry.target);
-
-        }
-
-    });
-
-},
 {
-    threshold:.12
+    "message": "سؤال کاربر",
+    "system": "دستور سیستم"
 }
-);
 
-revealElements.forEach(element => {
-    observer.observe(element);
-});
+و جواب را به یکی از شکل‌های زیر برگرداند:
+
+{
+    "answer": "پاسخ هوش مصنوعی"
+}
+
+یا:
+
+{
+    "output_text": "پاسخ هوش مصنوعی"
+}
+
+مهم:
+API KEY را مستقیماً داخل این فایل HTML قرار ندهید.
+
+============================================================
+*/
+
+const AI_CONFIG = {
+
+    endpoint: "",
+
+    system: `
+تو دستیار هوشمند آراز فیدای اسپادانا هستی.
+
+آراز فیدای اسپادانا در زمینه تأمین قطعات یدکی خودرو فعالیت می‌کند
+و با دریافت درخواست مشتری و هماهنگی با تأمین‌کنندگان،
+در تأمین قطعات به‌ویژه قطعات دشواریاب و الکتریکی کمک می‌کند.
+
+به فارسی پاسخ بده.
+
+برای شناسایی قطعه در صورت نیاز درباره موارد زیر سؤال کن:
+
+- مدل خودرو
+- تیپ خودرو
+- سال ساخت
+- موتور
+- نام قطعه
+- شماره فنی
+- علائم خرابی
+- نوشته‌های روی قطعه
+
+قیمت، موجودی، اصالت و مشخصات قطعه را بدون اطلاعات معتبر قطعی اعلام نکن.
+
+اگر اطلاعات کافی نیست، سؤال تکمیلی بپرس.
+
+پاسخ‌ها کاربردی، دقیق و قابل فهم باشند.
+`
+
+};
 
 
-/* ================= TOP BUTTON ================= */
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-const topBtn =
-document.getElementById("topBtn");
+const header =
+    document.getElementById("header");
 
-window.addEventListener("scroll", () => {
+const mobileMenu =
+    document.getElementById("mobileMenu");
 
-    if(window.scrollY > 500){
+const navLinks =
+    document.getElementById("navLinks");
 
-        topBtn.style.display = "flex";
-        topBtn.style.alignItems = "center";
-        topBtn.style.justifyContent = "center";
+const chatMessages =
+    document.getElementById("chatMessages");
 
-    }else{
+const chatInput =
+    document.getElementById("chatInput");
 
-        topBtn.style.display = "none";
+const sendButton =
+    document.getElementById("sendButton");
+
+const newChat =
+    document.getElementById("newChat");
+
+const apiButton =
+    document.getElementById("apiButton");
+
+const topButton =
+    document.getElementById("topButton");
+
+const toast =
+    document.getElementById("toast");
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(
+            () => {
+                toast.classList.remove("show");
+            },
+            2800
+        );
+}
+
+
+/* =========================================================
+   SAFE HTML
+========================================================= */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+/* =========================================================
+   ADD MESSAGE
+========================================================= */
+
+function addMessage(
+    text,
+    type
+){
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message " + type;
+
+    message.innerHTML =
+        escapeHTML(text)
+        .replace(/\n/g,"<br>");
+
+    chatMessages.appendChild(message);
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+    return message;
+}
+
+
+/* =========================================================
+   TYPING
+========================================================= */
+
+function addTyping(){
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message bot";
+
+    message.innerHTML = `
+
+        <div class="typing">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    `;
+
+    chatMessages.appendChild(message);
+
+    chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+    return message;
+}
+
+
+/* =========================================================
+   LOCAL AI FALLBACK
+========================================================= */
+
+/*
+این قسمت باعث می‌شود سایت بدون Backend هم خراب نشود.
+
+برای هوش مصنوعی واقعی:
+AI_CONFIG.endpoint
+را به Backend متصل کنید.
+*/
+
+function localAI(question){
+
+    const q =
+        question
+        .toLowerCase();
+
+
+    if(
+        q.includes("چه اطلاعات") ||
+        q.includes("مشخصات") ||
+        q.includes("استعلام")
+    ){
+
+        return `
+برای استعلام دقیق‌تر قطعه، بهتر است این اطلاعات را بفرستی:
+
+• نام قطعه
+• مدل و تیپ خودرو
+• سال ساخت در صورت اطلاع
+• نوع موتور در صورت اطلاع
+• شماره فنی یا Part Number
+• هر نوشته یا کدی که روی قطعه وجود دارد
+
+اگر قطعه دشواریاب است، عکس قطعه هم می‌تواند برای بررسی اولیه مفید باشد.
+        `.trim();
 
     }
 
-});
 
-topBtn.addEventListener("click", () => {
+    if(
+        q.includes("شماره فنی") ||
+        q.includes("part number") ||
+        q.includes("پارت")
+    ){
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+        return `
+شماره فنی یکی از بهترین اطلاعات برای شناسایی قطعه است.
 
-});
+کد را دقیقاً همان‌طور که روی قطعه یا بسته‌بندی نوشته شده وارد کن.
+در کنار آن مدل و تیپ خودرو را هم بگو تا بررسی دقیق‌تر شود.
+        `.trim();
 
-
-/* ================= YEAR ================= */
-
-document.getElementById("year").textContent =
-new Date().getFullYear();
-
-
-/* ================= REQUEST FORM ================= */
-
-const form =
-document.getElementById("requestForm");
-
-form.addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    const name =
-    document.getElementById("name").value.trim();
-
-    const phone =
-    document.getElementById("phone").value.trim();
-
-    const part =
-    document.getElementById("part").value.trim();
-
-    const message =
-    document.getElementById("message").value.trim();
+    }
 
 
-    const subject =
-    "درخواست تأمین قطعه خودرو - " + part;
+    if(
+        q.includes("الکتریک") ||
+        q.includes("برق") ||
+        q.includes("سنسور")
+    ){
+
+        return `
+برای قطعات الکتریکی فقط نام قطعه کافی نیست.
+
+مدل خودرو، تیپ، موتور در صورت اطلاع،
+شماره فنی و علائم مشاهده‌شده را بنویس.
+
+اگر چراغ خطا یا کد خطا وجود دارد،
+آن را هم ذکر کن.
+        `.trim();
+
+    }
 
 
-    const body =
-`سلام
+    if(
+        q.includes("خراب") ||
+        q.includes("خرابی") ||
+        q.includes("کار نمی")
+    ){
+
+        return `
+برای بررسی اولیه خرابی، نام قطعه و مدل خودرو را بگو
+و توضیح بده دقیقاً چه اتفاقی می‌افتد.
+
+مثلاً:
+- خودرو چه مشکلی دارد؟
+- قطعه چه رفتاری دارد؟
+- چراغ خطایی روشن شده؟
+- مشکل دائمی است یا گاهی اتفاق می‌افتد؟
+        `.trim();
+
+    }
+
+
+    return `
+متوجه شدم.
+
+برای اینکه بتوانم دقیق‌تر راهنمایی کنم،
+لطفاً نام قطعه یا شماره فنی آن را همراه با
+مدل و تیپ خودرو بنویس.
+
+اگر قطعه دشواریاب است،
+هر نوشته یا کدی که روی آن وجود دارد را هم ارسال کن.
+    `.trim();
+}
+
+
+/* =========================================================
+   ASK AI
+========================================================= */
+
+async function askAI(question){
+
+    question =
+        question.trim();
+
+    if(!question)
+        return;
+
+
+    addMessage(
+        question,
+        "user"
+    );
+
+
+    chatInput.value = "";
+
+    chatInput.style.height =
+        "52px";
+
+
+    const typing =
+        addTyping();
+
+
+    /*
+    ==========================================
+    REAL AI BACKEND
+    ==========================================
+    */
+
+    if(
+        AI_CONFIG.endpoint &&
+        AI_CONFIG.endpoint.trim() !== ""
+    ){
+
+        try{
+
+            const response =
+                await fetch(
+                    AI_CONFIG.endpoint,
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                message:
+                                    question,
+
+                                system:
+                                    AI_CONFIG.system
+
+                            })
+                    }
+                );
+
+
+            if(!response.ok){
+
+                throw new Error(
+                    "AI request failed"
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            typing.remove();
+
+
+            const answer =
+                data.answer ||
+                data.output_text ||
+                data.message ||
+                "پاسخی از سرویس هوش مصنوعی دریافت نشد.";
+
+
+            addMessage(
+                answer,
+                "bot"
+            );
+
+
+            return;
+
+        }
+        catch(error){
+
+            console.error(
+                error
+            );
+
+            typing.remove();
+
+            addMessage(
+                "اتصال به هوش مصنوعی برقرار نشد.\n\n"
+                +
+                localAI(question),
+                "bot"
+            );
+
+            return;
+        }
+
+    }
+
+
+    /*
+    ==========================================
+    LOCAL FALLBACK
+    ==========================================
+    */
+
+    await new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                650
+            )
+    );
+
+
+    typing.remove();
+
+
+    addMessage(
+        localAI(question),
+        "bot"
+    );
+
+}
+
+
+/* =========================================================
+   SEND
+========================================================= */
+
+sendButton.addEventListener(
+    "click",
+    () => {
+
+        askAI(
+            chatInput.value
+        );
+
+    }
+);
+
+
+/* ENTER */
+
+chatInput.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Enter" &&
+            !event.shiftKey
+        ){
+
+            event.preventDefault();
+
+            askAI(
+                chatInput.value
+            );
+
+        }
+
+    }
+);
+
+
+/* AUTO HEIGHT */
+
+chatInput.addEventListener(
+    "input",
+    () => {
+
+        chatInput.style.height =
+            "52px";
+
+        chatInput.style.height =
+            Math.min(
+                chatInput.scrollHeight,
+                130
+            ) + "px";
+
+    }
+);
+
+
+/* =========================================================
+   SUGGESTIONS
+========================================================= */
+
+document
+    .querySelectorAll(".question")
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const question =
+                        button.dataset.question;
+
+                    chatInput.value =
+                        question;
+
+                    askAI(question);
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   NEW CHAT
+========================================================= */
+
+newChat.addEventListener(
+    "click",
+    () => {
+
+        chatMessages.innerHTML = "";
+
+        addMessage(
+            `گفتگوی جدید شروع شد.
+
+چه قطعه‌ای را می‌خواهی بررسی کنیم؟`,
+            "bot"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   API SETTING
+========================================================= */
+
+apiButton.addEventListener(
+    "click",
+    () => {
+
+        const endpoint =
+            prompt(
+                "آدرس Endpoint امن هوش مصنوعی را وارد کنید:",
+                AI_CONFIG.endpoint
+            );
+
+
+        if(
+            endpoint === null
+        ){
+
+            return;
+
+        }
+
+
+        AI_CONFIG.endpoint =
+            endpoint.trim();
+
+
+        if(
+            AI_CONFIG.endpoint
+        ){
+
+            showToast(
+                "اتصال هوش مصنوعی تنظیم شد."
+            );
+
+        }
+        else{
+
+            showToast(
+                "حالت پاسخ داخلی فعال شد."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+mobileMenu.addEventListener(
+    "click",
+    () => {
+
+        navLinks.classList.toggle(
+            "open"
+        );
+
+    }
+);
+
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(
+            window.scrollY > 30
+        ){
+
+            header.classList.add(
+                "scrolled"
+            );
+
+        }
+        else{
+
+            header.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+
+        if(
+            window.scrollY > 500
+        ){
+
+            topButton.classList.add(
+                "show"
+            );
+
+        }
+        else{
+
+            topButton.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   TOP
+========================================================= */
+
+topButton.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.1
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element => {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   REQUEST FORM
+========================================================= */
+
+const requestForm =
+    document.getElementById(
+        "requestForm"
+    );
+
+
+requestForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "name"
+            ).value;
+
+
+        const phone =
+            document.getElementById(
+                "phone"
+            ).value;
+
+
+        const car =
+            document.getElementById(
+                "car"
+            ).value;
+
+
+        const part =
+            document.getElementById(
+                "part"
+            ).value;
+
+
+        const details =
+            document.getElementById(
+                "details"
+            ).value;
+
+
+        const body =
+
+`درخواست تأمین قطعه - آراز فیدای اسپادانا
 
 نام و نام خانوادگی:
 ${name}
@@ -1825,42 +4005,39 @@ ${name}
 شماره تماس:
 ${phone}
 
-قطعه موردنیاز:
+خودرو / مدل:
+${car}
+
+نام یا شماره فنی قطعه:
 ${part}
 
 توضیحات:
-${message}
-
-با تشکر`;
-
-
-    const mailto =
-    "mailto:info.arazfidar@gmail.com" +
-    "?subject=" +
-    encodeURIComponent(subject) +
-    "&body=" +
-    encodeURIComponent(body);
+${details}
+`;
 
 
-    window.location.href = mailto;
+        const mailto =
 
-});
+            "mailto:info.arazfidar@gmail.com"
+            +
+            "?subject="
+            +
+            encodeURIComponent(
+                "درخواست تأمین قطعه"
+            )
+            +
+            "&body="
+            +
+            encodeURIComponent(
+                body
+            );
 
 
-/* ================= LOGO ERROR CHECK ================= */
+        window.location.href =
+            mailto;
 
-document.querySelectorAll("img[src='logo.png']")
-.forEach(img => {
-
-    img.addEventListener("error", () => {
-
-        console.warn(
-            "فایل logo.png در کنار index.html پیدا نشد."
-        );
-
-    });
-
-});
+    }
+);
 
 </script>
 
