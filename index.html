@@ -1,2719 +1,1523 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="آراز فیدای اسپادانا | تأمین و پیگیری قطعات خودرو">
+<title>آراز فیدای اسپادانا | تأمین قطعات خودرو</title>
 
-<title>آزمون پایتون مقدماتی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Tahoma, Arial, sans-serif;
-    background: linear-gradient(135deg, #eef2ff, #f8fafc);
-    color: #172033;
-}
-
-.container {
-    max-width: 900px;
-    margin: 25px auto;
-    padding: 10px;
-}
-
-.card {
-    background: white;
-    border-radius: 22px;
-    padding: 28px;
-    box-shadow: 0 12px 35px rgba(15,23,42,.08);
-    margin-bottom: 18px;
-}
-
-.header {
-    text-align: center;
-}
-
-.header h1 {
-    margin: 0;
-    color: #4f46e5;
-    font-size: 30px;
-}
-
-.header p {
-    color: #64748b;
-}
-
-.info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.info input {
-    padding: 14px;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    font-size: 15px;
-    outline: none;
-}
-
-.info input:focus {
-    border-color: #6366f1;
-}
-
-.timer {
-    position: sticky;
-    top: 10px;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #172033;
-    color: white;
-    padding: 14px 20px;
-    border-radius: 16px;
-    margin-bottom: 18px;
-}
-
-.timer strong {
-    font-size: 23px;
-    direction: ltr;
-}
-
-.progress {
-    height: 9px;
-    background: #e2e8f0;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-top: 12px;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: #6366f1;
-    transition: .3s;
-}
-
-.question {
-    display: none;
-}
-
-.question.active {
-    display: block;
-}
-
-.q-number {
-    color: #6366f1;
-    font-weight: bold;
-    margin-bottom: 12px;
-}
-
-.question h2 {
-    font-size: 20px;
-    line-height: 2;
-    margin-top: 0;
-}
-
-.option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: 2px solid #e2e8f0;
-    padding: 15px;
-    border-radius: 13px;
-    margin: 10px 0;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.option:hover {
-    background: #f8faff;
-    border-color: #a5b4fc;
-}
-
-.option.selected {
-    background: #eef2ff;
-    border-color: #6366f1;
-}
-
-.option input {
-    display: none;
-}
-
-.radio {
-    width: 21px;
-    height: 21px;
-    border: 2px solid #94a3b8;
-    border-radius: 50%;
-    flex: none;
-}
-
-.selected .radio {
-    border-color: #6366f1;
-    box-shadow: inset 0 0 0 5px white;
-    background: #6366f1;
-}
-
-.letter {
-    font-weight: bold;
-    direction: ltr;
-    min-width: 25px;
-}
-
-.code {
-    direction: ltr;
-    unicode-bidi: embed;
-    display: inline-block;
-    background: #f1f5f9;
-    padding: 3px 7px;
-    border-radius: 6px;
-    font-family: Consolas, monospace;
-}
-
-.codebox {
-    direction: ltr;
-    text-align: left;
-    background: #111827;
-    color: #f8fafc;
-    padding: 18px;
-    border-radius: 13px;
-    font-family: Consolas, monospace;
-    line-height: 1.8;
-    overflow: auto;
-    margin: 15px 0;
-}
-
-.buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-button {
-    border: 0;
-    border-radius: 12px;
-    padding: 14px 25px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.prev {
-    background: #e2e8f0;
-}
-
-.next {
-    background: #4f46e5;
-    color: white;
-    margin-right: auto;
-}
-
-.finish {
-    background: #16a34a;
-    color: white;
-    margin-right: auto;
-}
-
-.result {
-    display: none;
-    text-align: center;
-}
-
-.score {
-    font-size: 52px;
-    color: #4f46e5;
-    font-weight: bold;
-    margin: 20px;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 10px;
-}
-
-.stat {
-    padding: 18px 8px;
-    background: #f8fafc;
-    border-radius: 14px;
-}
-
-.stat b {
-    display: block;
-    font-size: 25px;
-    margin-top: 7px;
-}
-
-.green {
-    color: #16a34a;
-}
-
-.red {
-    color: #dc2626;
-}
-
-.orange {
-    color: #d97706;
-}
-
-.review {
-    text-align: right;
-    margin-top: 30px;
-}
-
-.review-item {
-    background: #fff7ed;
-    border-right: 5px solid #f97316;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 10px 0;
-    line-height: 2;
-}
-
-.restart {
-    background: #172033;
-    color: white;
-    margin-top: 20px;
-}
-
-.pdf-button {
-    background: #7c3aed;
-    color: white;
-    margin: 20px 0 25px 0;
-    width: 100%;
-    font-size: 17px;
-    padding: 16px;
-}
-
-.pdf-button:hover {
-    background: #6d28d9;
-}
-
-/* =========================
-   PDF REPORT
-========================= */
-
-.pdf-page {
-    font-family: Tahoma, Arial, sans-serif;
-    direction: rtl;
-    background: #f8fafc;
-    padding: 30px;
-    color: #172033;
-}
-
-.pdf-header {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    text-align: center;
-    margin-bottom: 20px;
-    border: 2px solid #e2e8f0;
-}
-
-.pdf-header h1 {
-    color: #4f46e5;
-}
-
-.pdf-score {
-    font-size: 45px;
-    color: #4f46e5;
-    font-weight: bold;
-    margin: 15px;
-}
-
-.pdf-stats {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.pdf-stat {
-    background: #f8fafc;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.pdf-stat b {
-    display: block;
-    font-size: 24px;
-    margin-top: 5px;
-}
-
-.pdf-question {
-    background: white;
-    border-radius: 18px;
-    padding: 22px;
-    margin: 18px 0;
-    border: 2px solid #e2e8f0;
-    page-break-inside: avoid;
-}
-
-.pdf-question.correct {
-    border-color: #22c55e;
-}
-
-.pdf-question.wrong {
-    border-color: #ef4444;
-}
-
-.pdf-question.empty {
-    border-color: #f59e0b;
-}
-
-.pdf-question-title {
-    font-size: 19px;
-    font-weight: bold;
-    line-height: 2;
-    margin-bottom: 15px;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Vazirmatn,sans-serif;
+background:#06101d;
+color:#fff;
+line-height:1.9;
+overflow-x:hidden
+}
+a{text-decoration:none;color:inherit}
+button,input,textarea{font-family:inherit}
+:root{
+--bg:#06101d;
+--bg2:#091827;
+--gold:#d8ad58;
+--gold2:#f0d08a;
+--muted:#a9b5c5;
+--border:rgba(255,255,255,.1);
+--green:#39d98a;
+--max:1200px
+}
+body:before{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+border-radius:50%;
+background:rgba(216,173,88,.08);
+filter:blur(100px);
+top:-300px;
+right:-200px;
+pointer-events:none;
+z-index:-1
+}
+body:after{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+border-radius:50%;
+background:rgba(38,110,180,.08);
+filter:blur(110px);
+bottom:-250px;
+left:-200px;
+pointer-events:none;
+z-index:-1
+}
+.container{
+width:min(92%,var(--max));
+margin:auto
+}
+header{
+position:fixed;
+top:0;
+right:0;
+width:100%;
+z-index:1000;
+transition:.35s
+}
+header.scrolled{
+background:rgba(6,16,29,.85);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08)
+}
+.navbar{
+height:88px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
+}
+.brand{
+display:flex;
+align-items:center;
+gap:13px
+}
+.brand-logo{
+width:58px;
+height:58px;
+object-fit:contain;
+border-radius:15px;
+padding:5px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1)
+}
+.brand-text strong{
+display:block;
+font-size:15px;
+font-weight:800
+}
+.brand-text span{
+display:block;
+font-size:10px;
+color:var(--gold2)
+}
+.nav-links{
+display:flex;
+gap:5px;
+align-items:center
+}
+.nav-links a{
+padding:10px 13px;
+border-radius:10px;
+font-size:12px;
+color:#d8e0ea;
+transition:.25s
+}
+.nav-links a:hover{
+background:rgba(255,255,255,.06);
+color:var(--gold2)
+}
+.header-call{
+background:linear-gradient(135deg,#efd18a,#b88732);
+color:#07111e;
+padding:11px 18px;
+border-radius:12px;
+font-size:11px;
+font-weight:800;
+transition:.3s
+}
+.header-call:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 35px rgba(216,173,88,.2)
+}
+.menu-btn{
+display:none;
+width:44px;
+height:44px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.04);
+color:white;
+border-radius:12px;
+font-size:20px;
+cursor:pointer
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding-top:100px;
+position:relative;
+overflow:hidden
+}
+.hero-grid{
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+background-size:70px 70px;
+mask-image:linear-gradient(to bottom,black,transparent 85%)
+}
+.hero-content{
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:70px;
+align-items:center
+}
+.hero-copy{
+animation:fadeUp .9s ease both
+}
+.eyebrow{
+display:inline-flex;
+align-items:center;
+gap:9px;
+padding:8px 13px;
+border:1px solid rgba(216,173,88,.25);
+background:rgba(216,173,88,.07);
+border-radius:100px;
+color:var(--gold2);
+font-size:11px;
+margin-bottom:22px
+}
+.eyebrow i{
+width:7px;
+height:7px;
+border-radius:50%;
+background:var(--green);
+box-shadow:0 0 12px var(--green)
+}
+.hero h1{
+font-size:clamp(38px,5vw,68px);
+line-height:1.3;
+font-weight:900;
+letter-spacing:-2px
+}
+.hero h1 span{color:var(--gold2)}
+.hero-description{
+margin-top:22px;
+max-width:650px;
+color:var(--muted);
+font-size:15px;
+line-height:2.2
+}
+.hero-buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:32px
+}
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:9px;
+padding:14px 22px;
+border-radius:13px;
+font-size:12px;
+font-weight:700;
+border:0;
+cursor:pointer;
+transition:.3s
+}
+.btn-primary{
+background:linear-gradient(135deg,#efd18a,#b88732);
+color:#07111e;
+box-shadow:0 15px 35px rgba(216,173,88,.13)
+}
+.btn-primary:hover{
+transform:translateY(-3px);
+box-shadow:0 20px 45px rgba(216,173,88,.22)
+}
+.btn-outline{
+border:1px solid rgba(255,255,255,.14);
+background:rgba(255,255,255,.04);
+color:white
+}
+.btn-outline:hover{
+background:rgba(255,255,255,.08);
+transform:translateY(-3px)
+}
+
+.hero-visual{
+min-height:500px;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center
+}
+.visual-ring{
+position:absolute;
+width:420px;
+height:420px;
+border-radius:50%;
+border:1px solid rgba(216,173,88,.15);
+box-shadow:0 0 100px rgba(216,173,88,.06)
+}
+.visual-ring:before{
+content:"";
+position:absolute;
+inset:35px;
+border-radius:50%;
+border:1px dashed rgba(216,173,88,.17);
+animation:rotate 30s linear infinite
+}
+.logo-card{
+width:270px;
+height:270px;
+border-radius:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.025));
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 35px 100px rgba(0,0,0,.35);
+backdrop-filter:blur(15px);
+animation:float 5s ease-in-out infinite;
+position:relative
+}
+.logo-card img{
+width:190px;
+height:190px;
+object-fit:contain
+}
+.floating-card{
+position:absolute;
+background:rgba(10,23,39,.8);
+border:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+border-radius:15px;
+padding:12px 15px;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:10px;
+box-shadow:0 20px 45px rgba(0,0,0,.25)
+}
+.floating-card .icon{
+width:35px;
+height:35px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(216,173,88,.12);
+color:var(--gold2)
+}
+.floating-1{top:55px;right:5px}
+.floating-2{bottom:65px;left:0}
+.floating-3{bottom:20px;right:55px}
+
+.stats{
+margin-top:-40px;
+position:relative;
+z-index:3
+}
+.stats-box{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+background:rgba(255,255,255,.035);
+border:1px solid var(--border);
+border-radius:22px;
+overflow:hidden;
+backdrop-filter:blur(12px)
+}
+.stat{
+padding:25px;
+text-align:center;
+position:relative
+}
+.stat:not(:last-child):after{
+content:"";
+position:absolute;
+top:20%;
+bottom:20%;
+left:0;
+width:1px;
+background:var(--border)
+}
+.stat strong{
+display:block;
+color:var(--gold2);
+font-size:27px;
+font-weight:900
+}
+.stat span{
+color:var(--muted);
+font-size:10px
+}
+
+section{
+padding:120px 0;
+position:relative
+}
+.section-head{
+max-width:720px;
+margin-bottom:50px
+}
+.section-label{
+color:var(--gold2);
+font-size:11px;
+font-weight:700;
+display:block;
+margin-bottom:10px
+}
+.section-title{
+font-size:clamp(28px,4vw,44px);
+line-height:1.45;
+font-weight:900
+}
+.section-description{
+color:var(--muted);
+margin-top:13px;
+font-size:13px
+}
+
+.about-grid{
+display:grid;
+grid-template-columns:.85fr 1.15fr;
+gap:70px;
+align-items:center
+}
+.about-image{
+min-height:430px;
+border-radius:30px;
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(circle at 30% 30%,rgba(216,173,88,.18),transparent 35%),
+linear-gradient(145deg,#10263d,#07111f);
+border:1px solid var(--border)
+}
+.about-image:before{
+content:"";
+position:absolute;
+inset:25px;
+border:1px solid rgba(216,173,88,.14);
+border-radius:22px
+}
+.about-logo{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center
+}
+.about-logo img{
+width:190px;
+height:190px;
+object-fit:contain
+}
+.about-content p{
+color:var(--muted);
+font-size:13px;
+line-height:2.25;
+margin-bottom:18px
+}
+.check-list{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:13px;
+margin-top:28px
+}
+.check{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:11px
+}
+.check-icon{
+width:25px;
+height:25px;
+border-radius:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(57,217,138,.09);
+color:var(--green)
+}
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+.service-card{
+min-height:245px;
+padding:28px;
+border-radius:22px;
+background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+border:1px solid var(--border);
+position:relative;
+overflow:hidden;
+transition:.35s
+}
+.service-card:hover{
+transform:translateY(-8px);
+border-color:rgba(216,173,88,.28);
+box-shadow:0 25px 60px rgba(0,0,0,.22)
+}
+.service-icon{
+width:54px;
+height:54px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:15px;
+background:rgba(216,173,88,.09);
+border:1px solid rgba(216,173,88,.15);
+color:var(--gold2);
+font-size:22px;
+margin-bottom:20px
+}
+.service-card h3{
+font-size:15px;
+margin-bottom:9px
+}
+.service-card p{
+color:var(--muted);
+font-size:11px;
+line-height:2
+}
+.service-number{
+position:absolute;
+bottom:12px;
+left:20px;
+font-size:42px;
+font-weight:900;
+color:rgba(255,255,255,.035)
+}
+
+.why{
+background:rgba(255,255,255,.018);
+border-top:1px solid rgba(255,255,255,.04);
+border-bottom:1px solid rgba(255,255,255,.04)
+}
+.why-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px
+}
+.why-card{
+padding:28px 20px;
+border:1px solid var(--border);
+border-radius:20px;
+background:rgba(255,255,255,.025);
+transition:.3s
+}
+.why-card:hover{
+background:rgba(255,255,255,.05);
+transform:translateY(-5px)
+}
+.why-icon{
+font-size:24px;
+color:var(--gold2)
+}
+.why-card strong{
+display:block;
+font-size:14px;
+margin:15px 0 8px
+}
+.why-card p{
+color:var(--muted);
+font-size:10px;
+line-height:2
+}
+
+.process-line{
+position:absolute;
+top:265px;
+right:10%;
+left:10%;
+height:1px;
+background:linear-gradient(90deg,transparent,rgba(216,173,88,.35),transparent)
+}
+.process-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+position:relative
+}
+.process-step{text-align:center}
+.step-number{
+width:62px;
+height:62px;
+margin:auto;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#091827;
+border:1px solid rgba(216,173,88,.35);
+color:var(--gold2);
+font-weight:900;
+position:relative;
+z-index:2;
+box-shadow:0 0 0 8px #06101d
+}
+.process-step h3{
+margin-top:25px;
+font-size:14px
+}
+.process-step p{
+margin-top:8px;
+color:var(--muted);
+font-size:10px
+}
+
+.cta-box{
+padding:60px;
+border-radius:30px;
+background:
+radial-gradient(circle at 85% 50%,rgba(216,173,88,.15),transparent 30%),
+linear-gradient(135deg,#0d2238,#091522);
+border:1px solid rgba(216,173,88,.16);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px
+}
+.cta-box h2{
+font-size:clamp(25px,3vw,38px);
+font-weight:900
+}
+.cta-box p{
+color:var(--muted);
+font-size:12px;
+margin-top:10px
+}
+.cta-buttons{
+display:flex;
+gap:10px;
+flex-shrink:0
+}
+
+.request-grid{
+display:grid;
+grid-template-columns:.75fr 1.25fr;
+gap:30px
+}
+.request-info,.request-form{
+border:1px solid var(--border);
+border-radius:25px;
+background:rgba(255,255,255,.035);
+padding:35px
+}
+.request-info h3,.request-form h3{
+font-size:20px;
+margin-bottom:15px
+}
+.request-info>p{
+color:var(--muted);
+font-size:11px;
+line-height:2
+}
+.request-contact{
+margin-top:30px;
+display:grid;
+gap:12px
+}
+.contact-mini{
+display:flex;
+align-items:center;
+gap:12px;
+padding:13px;
+border-radius:14px;
+background:rgba(255,255,255,.035)
+}
+.contact-mini-icon{
+width:40px;
+height:40px;
+border-radius:11px;
+background:rgba(216,173,88,.09);
+color:var(--gold2);
+display:flex;
+align-items:center;
+justify-content:center
+}
+.contact-mini div span{
+display:block;
+color:var(--muted);
+font-size:9px
+}
+.contact-mini div strong{
+font-size:11px;
+direction:ltr;
+display:block;
+text-align:right
+}
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px
+}
+.field{
+display:flex;
+flex-direction:column;
+gap:7px
+}
+.field.full{grid-column:1/-1}
+.field label{
+color:#cbd5e1;
+font-size:10px
+}
+.field input,.field textarea{
+width:100%;
+background:rgba(255,255,255,.035);
+border:1px solid rgba(255,255,255,.1);
+outline:none;
+color:white;
+border-radius:12px;
+padding:12px 14px;
+font-size:11px;
+transition:.25s
+}
+.field input:focus,.field textarea:focus{
+border-color:rgba(216,173,88,.55);
+background:rgba(255,255,255,.05)
+}
+.field textarea{
+resize:vertical;
+min-height:130px
+}
+.form-submit{margin-top:20px}
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
+}
+.contact-card{
+padding:28px;
+border-radius:20px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.03);
+transition:.3s
+}
+.contact-card:hover{
+transform:translateY(-5px);
+border-color:rgba(216,173,88,.25)
+}
+.contact-card-icon{
+width:48px;
+height:48px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(216,173,88,.08);
+color:var(--gold2);
+margin-bottom:18px
+}
+.contact-card span{
+color:var(--muted);
+display:block;
+font-size:9px
+}
+.contact-card strong{
+font-size:13px;
+direction:ltr;
+display:block;
+text-align:right
+}
+
+footer{
+border-top:1px solid rgba(255,255,255,.07);
+padding:35px 0;
+background:rgba(0,0,0,.12)
+}
+.footer-inner{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
+}
+.footer-brand{
+display:flex;
+align-items:center;
+gap:12px
+}
+.footer-brand img{
+width:43px;
+height:43px;
+object-fit:contain
+}
+.footer-brand strong{
+font-size:11px
+}
+.footer-brand span{
+display:block;
+color:var(--muted);
+font-size:8px
+}
+.copyright{
+color:#718096;
+font-size:9px
+}
+.top-btn{
+position:fixed;
+left:22px;
+bottom:22px;
+width:45px;
+height:45px;
+border-radius:13px;
+border:1px solid var(--border);
+background:rgba(8,20,34,.8);
+backdrop-filter:blur(10px);
+color:var(--gold2);
+cursor:pointer;
+opacity:0;
+visibility:hidden;
+transform:translateY(10px);
+transition:.3s;
+z-index:900
+}
+.top-btn.show{
+opacity:1;
+visibility:visible;
+transform:translateY(0)
+}
+
+.reveal{
+opacity:0;
+transform:translateY(35px);
+transition:.8s ease
+}
+.reveal.active{
+opacity:1;
+transform:translateY(0)
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-14px)}
+}
+@keyframes rotate{
+from{transform:rotate(0)}
+to{transform:rotate(360deg)}
+}
+
+@media(max-width:1000px){
+.nav-links a{padding:8px 8px;font-size:10px}
+.header-call{padding:10px 12px;font-size:9px}
+.hero-content{gap:30px}
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.why-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:760px){
+header{
+background:rgba(6,16,29,.7);
+backdrop-filter:blur(15px)
+}
+.navbar{height:75px}
+.brand-logo{width:48px;height:48px}
+.brand-text strong{font-size:12px}
+.brand-text span{font-size:8px}
+.header-call{display:none}
+.menu-btn{display:block}
+.nav-links{
+position:absolute;
+top:75px;
+right:4%;
+left:4%;
+padding:10px;
+display:none;
+flex-direction:column;
+align-items:stretch;
+background:rgba(7,17,30,.97);
+border:1px solid var(--border);
+border-radius:18px;
+backdrop-filter:blur(20px)
+}
+.nav-links.active{display:flex}
+.nav-links a{
+padding:13px;
+font-size:11px
+}
+.hero{padding-top:100px}
+.hero-content{
+grid-template-columns:1fr;
+text-align:center
+}
+.hero-description{
+margin:auto;
+font-size:12px
+}
+.hero-buttons{justify-content:center}
+.hero-visual{min-height:380px}
+.visual-ring{
+width:320px;
+height:320px
+}
+.logo-card{
+width:210px;
+height:210px;
+border-radius:30px
+}
+.logo-card img{
+width:145px;
+height:145px
+}
+.floating-card{
+font-size:8px;
+padding:9px
+}
+.floating-1{right:0;top:25px}
+.floating-2{left:0;bottom:30px}
+.floating-3{display:none}
+.stats{margin-top:0;padding-top:20px}
+.stats-box{grid-template-columns:1fr}
+.stat:not(:last-child):after{
+top:auto;
+bottom:0;
+right:15%;
+left:15%;
+width:auto;
+height:1px
+}
+section{padding:80px 0}
+.about-grid,.request-grid{
+grid-template-columns:1fr
+}
+.about-image{
+min-height:300px;
+order:2
+}
+.check-list{grid-template-columns:1fr}
+.services-grid{grid-template-columns:1fr}
+.why-grid{grid-template-columns:1fr 1fr}
+.process-line{display:none}
+.process-grid{
+grid-template-columns:1fr;
+gap:35px
+}
+.cta-box{
+padding:35px 25px;
+flex-direction:column;
+text-align:center
+}
+.cta-buttons{
+width:100%;
+flex-direction:column
+}
+.cta-buttons .btn{width:100%}
+.form-grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.contact-grid{grid-template-columns:1fr}
+.footer-inner{
+flex-direction:column;
+text-align:center
+}
+.footer-brand{justify-content:center}
+}
+
+@media(max-width:430px){
+.hero h1{font-size:34px}
+.why-grid{grid-template-columns:1fr}
+.request-info,.request-form{padding:23px}
+.btn{width:100%}
 }
-
-.pdf-status {
-    display: inline-block;
-    padding: 7px 14px;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-bottom: 12px;
-}
-
-.pdf-status.correct {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.pdf-status.wrong {
-    background: #fee2e2;
-    color: #b91c1c;
-}
-
-.pdf-status.empty {
-    background: #fef3c7;
-    color: #b45309;
-}
-
-.pdf-option {
-    padding: 13px;
-    border-radius: 11px;
-    margin: 8px 0;
-    border: 2px solid #e2e8f0;
-    line-height: 1.8;
-}
-
-.pdf-option.selected-correct {
-    background: #dcfce7;
-    border-color: #22c55e;
-}
-
-.pdf-option.selected-wrong {
-    background: #fee2e2;
-    border-color: #ef4444;
-}
-
-.pdf-option.correct-answer {
-    background: #ecfdf5;
-    border-color: #22c55e;
-}
-
-.explanation {
-    background: #f8fafc;
-    border-right: 5px solid #6366f1;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 15px;
-    line-height: 2;
-}
-
-.answer-info {
-    margin-top: 15px;
-    padding: 12px;
-    background: #f8fafc;
-    border-radius: 10px;
-    line-height: 2;
-}
-
-@media print {
-
-    body {
-        background: white;
-    }
-
-    .pdf-page {
-        padding: 0;
-        background: white;
-    }
-
-    .pdf-question {
-        box-shadow: none;
-        page-break-inside: avoid;
-    }
-
-    .no-print {
-        display: none !important;
-    }
-
-}
-
-@media(max-width:650px) {
-
-    .info {
-        grid-template-columns: 1fr;
-    }
-
-    .card {
-        padding: 20px;
-    }
-
-    .header h1 {
-        font-size: 24px;
-    }
-
-    .question h2 {
-        font-size: 18px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .pdf-stats {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .timer {
-        top: 5px;
-    }
-
-}
-
 </style>
-
 </head>
 
 <body>
+
+<header id="header">
+<div class="container">
+<nav class="navbar">
+
+<a href="#home" class="brand">
+<img class="brand-logo" src="assets/logo.png" alt="آراز فیدای اسپادانا">
+<div class="brand-text">
+<strong>آراز فیدای اسپادانا</strong>
+<span>تأمین و بازرگانی قطعات خودرو</span>
+</div>
+</a>
+
+<div class="nav-links" id="navLinks">
+<a href="#home">خانه</a>
+<a href="#about">درباره ما</a>
+<a href="#services">خدمات</a>
+<a href="#process">روند همکاری</a>
+<a href="#request">درخواست تأمین</a>
+<a href="#contact">تماس با ما</a>
+</div>
+
+<a class="header-call" href="tel:09139801125">
+☎ تماس با ما
+</a>
+
+<button class="menu-btn" id="menuBtn">☰</button>
+
+</nav>
+</div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+
+<div class="hero-grid"></div>
+
+<div class="container">
+<div class="hero-content">
+
+<div class="hero-copy">
+
+<div class="eyebrow">
+<i></i>
+تأمین هدفمند قطعات خودرو
+</div>
+
+<h1>
+راهکاری مطمئن برای
+<span>تأمین قطعات خودرو</span>
+</h1>
+
+<p class="hero-description">
+آراز فیدای اسپادانا در زمینه تأمین و پیگیری قطعات یدکی و برقی خودرو فعالیت می‌کند و تلاش دارد مسیر دسترسی به قطعات موردنیاز را برای مشتریان و مجموعه‌های مختلف ساده‌تر کند.
+</p>
+
+<div class="hero-buttons">
+<a href="#request" class="btn btn-primary">
+ثبت درخواست تأمین ←
+</a>
+
+<a href="#services" class="btn btn-outline">
+مشاهده خدمات
+</a>
+</div>
+
+</div>
+
+<div class="hero-visual">
+
+<div class="visual-ring"></div>
+
+<div class="logo-card">
+<img src="assets/logo.png" alt="لوگوی آراز فیدای اسپادانا">
+</div>
+
+<div class="floating-card floating-1">
+<div class="icon">⚙</div>
+<div>
+تأمین قطعات<br>
+<strong>هدفمند</strong>
+</div>
+</div>
+
+<div class="floating-card floating-2">
+<div class="icon">✓</div>
+<div>
+پیگیری<br>
+درخواست‌ها
+</div>
+</div>
+
+<div class="floating-card floating-3">
+<div class="icon">◈</div>
+همکاری با تأمین‌کنندگان
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<div class="stats">
+<div class="container">
+<div class="stats-box">
+
+<div class="stat">
+<strong>01</strong>
+<span>تأمین هدفمند</span>
+</div>
+
+<div class="stat">
+<strong>02</strong>
+<span>پیگیری درخواست</span>
+</div>
+
+<div class="stat">
+<strong>03</strong>
+<span>هماهنگی با تأمین‌کنندگان</span>
+</div>
+
+</div>
+</div>
+</div>
+
+<section id="about">
 
 <div class="container">
 
-<!-- ================= HEADER ================= -->
+<div class="about-grid reveal">
 
-<div class="card header">
+<div class="about-image">
+<div class="about-logo">
+<img src="assets/logo.png" alt="لوگوی آراز فیدای اسپادانا">
+</div>
+</div>
 
-<h1>🐍 آزمون پایتون مقدماتی</h1>
+<div class="about-content">
+
+<div class="section-head">
+<span class="section-label">درباره مجموعه</span>
+
+<h2 class="section-title">
+تمرکز ما؛
+<br>
+ساده‌تر کردن مسیر تأمین
+</h2>
+</div>
 
 <p>
-آزمون مفهومی Python — زمان: ۲۵ دقیقه
+آراز فیدای اسپادانا با تمرکز بر حوزه قطعات خودرو، در زمینه دریافت درخواست، بررسی نیاز، پیگیری تأمین و هماهنگی برای تهیه قطعات فعالیت می‌کند.
 </p>
 
-<div class="info">
+<p>
+هدف ما ایجاد یک مسیر منظم و شفاف میان نیاز مشتری و شبکه تأمین‌کنندگان است؛ به‌خصوص در مواردی که پیدا کردن قطعه مناسب نیازمند پیگیری و جست‌وجوی بیشتر است.
+</p>
 
-<input
-id="studentName"
-placeholder="نام و نام خانوادگی">
+<div class="check-list">
 
-<input
-id="studentClass"
-placeholder="کلاس">
+<div class="check">
+<span class="check-icon">✓</span>
+بررسی دقیق درخواست
+</div>
 
+<div class="check">
+<span class="check-icon">✓</span>
+پیگیری تأمین
+</div>
+
+<div class="check">
+<span class="check-icon">✓</span>
+تمرکز بر قطعات خاص
+</div>
+
+<div class="check">
+<span class="check-icon">✓</span>
+هماهنگی با تأمین‌کنندگان
 </div>
 
 </div>
 
-<!-- ================= TIMER ================= -->
-
-<div class="timer">
-
-<span>⏱️ زمان باقی‌مانده</span>
-
-<strong id="timer">
-25:00
-</strong>
-
 </div>
-
-<!-- ================= EXAM ================= -->
-
-<div class="card" id="examCard">
-
-<div id="questions">
-
-<!-- سوال 1 -->
-
-<div class="question active">
-
-<div class="q-number">
-سؤال ۱ از ۲۵
 </div>
+</div>
+</section>
 
-<h2>
-کدام توضیح درباره متغیر در Python دقیق‌تر است؟
+<section id="services">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<span class="section-label">خدمات ما</span>
+
+<h2 class="section-title">
+خدماتی برای پاسخ به نیازهای تأمین قطعات
 </h2>
 
-<label class="option">
-<input type="radio" name="q1" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-دستور مخصوص چاپ کردن اطلاعات
-</label>
+<p class="section-description">
+خدمات مجموعه با هدف تسهیل فرایند شناسایی، پیگیری و تأمین قطعات موردنیاز ارائه می‌شوند.
+</p>
 
-<label class="option">
-<input type="radio" name="q1" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-نامی برای اشاره به یک مقدار که می‌تواند تغییر کند
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-نوعی حلقه برای تکرار
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-دستوری برای پایان برنامه
-</label>
-
-</div>
-
-<!-- سوال 2 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۲ از ۲۵
-</div>
-
-<h2>
-اگر بنویسیم
-<span class="code">age = 15</span>
-علامت
-<span class="code">=</span>
-چه مفهومی دارد؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q2" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-مقایسه
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-مقداردهی
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-بررسی بزرگ‌تر بودن
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-شرط
-</label>
-
-</div>
-
-<!-- سوال 3 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۳ از ۲۵
-</div>
-
-<h2>
-کدام عبارت یک مقایسه انجام می‌دهد؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q3" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-<span class="code">x = 10</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-<span class="code">x == 10</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-<span class="code">x + 10</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-<span class="code">print(x)</span>
-</label>
-
-</div>
-
-<!-- سوال 4 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۴ از ۲۵
-</div>
-
-<h2>
-چرا مقدار دریافت‌شده توسط
-<span class="code">input()</span>
-برای محاسبات عددی معمولاً باید تبدیل نوع شود؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q4" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-چون input مقدار را به صورت رشته دریافت می‌کند
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-چون input فقط عدد می‌گیرد
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-چون print عدد را حذف می‌کند
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-چون Python عدد ندارد
-</label>
-
-</div>
-
-<!-- سوال 5 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۵ از ۲۵
-</div>
-
-<h2>
-شرط زیر چه زمانی درست است؟
-</h2>
-
-<div class="codebox">
-if score >= 10:
-</div>
-
-<label class="option">
-<input type="radio" name="q5" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-فقط وقتی score برابر ۱۰ باشد
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-وقتی score حداقل ۱۰ باشد
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-وقتی score کمتر از ۱۰ باشد
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-فقط وقتی score برابر ۱۱ باشد
-</label>
-
-</div>
-
-<!-- سوال 6 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۶ از ۲۵
-</div>
-
-<h2>
-اگر شرط if درست باشد، در ساختار
-<span class="code">if / elif / else</span>
-چه اتفاقی می‌افتد؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q6" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-همه elifها اجرا می‌شوند
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-شرط‌های بعدی همان زنجیره بررسی نمی‌شوند
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-else حتماً اجرا می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-برنامه متوقف می‌شود
-</label>
-
-</div>
-
-<!-- سوال 7 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۷ از ۲۵
-</div>
-
-<h2>
-نتیجه عبارت زیر چیست؟
-</h2>
-
-<div class="codebox">
-10 % 3
-</div>
-
-<label class="option">
-<input type="radio" name="q7" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-۱
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-۳
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-۰
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-۱۰
-</label>
-
-</div>
-
-<!-- سوال 8 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۸ از ۲۵
-</div>
-
-<h2>
-اگر x برابر ۵ باشد، نتیجه عبارت زیر چیست؟
-</h2>
-
-<div class="codebox">
-x > 3 and x < 10
-</div>
-
-<label class="option">
-<input type="radio" name="q8" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-True
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-False
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-۵
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-None
-</label>
-
-</div>
-
-<!-- سوال 9 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۹ از ۲۵
-</div>
-
-<h2>
-عبارت <span class="code">or</span> چه زمانی True می‌شود؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q9" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-وقتی حداقل یکی از شرط‌ها True باشد
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-فقط وقتی هر دو False باشند
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-فقط وقتی هر دو True باشند
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-هیچ‌وقت
-</label>
-
-</div>
-
-<!-- سوال 10 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۰ از ۲۵
-</div>
-
-<h2>
-تفاوت اصلی <span class="code">and</span> و
-<span class="code">or</span> چیست؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q10" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-and معمولاً نیاز دارد همه شرط‌ها درست باشند، اما or با درست بودن حداقل یکی درست می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-هر دو دقیقاً یک کاربرد دارند
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-and فقط برای عدد و or فقط برای متن است
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-هر دو حلقه هستند
-</label>
-
-</div>
-
-<!-- سوال 11 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۱ از ۲۵
-</div>
-
-<h2>
-اگر شرط if برابر False باشد و else وجود داشته باشد، چه اتفاقی می‌افتد؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q11" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-بخش else اجرا می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-کل برنامه حذف می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-if دوباره اجرا می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-برنامه حتماً خطای نحوی می‌دهد
-</label>
-
-</div>
-
-<!-- سوال 12 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۲ از ۲۵
-</div>
-
-<h2>
-کدام توضیح درباره while درست است؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q12" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-تا زمانی که شرط برقرار باشد، بدنه حلقه می‌تواند تکرار شود
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-فقط یک بار اجرا می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-فقط برای چاپ متن است
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-همیشه بدون شرط اجرا می‌شود
-</label>
-
-</div>
-
-<!-- سوال 13 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۳ از ۲۵
-</div>
-
-<h2>
-مشکل اصلی کد زیر چیست؟
-</h2>
-
-<div class="codebox">
-x = 1
-
-while x <= 5:
-    print(x)
-</div>
-
-<label class="option">
-<input type="radio" name="q13" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-print نمی‌تواند داخل while باشد
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-مقدار x تغییر نمی‌کند و شرط همیشه برقرار می‌ماند
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-while فقط با متن کار می‌کند
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-عدد ۱ قابل استفاده نیست
-</label>
-
-</div>
-
-<!-- سوال 14 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۴ از ۲۵
-</div>
-
-<h2>
-وظیفه break داخل حلقه چیست؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q14" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-حلقه را متوقف می‌کند
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-حلقه را از اول شروع می‌کند
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-یک متغیر می‌سازد
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-برنامه را نصب می‌کند
-</label>
-
-</div>
-
-<!-- سوال 15 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۵ از ۲۵
-</div>
-
-<h2>
-کدام گزینه درباره int() درست است؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q15" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-برای تبدیل مقدار مناسب به عدد صحیح استفاده می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-برای چاپ عدد استفاده می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-یک حلقه ایجاد می‌کند
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-همیشه مقدار را به رشته تبدیل می‌کند
-</label>
-
-</div>
-
-<!-- سوال 16 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۶ از ۲۵
-</div>
-
-<h2>
-اگر x = 10 باشد، نتیجه x != 5 چیست؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q16" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-True
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-False
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-10
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-5
-</label>
-
-</div>
-
-<!-- سوال 17 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۷ از ۲۵
-</div>
-
-<h2>
-کدام گزینه یک مقدار float است؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q17" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-<span class="code">15</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-<span class="code">15.5</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-<span class="code">"15.5"</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-<span class="code">True</span>
-</label>
-
-</div>
-
-<!-- سوال 18 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۸ از ۲۵
-</div>
-
-<h2>
-اگر بخواهیم بررسی کنیم x بین ۱۰ و ۲۰ است، کدام شرط مناسب‌تر است؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q18" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-<span class="code">x > 10 or x < 20</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-<span class="code">x > 10 and x < 20</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-<span class="code">x == 10 and x == 20</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-<span class="code">x < 10 and x > 20</span>
-</label>
-
-</div>
-
-<!-- سوال 19 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۱۹ از ۲۵
-</div>
-
-<h2>
-چرا Indentation در Python اهمیت دارد؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q19" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-برای مشخص کردن بدنه آن بخش از کد
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-فقط برای زیبایی کد
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-برای افزایش سرعت CPU
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-برای تغییر نوع متغیر
-</label>
-
-</div>
-
-<!-- سوال 20 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۲۰ از ۲۵
-</div>
-
-<h2>
-برای تبدیل یک رشته عددی به عدد صحیح از چه چیزی استفاده می‌کنیم؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q20" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-str()
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-int()
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-print()
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-bool()
-</label>
-
-</div>
-
-<!-- سوال 21 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۲۱ از ۲۵ — تحلیل کد
-</div>
-
-<h2>
-خروجی کد زیر چیست؟
-</h2>
-
-<div class="codebox">
-x = 2
-
-while x < 5:
-    print(x)
-    x = x + 1
-</div>
-
-<label class="option">
-<input type="radio" name="q21" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-<span class="code">2 3 4</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-<span class="code">2 3 4 5</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-<span class="code">3 4 5</span>
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-<span class="code">2 2 2 2 ...</span>
-</label>
-
-</div>
-
-<!-- سوال 22 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۲۲ از ۲۵ — تحلیل کد
-</div>
-
-<h2>
-خروجی کد زیر چیست؟
-</h2>
-
-<div class="codebox">
-score = 16
-
-if score >= 18:
-    print("A")
-elif score >= 15:
-    print("B")
-else:
-    print("C")
-</div>
-
-<label class="option">
-<input type="radio" name="q22" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-A
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-B
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-C
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-هیچ خروجی ندارد
-</label>
-
-</div>
-
-<!-- سوال 23 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۲۳ از ۲۵
-</div>
-
-<h2>
-برای جلوگیری از اجرای بی‌نهایت while چه چیزی اهمیت دارد؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q23" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-شرط حلقه یا مقدار مرتبط با آن بتواند در طول اجرا تغییر کند
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-استفاده از print در حلقه
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-استفاده از متغیر با نام کوتاه
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-حذف شرط while
-</label>
-
-</div>
-
-<!-- سوال 24 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۲۴ از ۲۵
-</div>
-
-<h2>
-اگر داخل یک while به break برسیم چه اتفاقی می‌افتد؟
-</h2>
-
-<label class="option">
-<input type="radio" name="q24" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-اجرای همان حلقه متوقف می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-حلقه از ابتدا شروع می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-شرط while به True تبدیل می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-برنامه دوباره نصب می‌شود
-</label>
-
-</div>
-
-<!-- سوال 25 -->
-
-<div class="question">
-
-<div class="q-number">
-سؤال ۲۵ از ۲۵
-</div>
-
-<h2>
-ترتیب اجرای این برنامه کدام است؟
-</h2>
-
-<div class="codebox">
-age = int(input("Age: "))
-
-if age >= 18:
-    print("Adult")
-else:
-    print("Child")
-</div>
-
-<label class="option">
-<input type="radio" name="q25" value="A">
-<span class="radio"></span>
-<span class="letter">A)</span>
-ابتدا سن دریافت و به عدد تبدیل می‌شود، سپس شرط بررسی و یکی از خروجی‌ها اجرا می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="B">
-<span class="radio"></span>
-<span class="letter">B)</span>
-ابتدا هر دو print اجرا می‌شوند
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="C">
-<span class="radio"></span>
-<span class="letter">C)</span>
-else همیشه قبل از if اجرا می‌شود
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="D">
-<span class="radio"></span>
-<span class="letter">D)</span>
-input بعد از print اجرا می‌شود
-</label>
-
-</div>
-
-</div>
-
-<div class="buttons">
-
-<button
-class="prev"
-id="prev"
-onclick="prevQuestion()"
-type="button">
-قبلی
-</button>
-
-<button
-class="next"
-id="next"
-onclick="nextQuestion()"
-type="button">
-بعدی
-</button>
-
-<button
-class="finish"
-id="finish"
-onclick="finishExam()"
-type="button">
-ثبت آزمون
-</button>
-
-</div>
-
-<div class="progress">
-
-<div
-class="progress-bar"
-id="progressBar">
-</div>
-
-</div>
-
-</div>
-
-<!-- ================= RESULT ================= -->
-
-<div class="card result" id="result">
-
-<h1>
-🎉 نتیجه آزمون
-</h1>
-
-<p id="studentResult"></p>
-
-<!-- =================================
-     PDF BUTTON - منتقل شده به اول
-================================= -->
-
-<button
-class="pdf-button"
-onclick="generatePDF()">
-📄 دانلود کارنامه کامل PDF
-</button>
-
-<div
-class="score"
-id="score">
-۰ از ۲۵
 </div>
 
-<div class="stats">
+<div class="services-grid">
 
-<div class="stat">
-<span class="green">درست</span>
-<b id="correct">۰</b>
+<div class="service-card reveal">
+<div class="service-icon">⚙</div>
+<h3>تأمین قطعات یدکی</h3>
+<p>پیگیری و هماهنگی برای تأمین انواع قطعات یدکی موردنیاز خودرو.</p>
+<span class="service-number">01</span>
 </div>
 
-<div class="stat">
-<span class="red">غلط</span>
-<b id="wrong">۰</b>
+<div class="service-card reveal">
+<div class="service-icon">⚡</div>
+<h3>قطعات برقی خودرو</h3>
+<p>تمرکز بر شناسایی و پیگیری قطعات و تجهیزات برقی موردنیاز.</p>
+<span class="service-number">02</span>
 </div>
 
-<div class="stat">
-<span class="orange">نزده</span>
-<b id="empty">۰</b>
+<div class="service-card reveal">
+<div class="service-icon">◈</div>
+<h3>قطعات خاص و کمیاب</h3>
+<p>پیگیری هدفمند برای قطعاتی که دسترسی به آن‌ها دشوارتر است.</p>
+<span class="service-number">03</span>
 </div>
 
-<div class="stat">
-<span>درصد</span>
-<b id="percent">۰٪</b>
+<div class="service-card reveal">
+<div class="service-icon">◆</div>
+<h3>قطعات نو و استوک</h3>
+<p>بررسی گزینه‌های موجود مطابق درخواست و شرایط موردنیاز مشتری.</p>
+<span class="service-number">04</span>
 </div>
 
+<div class="service-card reveal">
+<div class="service-icon">◎</div>
+<h3>همکاری با مجموعه‌ها</h3>
+<p>امکان دریافت و پیگیری درخواست‌های تأمین از سوی مجموعه‌ها و کسب‌وکارها.</p>
+<span class="service-number">05</span>
 </div>
 
-<div class="review">
-
-<h2>
-بررسی پاسخ‌های اشتباه
-</h2>
-
-<div id="review"></div>
-
+<div class="service-card reveal">
+<div class="service-icon">⌁</div>
+<h3>تأمین هدفمند</h3>
+<p>تمرکز بر نیاز واقعی و پیگیری مسیر مناسب برای دستیابی به قطعه موردنظر.</p>
+<span class="service-number">06</span>
 </div>
-
-<button
-class="restart"
-onclick="location.reload()">
-🔄 آزمون مجدد
-</button>
 
 </div>
-
 </div>
-
-<script>
-
-/* =========================================
-   پاسخ‌های صحیح
-========================================= */
-
-const correctAnswers = [
-"B","B","B","A","B",
-"B","A","A","A","A",
-"A","A","B","A","A",
-"A","B","B","A","B",
-"A","B","A","A","A"
-];
-
-/* =========================================
-   نام سؤال‌ها
-========================================= */
-
-const questionNames = [
-
-"مفهوم متغیر",
-"مقداردهی متغیر",
-"مقایسه",
-"input و تبدیل نوع",
-"عملگر >=",
-"ساختار if / elif / else",
-"باقی‌مانده تقسیم",
-"عملگر and",
-"عملگر or",
-"تفاوت and و or",
-"else",
-"حلقه while",
-"حلقه بی‌نهایت",
-"break",
-"int()",
-"عملگر !=",
-"float",
-"شرط ترکیبی",
-"Indentation",
-"تبدیل رشته به عدد",
-"تحلیل while",
-"تحلیل if / elif / else",
-"جلوگیری از حلقه بی‌نهایت",
-"break در while",
-"ترتیب اجرای برنامه"
-
-];
-
-/* =========================================
-   توضیح تشریحی
-========================================= */
-
-const explanations = [
-
-"متغیر در Python یک نام برای اشاره به یک مقدار است. این مقدار می‌تواند در طول اجرای برنامه تغییر کند.",
-
-"علامت = برای مقداردهی استفاده می‌شود؛ یعنی مقدار سمت راست را در متغیر سمت چپ قرار می‌دهد.",
-
-"علامت == برای مقایسه استفاده می‌شود و بررسی می‌کند که آیا مقدار x برابر 10 است یا خیر.",
-
-"تابع input() ورودی را به صورت رشته (str) دریافت می‌کند. برای انجام محاسبات عددی معمولاً باید آن را با int() یا float() تبدیل کنیم.",
-
-"عملگر >= یعنی بزرگ‌تر یا مساوی. بنابراین score >= 10 برای مقادیر 10 و بیشتر درست است.",
-
-"در ساختار if / elif / else، وقتی یک شرط درست پیدا شود، بدنه همان بخش اجرا شده و شرط‌های بعدی همان زنجیره بررسی نمی‌شوند.",
-
-"عملگر % باقی‌مانده تقسیم را برمی‌گرداند. در تقسیم 10 بر 3، خارج قسمت 3 و باقی‌مانده 1 است.",
-
-"در عبارت and هر دو شرط باید درست باشند. چون 5 بزرگ‌تر از 3 و کوچک‌تر از 10 است، نتیجه True می‌شود.",
-
-"عملگر or زمانی True می‌شود که حداقل یکی از شرط‌ها True باشد.",
-
-"and معمولاً زمانی True است که همه شرط‌ها درست باشند، اما or با درست بودن حداقل یکی از شرط‌ها True می‌شود.",
-
-"اگر شرط if برابر False باشد و else وجود داشته باشد، کد داخل else اجرا می‌شود.",
-
-"حلقه while تا زمانی که شرط آن True باشد می‌تواند اجرا شود و تکرار شود.",
-
-"در این کد مقدار x هیچ‌وقت تغییر نمی‌کند. بنابراین x همچنان برابر 1 است و شرط x <= 5 همیشه True می‌ماند؛ در نتیجه حلقه بی‌نهایت می‌شود.",
-
-"دستور break باعث خروج فوری از حلقه‌ای می‌شود که break داخل آن قرار دارد.",
-
-"تابع int() برای تبدیل یک مقدار مناسب، مانند یک رشته عددی، به عدد صحیح استفاده می‌شود.",
-
-"عملگر != به معنی «مساوی نبودن» است. چون 10 با 5 برابر نیست، نتیجه True است.",
-
-"عدد 15.5 دارای بخش اعشاری است و در Python یک مقدار float محسوب می‌شود.",
-
-"برای بررسی اینکه x بین 10 و 20 قرار دارد، باید هر دو شرط برقرار باشند؛ بنابراین از and استفاده می‌کنیم.",
-
-"در Python فاصله‌گذاری ابتدای خط یا Indentation برای مشخص کردن بدنه ساختارهایی مانند if، while و for استفاده می‌شود.",
-
-"برای تبدیل یک رشته عددی مانند '15' به عدد صحیح از int() استفاده می‌کنیم.",
-
-"ابتدا x برابر 2 است. حلقه تا زمانی که x < 5 باشد اجرا می‌شود؛ بنابراین 2، سپس 3 و سپس 4 چاپ می‌شوند و بعد حلقه متوقف می‌شود.",
-
-"score برابر 16 است. شرط score >= 18 نادرست است، اما score >= 15 درست است؛ بنابراین B چاپ می‌شود.",
-
-"برای جلوگیری از حلقه بی‌نهایت باید شرایطی وجود داشته باشد که باعث شود شرط while در نهایت False شود؛ معمولاً با تغییر متغیر مرتبط با شرط.",
-
-"وقتی برنامه داخل while به break برسد، اجرای همان حلقه متوقف می‌شود.",
-
-"ابتدا input اجرا می‌شود و سن دریافت می‌شود. سپس int() آن را به عدد صحیح تبدیل می‌کند. بعد شرط age >= 18 بررسی شده و فقط یکی از دو print اجرا می‌شود."
-
-];
-
-/* =========================================
-   متغیرهای آزمون
-========================================= */
-
-let current = 0;
-
-let timeLeft = 40 * 60;
-
-let finished = false;
-
-const questions =
-document.querySelectorAll(".question");
-
-/* =========================================
-   نمایش سؤال
-========================================= */
-
-function showQuestion() {
-
-questions.forEach((question,index)=>{
-
-question.classList.toggle(
-"active",
-index === current
-);
-
-});
-
-document.getElementById("prev").style.display =
-current === 0 ? "none" : "block";
-
-document.getElementById("next").style.display =
-current === questions.length - 1
-? "none"
-: "block";
-
-document.getElementById("finish").style.display =
-current === questions.length - 1
-? "block"
-: "none";
-
-document.getElementById("progressBar").style.width =
-((current + 1) / questions.length) * 100 + "%";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-/* =========================================
-   بعدی
-========================================= */
-
-function nextQuestion(){
-
-if(current < questions.length - 1){
-
-current++;
-
-showQuestion();
-
-}
-
-}
-
-/* =========================================
-   قبلی
-========================================= */
-
-function prevQuestion(){
-
-if(current > 0){
-
-current--;
-
-showQuestion();
-
-}
-
-}
-
-/* =========================================
-   انتخاب گزینه
-========================================= */
-
-document.querySelectorAll(".option").forEach(option=>{
-
-option.addEventListener("click",function(){
-
-const parent = this.parentElement;
-
-parent.querySelectorAll(".option").forEach(o=>{
-o.classList.remove("selected");
-});
-
-this.classList.add("selected");
-
-this.querySelector("input").checked = true;
-
-});
-
-});
-
-/* =========================================
-   تایمر
-========================================= */
-
-function updateTimer(){
-
-if(finished) return;
-
-let minutes = Math.floor(timeLeft / 60);
-
-let seconds = timeLeft % 60;
-
-document.getElementById("timer").textContent =
-String(minutes).padStart(2,"0") +
-":" +
-String(seconds).padStart(2,"0");
-
-if(timeLeft <= 60){
-
-document.getElementById("timer").style.color =
-"#f87171";
-
-}
-
-if(timeLeft <= 0){
-
-finishExam(true);
-
-return;
-
-}
-
-timeLeft--;
-
-}
-
-const timerInterval =
-setInterval(updateTimer,1000);
-
-/* =========================================
-   فارسی
-========================================= */
-
-function toFa(number){
-
-return number.toString().replace(
-/[0-9]/g,
-digit=>"۰۱۲۳۴۵۶۷۸۹"[digit]
-);
-
-}
-
-/* =========================================
-   متن گزینه
-========================================= */
-
-function getOptionText(questionIndex,letter){
-
-if(!letter){
-
-return "بدون پاسخ";
-
-}
-
-const question =
-questions[questionIndex];
-
-const input =
-question.querySelector(
-`input[value="${letter}"]`
-);
-
-if(!input){
-
-return letter;
-
-}
-
-const option =
-input.closest(".option");
-
-if(!option){
-
-return letter;
-
-}
-
-const clone =
-option.cloneNode(true);
-
-const radio =
-clone.querySelector(".radio");
-
-if(radio){
-
-radio.remove();
-
-}
-
-const hiddenInput =
-clone.querySelector("input");
-
-if(hiddenInput){
-
-hiddenInput.remove();
-
-}
-
-return clone.innerText
-.replace(/\s+/g," ")
-.trim();
-
-}
-
-/* =========================================
-   ثبت آزمون
-========================================= */
-
-function finishExam(auto=false){
-
-if(finished) return;
-
-finished=true;
-
-clearInterval(timerInterval);
-
-let correct=0;
-let wrong=0;
-let empty=0;
-
-let reviewHTML="";
-
-for(let i=0;i<25;i++){
-
-const selected =
-document.querySelector(
-`input[name="q${i+1}"]:checked`
-);
-
-if(!selected){
-
-empty++;
-
-reviewHTML += `
+</section>
 
-<div class="review-item">
+<section class="why">
 
-<b>
-سؤال ${toFa(i+1)}
-— ${questionNames[i]}
-</b>
+<div class="container">
 
-<br>
+<div class="section-head reveal">
 
-<span class="orange">
-⚠️ بدون پاسخ
+<span class="section-label">
+چرا آراز فیدای اسپادانا؟
 </span>
 
-<br>
-
-پاسخ صحیح:
-
-<b class="green">
-${correctAnswers[i]}
-</b>
+<h2 class="section-title">
+یک مسیر منظم برای رسیدن به قطعه موردنیاز
+</h2>
 
 </div>
 
-`;
+<div class="why-grid">
 
-}
+<div class="why-card reveal">
+<div class="why-icon">◉</div>
+<strong>نیازمحور</strong>
+<p>فرایند از نیاز واقعی مشتری شروع می‌شود و بر اساس همان درخواست پیگیری می‌شود.</p>
+</div>
 
-else if(
-selected.value === correctAnswers[i]
-){
+<div class="why-card reveal">
+<div class="why-icon">⌕</div>
+<strong>جست‌وجوی هدفمند</strong>
+<p>تمرکز بر پیدا کردن مسیر مناسب برای تأمین قطعه موردنظر.</p>
+</div>
 
-correct++;
+<div class="why-card reveal">
+<div class="why-icon">↻</div>
+<strong>پیگیری</strong>
+<p>درخواست‌ها در مسیر تأمین پیگیری و هماهنگ می‌شوند.</p>
+</div>
 
-}
+<div class="why-card reveal">
+<div class="why-icon">◇</div>
+<strong>ارتباط با تأمین‌کنندگان</strong>
+<p>هماهنگی برای بررسی گزینه‌های موجود در مسیر تأمین.</p>
+</div>
 
-else{
+</div>
+</div>
+</section>
 
-wrong++;
+<section id="process">
 
-reviewHTML += `
+<div class="container">
 
-<div class="review-item">
+<div class="section-head reveal">
 
-<b>
-سؤال ${toFa(i+1)}
-— ${questionNames[i]}
-</b>
+<span class="section-label">روند همکاری</span>
 
-<br>
+<h2 class="section-title">
+از درخواست تا پیگیری تأمین
+</h2>
 
-پاسخ شما:
-
-<span class="red">
-${selected.value}
-</span>
-
-<br>
-
-پاسخ صحیح:
-
-<span class="green">
-${correctAnswers[i]}
-</span>
+<p class="section-description">
+فرایند همکاری در چهار مرحله ساده انجام می‌شود.
+</p>
 
 </div>
 
-`;
+<div class="process-grid">
 
-}
+<div class="process-line"></div>
 
-}
-
-const percent =
-Math.round((correct/25)*100);
-
-document.querySelector(".header").style.display="none";
-
-document.querySelector(".timer").style.display="none";
-
-document.getElementById("examCard").style.display="none";
-
-document.getElementById("result").style.display="block";
-
-const name =
-document.getElementById("studentName").value.trim();
-
-const className =
-document.getElementById("studentClass").value.trim();
-
-document.getElementById("studentResult").textContent =
-
-(name ? "👤 "+name : "") +
-
-(className ? " — کلاس "+className : "") +
-
-(auto ? " — ⏰ زمان تمام شد" : "");
-
-document.getElementById("score").textContent =
-toFa(correct)+" از ۲۵";
-
-document.getElementById("correct").textContent =
-toFa(correct);
-
-document.getElementById("wrong").textContent =
-toFa(wrong);
-
-document.getElementById("empty").textContent =
-toFa(empty);
-
-document.getElementById("percent").textContent =
-toFa(percent)+"٪";
-
-document.getElementById("review").innerHTML =
-
-reviewHTML ||
-
-"<p class='green'>🎉 همه پاسخ‌ها درست بودند!</p>";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-/* =========================================
-   ساخت PDF
-========================================= */
-
-function generatePDF(){
-
-let correct=0;
-let wrong=0;
-let empty=0;
-
-const studentName =
-document.getElementById("studentName").value.trim();
-
-const className =
-document.getElementById("studentClass").value.trim();
-
-let questionsHTML="";
-
-for(let i=0;i<25;i++){
-
-const selected =
-document.querySelector(
-`input[name="q${i+1}"]:checked`
-);
-
-const selectedAnswer =
-selected ? selected.value : null;
-
-const correctAnswer =
-correctAnswers[i];
-
-let status;
-let statusClass;
-
-if(!selectedAnswer){
-
-empty++;
-
-status="⚠️ بدون پاسخ";
-
-statusClass="empty";
-
-}
-
-else if(selectedAnswer===correctAnswer){
-
-correct++;
-
-status="✅ پاسخ صحیح";
-
-statusClass="correct";
-
-}
-
-else{
-
-wrong++;
-
-status="❌ پاسخ اشتباه";
-
-statusClass="wrong";
-
-}
-
-/* گزینه‌ها */
-
-const optionElements =
-questions[i].querySelectorAll(".option");
-
-let optionsHTML="";
-
-optionElements.forEach(option=>{
-
-const input =
-option.querySelector("input");
-
-const letter =
-input.value;
-
-let text =
-getOptionText(i,letter);
-
-let classes="pdf-option";
-
-if(
-selectedAnswer===letter &&
-selectedAnswer===correctAnswer
-){
-
-classes += " selected-correct";
-
-}
-
-else if(
-selectedAnswer===letter &&
-selectedAnswer!==correctAnswer
-){
-
-classes += " selected-wrong";
-
-}
-
-else if(letter===correctAnswer){
-
-classes += " correct-answer";
-
-}
-
-let icon="";
-
-if(
-selectedAnswer===letter &&
-selectedAnswer===correctAnswer
-){
-
-icon=" ✅";
-
-}
-
-else if(
-selectedAnswer===letter &&
-selectedAnswer!==correctAnswer
-){
-
-icon=" ❌";
-
-}
-
-else if(letter===correctAnswer){
-
-icon=" ✔️";
-
-}
-
-optionsHTML += `
-
-<div class="${classes}">
-
-<b>${letter})</b>
-
-${text}
-
-${icon}
-
+<div class="process-step reveal">
+<div class="step-number">01</div>
+<h3>ثبت درخواست</h3>
+<p>مشخصات قطعه و نیاز خود را ارسال کنید.</p>
 </div>
 
-`;
-
-});
-
-questionsHTML += `
-
-<div class="pdf-question ${statusClass}">
-
-<div class="pdf-status ${statusClass}">
-${status}
+<div class="process-step reveal">
+<div class="step-number">02</div>
+<h3>بررسی درخواست</h3>
+<p>اطلاعات درخواست بررسی و مسیر تأمین مشخص می‌شود.</p>
 </div>
 
-<div class="pdf-question-title">
+<div class="process-step reveal">
+<div class="step-number">03</div>
+<h3>پیگیری تأمین</h3>
+<p>گزینه‌های موجود از مسیر تأمین‌کنندگان پیگیری می‌شوند.</p>
+</div>
 
-سؤال ${toFa(i+1)}
-— ${questionNames[i]}
+<div class="process-step reveal">
+<div class="step-number">04</div>
+<h3>هماهنگی نهایی</h3>
+<p>نتیجه و جزئیات تأمین با مشتری هماهنگ می‌شود.</p>
+</div>
 
 </div>
+</div>
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="cta-box reveal">
 
 <div>
+<h2>قطعه موردنیازتان را پیدا نمی‌کنید؟</h2>
+<p>درخواست خود را ارسال کنید تا مسیر تأمین آن بررسی و پیگیری شود.</p>
+</div>
 
-${questions[i]
-.querySelector("h2")
-.innerHTML}
+<div class="cta-buttons">
+<a href="#request" class="btn btn-primary">ثبت درخواست</a>
+<a href="tel:09139801125" class="btn btn-outline">تماس مستقیم</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="request">
+
+<div class="container">
+
+<div class="request-grid reveal">
+
+<div class="request-info">
+
+<h3>درخواست تأمین قطعه</h3>
+
+<p>
+مشخصات قطعه موردنیاز خود را وارد کنید. اطلاعات واردشده از طریق ایمیل برای مجموعه ارسال خواهد شد.
+</p>
+
+<div class="request-contact">
+
+<a href="tel:09139801125" class="contact-mini">
+<div class="contact-mini-icon">☎</div>
+<div>
+<span>تماس</span>
+<strong>09139801125</strong>
+</div>
+</a>
+
+<a href="tel:09138810016" class="contact-mini">
+<div class="contact-mini-icon">☎</div>
+<div>
+<span>تماس</span>
+<strong>09138810016</strong>
+</div>
+</a>
+
+<a href="mailto:info.arazfidar@gmail.com" class="contact-mini">
+<div class="contact-mini-icon">@</div>
+<div>
+<span>ایمیل</span>
+<strong>info.arazfidar@gmail.com</strong>
+</div>
+</a>
+
+</div>
+</div>
+
+<div class="request-form">
+
+<h3>اطلاعات درخواست</h3>
+
+<form id="requestForm"
+action="mailto:info.arazfidar@gmail.com"
+method="post"
+enctype="text/plain">
+
+<div class="form-grid">
+
+<div class="field">
+<label>نام و نام خانوادگی</label>
+<input type="text" name="نام" placeholder="نام خود را وارد کنید" required>
+</div>
+
+<div class="field">
+<label>شماره تماس</label>
+<input type="tel" name="شماره تماس" placeholder="09xxxxxxxxx" required>
+</div>
+
+<div class="field">
+<label>نام قطعه</label>
+<input type="text" name="نام قطعه" placeholder="مثلاً قطعه برقی خودرو" required>
+</div>
+
+<div class="field">
+<label>خودرو</label>
+<input type="text" name="خودرو" placeholder="برند و مدل خودرو">
+</div>
+
+<div class="field full">
+<label>توضیحات درخواست</label>
+<textarea name="توضیحات" placeholder="هر اطلاعاتی که درباره قطعه دارید وارد کنید..."></textarea>
+</div>
 
 </div>
 
-${
-questions[i].querySelector(".codebox")
-?
+<button type="submit" class="btn btn-primary form-submit">
+ارسال درخواست ←
+</button>
 
-`<div class="codebox">
+</form>
+</div>
 
-${
-questions[i]
-.querySelector(".codebox")
-.innerHTML
-}
+</div>
+</div>
+</section>
 
-</div>`
+<section id="contact">
 
-:
+<div class="container">
 
-""
-}
+<div class="section-head reveal">
+
+<span class="section-label">ارتباط با ما</span>
+
+<h2 class="section-title">
+با آراز فیدای اسپادانا در ارتباط باشید
+</h2>
+
+</div>
+
+<div class="contact-grid">
+
+<a href="tel:09139801125" class="contact-card reveal">
+<div class="contact-card-icon">☎</div>
+<span>شماره تماس اول</span>
+<strong>09139801125</strong>
+</a>
+
+<a href="tel:09138810016" class="contact-card reveal">
+<div class="contact-card-icon">☎</div>
+<span>شماره تماس دوم</span>
+<strong>09138810016</strong>
+</a>
+
+<a href="mailto:info.arazfidar@gmail.com" class="contact-card reveal">
+<div class="contact-card-icon">@</div>
+<span>ایمیل</span>
+<strong>info.arazfidar@gmail.com</strong>
+</a>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+
+<div class="container">
+
+<div class="footer-inner">
+
+<div class="footer-brand">
+
+<img src="assets/logo.png" alt="آراز فیدای اسپادانا">
 
 <div>
-
-${optionsHTML}
-
-</div>
-
-<div class="answer-info">
-
-<b>پاسخ انتخاب‌شده:</b>
-
-${
-selectedAnswer
-
-?
-
-`<span class="${
-selectedAnswer===correctAnswer
-?"green"
-:"red"
-}">
-
-${selectedAnswer}
-
-</span>
-
-—
-
-${getOptionText(
-i,
-selectedAnswer
-)}`
-
-:
-
-`<span class="orange">
-بدون پاسخ
-</span>`
-
-}
-
-<br>
-
-<b>
-پاسخ صحیح:
-</b>
-
-<span class="green">
-
-${correctAnswer}
-
-</span>
-
-—
-
-${getOptionText(
-i,
-correctAnswer
-)}
-
-</div>
-
-<div class="explanation">
-
-<b>
-📚 توضیح تشریحی:
-</b>
-
-<br>
-
-${explanations[i]}
-
+<strong>آراز فیدای اسپادانا</strong>
+<span>تأمین و پیگیری قطعات خودرو</span>
 </div>
 
 </div>
 
-`;
-
-}
-
-const percent =
-Math.round((correct/25)*100);
-
-const reportWindow =
-window.open("","_blank");
-
-if(!reportWindow){
-
-alert(
-"لطفاً اجازه باز شدن پنجره جدید را در مرورگر فعال کنید."
-);
-
-return;
-
-}
-
-reportWindow.document.write(`
-
-<!DOCTYPE html>
-
-<html lang="fa" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>
-کارنامه آزمون پایتون
-</title>
-
-<style>
-
-${document.querySelector("style").innerHTML}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="pdf-page">
-
-<div class="pdf-header">
-
-<h1>
-🐍 کارنامه آزمون پایتون مقدماتی
-</h1>
-
-<p>
-آزمون مفهومی Python
-</p>
-
-<hr>
-
-<p>
-
-👤 نام:
-
-<b>
-${studentName || "ثبت نشده"}
-</b>
-
-</p>
-
-<p>
-
-🏫 کلاس:
-
-<b>
-${className || "ثبت نشده"}
-</b>
-
-</p>
-
-<p>
-
-📅 تاریخ:
-
-<b>
-${new Date().toLocaleDateString("fa-IR")}
-</b>
-
-</p>
-
-<div class="pdf-score">
-
-${toFa(correct)} از ۲۵
-
-</div>
-
-<div class="pdf-stats">
-
-<div class="pdf-stat">
-
-<span class="green">
-درست
-</span>
-
-<b>
-${toFa(correct)}
-</b>
-
-</div>
-
-<div class="pdf-stat">
-
-<span class="red">
-غلط
-</span>
-
-<b>
-${toFa(wrong)}
-</b>
-
-</div>
-
-<div class="pdf-stat">
-
-<span class="orange">
-نزده
-</span>
-
-<b>
-${toFa(empty)}
-</b>
-
-</div>
-
-<div class="pdf-stat">
-
-<span>
-درصد
-</span>
-
-<b>
-${toFa(percent)}٪
-</b>
-
+<div class="copyright">
+© <span id="year"></span> آراز فیدای اسپادانا — تمامی حقوق محفوظ است.
 </div>
 
 </div>
-
 </div>
+</footer>
 
-<h2>
-📋 بررسی کامل ۲۵ سؤال
-</h2>
-
-${questionsHTML}
-
-<div class="pdf-header">
-
-<h2>
-پایان کارنامه
-</h2>
-
-<p>
-
-این کارنامه شامل پاسخ انتخاب‌شده،
-پاسخ صحیح و توضیح تشریحی تمام ۲۵ سؤال است.
-
-</p>
-
-</div>
-
-</div>
+<button class="top-btn" id="topBtn">↑</button>
 
 <script>
+const header=document.getElementById("header");
+const topBtn=document.getElementById("topBtn");
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
 
-window.onload=function(){
+window.addEventListener("scroll",()=>{
+if(window.scrollY>50) header.classList.add("scrolled");
+else header.classList.remove("scrolled");
 
-setTimeout(function(){
+if(window.scrollY>500) topBtn.classList.add("show");
+else topBtn.classList.remove("show");
+});
 
-window.print();
+topBtn.addEventListener("click",()=>{
+window.scrollTo({top:0,behavior:"smooth"});
+});
 
-},700);
+menuBtn.addEventListener("click",()=>{
+navLinks.classList.toggle("active");
+menuBtn.textContent=navLinks.classList.contains("active")?"×":"☰";
+});
 
-};
+document.querySelectorAll(".nav-links a").forEach(link=>{
+link.addEventListener("click",()=>{
+navLinks.classList.remove("active");
+menuBtn.textContent="☰";
+});
+});
 
-<\/script>
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting) entry.target.classList.add("active");
+});
+},{threshold:.12});
 
-</body>
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-</html>
+document.getElementById("requestForm").addEventListener("submit",()=>{
+setTimeout(()=>{
+alert("درخواست شما آماده ارسال است.");
+},200);
+});
 
-`);
+document.getElementById("year").textContent=new Date().getFullYear();
 
-reportWindow.document.close();
-
-}
-
-/* =========================================
-   شروع
-========================================= */
-
-showQuestion();
-
-updateTimer();
-
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener("click",function(e){
+const target=document.querySelector(this.getAttribute("href"));
+if(!target)return;
+e.preventDefault();
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+});
+});
 </script>
 
 </body>
-
 </html>
